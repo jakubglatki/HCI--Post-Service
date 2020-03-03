@@ -5,4 +5,75 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI__Post_Service"
         mc:Ignorable="d"
-        Title="MainWindow" Height="551.612" Width="1043.146"/>
+        Title="Post Service" Height="640" Width="1280">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="170"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.ColumnSpan="4">
+            <MenuItem Header="File">
+                <MenuItem Header="No"/>
+                <MenuItem Header="to"/>
+                <MenuItem Header="elo" Click="MenuItem_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <ToolBarTray Grid.Row="1"  Height="170" VerticalAlignment="Bottom">
+            <ToolBar>
+                <Button Content="Co"/>
+            </ToolBar>
+            <ToolBar>
+                <Button Content="tam"/>
+            </ToolBar>
+        </ToolBarTray>
+
+        <ListView Grid.Row="2" Name="listView">
+            <ListViewItem>iks</ListViewItem>
+            <ListViewItem>de</ListViewItem>
+        </ListView>
+
+        <TabControl Grid.Row="2" Grid.Column="1">
+            <TabItem Header="Tab 1">
+                <StackPanel>
+                    <Label Content="New label"/>
+                    <Button Content="B1" Width="150" Height="40"/>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Tab 2">
+                <StackPanel>
+                    <Label Content="New label"/>
+                    <Button Content="B2" Width="150" Height="40"/>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+
+
+        <StatusBar Grid.Row="4" Grid.ColumnSpan="4">
+            <StatusBarItem Content=":((((((((("/>
+            <Separator/>
+            <StatusBarItem Content=":)))))))))))))"/>
+        </StatusBar>
+
+        <ComboBox Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" SelectedIndex="0">
+            <ComboBoxItem>A</ComboBoxItem>
+            <ComboBoxItem>po</ComboBoxItem>
+            <ComboBoxItem>co</ComboBoxItem>
+            <ComboBoxItem>to</ComboBoxItem>
+            <ComboBoxItem>komu</ComboBoxItem>
+        </ComboBox>
+
+
+        <Image Grid.Column="3" Grid.Row="2" Width="200" Source="Resources/divock.jpg"/>
+    </Grid>
+</Window>

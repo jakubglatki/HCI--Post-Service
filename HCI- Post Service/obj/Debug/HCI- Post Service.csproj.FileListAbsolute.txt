@@ -1,0 +1,14 @@
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\bin\Debug\HCI- Post Service.exe.config
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\bin\Debug\HCI- Post Service.exe
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\bin\Debug\HCI- Post Service.pdb
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\HCI- Post Service.csprojAssemblyReference.cache
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\MainWindow.g.cs
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\App.g.cs
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\HCI- Post Service_MarkupCompile.cache
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\HCI- Post Service_MarkupCompile.lref
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\MainWindow.baml
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\HCI- Post Service.g.resources
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\HCI__Post_Service.Properties.Resources.resources
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\HCI- Post Service.csproj.GenerateResource.cache
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\HCI- Post Service.exe
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\HCI- Post Service.pdb

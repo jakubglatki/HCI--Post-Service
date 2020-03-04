@@ -27,10 +27,5 @@ namespace HCI__Post_Service
 
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            listView.Items.Add("No co tam");
-            listView.Items.RemoveAt(listView.Items.Count - 1);
-        }
     }
 }

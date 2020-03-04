@@ -8,72 +8,68 @@
         Title="Post Service" Height="640" Width="1280">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="400"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="320" />
+            <ColumnDefinition Width="480"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="100"/>
-            <RowDefinition Height="170"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        <Rectangle Fill="LightCoral" IsHitTestVisible="False" Grid.Row="1" Grid.RowSpan="3" Grid.Column="0" Grid.ColumnSpan="3"/>
+        <Rectangle Fill="LightCoral" IsHitTestVisible="False" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1"/>
+        <Rectangle Fill="Ivory" IsHitTestVisible="False" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2" Margin="0,0,20,20"/>
 
-        <Menu Grid.ColumnSpan="4">
-            <MenuItem Header="File">
-                <MenuItem Header="No"/>
-                <MenuItem Header="to"/>
-                <MenuItem Header="elo" Click="MenuItem_Click"/>
+
+        <TextBox Grid.Column="1" Name="searchBox" HorizontalAlignment="Left" Height="30" Margin="0,10,10,10" Text="Search" VerticalAlignment="Top" Width="450" FontSize="18"/>
+
+        <TreeView HorizontalAlignment="Left" Height="435" Margin="10,0,10,-10" Grid.Row="2" VerticalAlignment="Top" Width="300">
+            <TreeViewItem Header="jurgen@klopp.de">
+                <TreeViewItem Header="Inbox"/>
+                <TreeViewItem Header="Sent"/>
+                <TreeViewItem Header="Deleted"/>
+                <TreeViewItem Header="Starred"/>
+                <TreeViewItem Header="Drafts"/>
+            </TreeViewItem>
+            <TreeViewItem Header="bobby@firmino.br">
+                <TreeViewItem Header="Inbox"/>
+                <TreeViewItem Header="Sent"/>
+                <TreeViewItem Header="Deleted"/>
+                <TreeViewItem Header="Starred"/>
+                <TreeViewItem Header="Drafts"/>
+            </TreeViewItem>
+        </TreeView>
+
+        <Menu Name="menu" HorizontalAlignment="Left" Height="24" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="300" Background="AntiqueWhite">
+            <MenuItem Header="File" FontSize="18" Width="300">
+                <MenuItem Header="New Message" Width="300"/>
+                <MenuItem Header="Exit" Width="300"/>
             </MenuItem>
         </Menu>
 
-        <ToolBarTray Grid.Row="1"  Height="170" VerticalAlignment="Bottom">
-            <ToolBar>
-                <Button Content="Co"/>
-            </ToolBar>
-            <ToolBar>
-                <Button Content="tam"/>
+        <ListView HorizontalAlignment="Left" Height="439" VerticalAlignment="Top" Width="932" Grid.Column="1" Margin="0,0,0,0" Grid.Row="2" Grid.ColumnSpan="2" Background="Ivory">
+            <ListView.View>
+                <GridView>
+
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <ToolBarTray Grid.Column="1" HorizontalAlignment="Left" Height="52" Margin="10,22,0,0" Grid.Row="1" VerticalAlignment="Top" Width="922" Grid.ColumnSpan="2" Background="Ivory">
+            <ToolBar Margin="10,10,10,10" HorizontalAlignment="Center" VerticalAlignment="Center" >
+                <Button Content="Reply" Margin="50,0,0,0" FontSize="18" BorderBrush="Ivory"/>
+                <Button Content="Reply To All" Margin="20,0,0,0" FontSize="18" BorderBrush="Ivory"/>
+                <Button Content="Forward" Margin="20,0,0,0" FontSize="18" BorderBrush="Ivory"/>
+                <Button Content="New Message" Margin="80,0,0,0" FontSize="18" BorderBrush="Ivory"/>
+                <Button Content="Delete" Margin="80,0,0,0" FontSize="18" BorderBrush="Ivory"/>
+
+
             </ToolBar>
         </ToolBarTray>
 
-        <ListView Grid.Row="2" Name="listView">
-            <ListViewItem>iks</ListViewItem>
-            <ListViewItem>de</ListViewItem>
-        </ListView>
-
-        <TabControl Grid.Row="2" Grid.Column="1">
-            <TabItem Header="Tab 1">
-                <StackPanel>
-                    <Label Content="New label"/>
-                    <Button Content="B1" Width="150" Height="40"/>
-                </StackPanel>
-            </TabItem>
-            <TabItem Header="Tab 2">
-                <StackPanel>
-                    <Label Content="New label"/>
-                    <Button Content="B2" Width="150" Height="40"/>
-                </StackPanel>
-            </TabItem>
-        </TabControl>
-
-
-        <StatusBar Grid.Row="4" Grid.ColumnSpan="4">
-            <StatusBarItem Content=":((((((((("/>
-            <Separator/>
-            <StatusBarItem Content=":)))))))))))))"/>
-        </StatusBar>
-
-        <ComboBox Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" SelectedIndex="0">
-            <ComboBoxItem>A</ComboBoxItem>
-            <ComboBoxItem>po</ComboBoxItem>
-            <ComboBoxItem>co</ComboBoxItem>
-            <ComboBoxItem>to</ComboBoxItem>
-            <ComboBoxItem>komu</ComboBoxItem>
-        </ComboBox>
-
-
-        <Image Grid.Column="3" Grid.Row="2" Width="200" Source="Resources/divock.jpg"/>
     </Grid>
 </Window>
+  

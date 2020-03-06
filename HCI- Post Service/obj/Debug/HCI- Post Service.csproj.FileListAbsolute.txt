@@ -12,3 +12,4 @@ D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Servi
 D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\HCI- Post Service.csproj.GenerateResource.cache
 D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\HCI- Post Service.exe
 D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\HCI- Post Service.pdb
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\bin\Debug\MainWindow.xaml.cs

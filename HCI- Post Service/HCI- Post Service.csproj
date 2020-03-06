@@ -67,6 +67,7 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -97,6 +98,24 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="reply-all.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="reply.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="forward.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="newMessage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="delete.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

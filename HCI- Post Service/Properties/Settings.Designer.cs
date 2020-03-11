@@ -22,5 +22,17 @@ namespace HCI__Post_Service.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("iksde")]
+        public string Text {
+            get {
+                return ((string)(this["Text"]));
+            }
+            set {
+                this["Text"] = value;
+            }
+        }
     }
 }

@@ -24,13 +24,15 @@
 
         <TextBox Grid.Column="0" Grid.ColumnSpan="3" Name="searchBox" HorizontalAlignment="Center" Width="400"  VerticalAlignment="Center" Margin="10,10,10,10" Text="Search"   FontSize="18"/>
 
+        <Button Content="Open" Grid.Column="0" Grid.Row="0" Width="35" Height="75" Click="Button_Click_1"/>
+
         <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,-10" Grid.Row="2"  Width="300" Height="Auto">
             <TreeView>
                 <TreeViewItem Header="jurgen@klopp.de">
-                    <TreeViewItem Header="Inbox"/>
+                    <TreeViewItem Header="Inbox" MouseLeftButtonUp="inboxMails1"/>
                     <TreeViewItem Header="Sent"/>
                     <TreeViewItem Header="Deleted"/>
-                    <TreeViewItem Header="Starred"/>
+                    <TreeViewItem Header="Starred" MouseLeftButtonUp="starredMails1"/>
                     <TreeViewItem Header="Drafts"/>
                 </TreeViewItem>
                 <TreeViewItem Header="bobby@firmino.br">
@@ -50,7 +52,7 @@
             </MenuItem>
         </Menu>
 
-        <ListView  Height="auto" HorizontalAlignment="Stretch"  Grid.Column="1" Margin="0,0,10,10" Grid.Row="2" Grid.ColumnSpan="2" Background="Ivory">
+        <ListView x:Name="messageList" Height="auto" HorizontalAlignment="Stretch"  Grid.Column="1" Margin="0,0,10,10" Grid.Row="2" Grid.ColumnSpan="2" Background="Ivory">
             <ListViewItem Margin="5,0,0,5" FontSize="18">Message 1</ListViewItem>
             <ListViewItem Margin="5,0,0,5" FontSize="18">Message 2</ListViewItem>
             <ListViewItem Margin="5,0,0,5" FontSize="18">Message 3</ListViewItem>
@@ -101,7 +103,7 @@
             </ToolBarTray>
 
         <TextBox Visibility="Hidden"  Height="auto" HorizontalAlignment="Stretch"  Grid.Column="1" Margin="0,0,10,10" Grid.Row="2" Grid.ColumnSpan="2" Background="Ivory"/>
-
+        
     </Grid>
 </Window>
   

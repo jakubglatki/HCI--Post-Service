@@ -32,26 +32,22 @@ namespace HCI__Post_Service
 
         
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            DialogWindow dw = new DialogWindow();
-            dw.textBox.Text = text;
+        //private void Button_Click_1(object sender, RoutedEventArgs e)
+        //{
+        //    DialogWindow dw = new DialogWindow();
+        //    dw.textBox.Text = text;
         
-            //if we left DialogWindow by pressing "OK" button
-            if(dw.ShowDialog()==true)
-            {
-                text = dw.textBox.Text;
+        //    //if we left DialogWindow by pressing "OK" button
+        //    if(dw.ShowDialog()==true)
+        //    {
+        //        text = dw.textBox.Text;
 
-                //it will save the value until the next session
-                Properties.Settings.Default.Text = text;
-                Properties.Settings.Default.Save();
-            }
-        }
+        //        //it will save the value until the next session
+        //        Properties.Settings.Default.Text = text;
+        //        Properties.Settings.Default.Save();
+        //    }
+        //}
 
         private void addMailItem(Mail mail)
         {
@@ -100,6 +96,11 @@ namespace HCI__Post_Service
             addMailItem(message2);
             addMailItem(message3);
             addMailItem(message4);
+        }
+
+        private void exitApplication(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

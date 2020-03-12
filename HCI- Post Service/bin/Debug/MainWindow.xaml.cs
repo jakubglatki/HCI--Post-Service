@@ -101,5 +101,10 @@ namespace HCI__Post_Service
             addMailItem(message3);
             addMailItem(message4);
         }
+
+        private void exitApplication(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

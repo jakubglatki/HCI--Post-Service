@@ -48,7 +48,7 @@
         <Menu Name="menu" HorizontalAlignment="Left" Height="24" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="300" Background="AntiqueWhite">
             <MenuItem Header="File" FontSize="18" Width="300">
                 <MenuItem Header="New Message" Width="300"/>
-                <MenuItem Header="Exit" Width="300"/>
+                <MenuItem Header="Exit" Width="300" Click="exitApplication"/>
             </MenuItem>
         </Menu>
 
@@ -78,7 +78,7 @@
                     </StackPanel>
                 </Button>
 
-                <Button HorizontalAlignment="Left" Width="180" Click="Button_Click">
+                <Button HorizontalAlignment="Left" Width="180">
                     <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
                         <Image x:Name="bForward" Source="forward.png" Width="30" Height="30"/>
                         <TextBlock Margin="0,0,0,0" FontSize="18" >Forward</TextBlock>

@@ -21,6 +21,8 @@ namespace HCI__Post_Service
     public partial class MainWindow : Window
     {
         string text = Properties.Settings.Default.Text;
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -57,6 +59,11 @@ namespace HCI__Post_Service
             starredMailItem.Margin = new Thickness(5, 0, 0, 5);
             starredMailItem.Content = mail.Topic;
             messageList.Items.Add(starredMailItem);
+
+
+            messageList.Visibility = Visibility.Visible;
+            displayedMail.Visibility = Visibility.Hidden;
+            bBack.Visibility = Visibility.Hidden;
         }
 
 
@@ -86,7 +93,6 @@ namespace HCI__Post_Service
 
             messageList.Items.Clear();
 
-
             Mail message1 = new Mail("Sender1", "Receiver1", "Message 1", "messageMessage1");
             Mail message2 = new Mail("Sender2", "Receiver2", "Message 2", "messageMessage2");
             Mail message3 = new Mail("Sender3", "Receiver3", "Message 3", "messageMessage3");
@@ -101,6 +107,27 @@ namespace HCI__Post_Service
         private void exitApplication(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void showMessage(object sender, MouseButtonEventArgs e)
+        {
+            Mail message1 = new Mail("Sender1", "Receiver1", "Message 1", "messageMessage1");
+            senderMail.Text = message1.Sender;
+            receiverMail.Text = message1.Receiver;
+            topicMail.Text = message1.Topic;
+            contentMail.Text = message1.Content;
+
+            messageList.Visibility = Visibility.Hidden;
+            displayedMail.Visibility = Visibility.Visible;
+            bBack.Visibility = Visibility.Visible;
+        }
+
+        private void backButtonClick(object sender, RoutedEventArgs e)
+        {
+
+            messageList.Visibility = Visibility.Visible;
+            displayedMail.Visibility = Visibility.Hidden;
+            bBack.Visibility = Visibility.Collapsed;
         }
     }
 }

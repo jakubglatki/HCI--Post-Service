@@ -24,7 +24,7 @@
 
         <TextBox Grid.Column="0" Grid.ColumnSpan="3" Name="searchBox" HorizontalAlignment="Center" Width="400"  VerticalAlignment="Center" Margin="10,10,10,10" Text="Search"   FontSize="18"/>
 
-        <Button Content="Open" Grid.Column="0" Grid.Row="0" Width="35" Height="75" Click="Button_Click_1"/>
+        <!--<Button Content="Open" Grid.Column="0" Grid.Row="0" Width="35" Height="75" Click="Button_Click_1"/>-->
 
         <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,-10" Grid.Row="2"  Width="300" Height="Auto">
             <TreeView>
@@ -53,16 +53,17 @@
         </Menu>
 
         <ListView x:Name="messageList" Height="auto" HorizontalAlignment="Stretch"  Grid.Column="1" Margin="0,0,10,10" Grid.Row="2" Grid.ColumnSpan="2" Background="Ivory">
-            <ListViewItem Margin="5,0,0,5" FontSize="18">Message 1</ListViewItem>
+            <ListViewItem Margin="5,0,0,5" FontSize="18" MouseLeftButtonUp="showMessage">Message 1</ListViewItem>
             <ListViewItem Margin="5,0,0,5" FontSize="18">Message 2</ListViewItem>
             <ListViewItem Margin="5,0,0,5" FontSize="18">Message 3</ListViewItem>
             <ListViewItem Margin="5,0,0,5" FontSize="18">Message 4</ListViewItem>
         </ListView>
 
-            <ToolBarTray Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Left"  Margin="10,20,0,0" VerticalAlignment="Top"  Background="Ivory">
+       
+        <ToolBarTray Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Left"  Margin="10,20,0,0" VerticalAlignment="Top"  Background="Ivory">
             <ToolBar Margin="50,10,50,10">
-                <Button  Margin="50,0,0,0" FontSize="18" BorderBrush="Ivory" Width="30" Height="30" Visibility="Collapsed">
-                    <Image x:Name="bBack" Source="back.png"/>
+                <Button  Margin="50,0,0,0" FontSize="18" BorderBrush="Ivory" Width="30" Height="30" x:Name="bBack" Visibility="Collapsed" Click="backButtonClick">
+                    <Image Source="back.png" />
                 </Button>
                 <Button>
                     <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
@@ -78,21 +79,21 @@
                     </StackPanel>
                 </Button>
 
-                <Button HorizontalAlignment="Left" Width="180">
+                <Button HorizontalAlignment="Left" >
                     <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
                         <Image x:Name="bForward" Source="forward.png" Width="30" Height="30"/>
                         <TextBlock Margin="0,0,0,0" FontSize="18" >Forward</TextBlock>
                     </StackPanel>
                 </Button>
 
-                <Button HorizontalAlignment="Left" Width="180">
+                <Button HorizontalAlignment="Left" >
                     <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
                         <Image x:Name="bNewMessage" Source="newMessage.png" Width="30" Height="30"/>
                         <TextBlock Margin="5,0,0,0" FontSize="18" >New Message</TextBlock>
                     </StackPanel>
                 </Button>
 
-                <Button HorizontalAlignment="Left" Width="180" >
+                <Button HorizontalAlignment="Left"  >
                     <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
                         <Image x:Name="bDelete" Source="delete.png" Width="30" Height="30"/>
                         <TextBlock Margin="5,0,0,0" FontSize="18" >Delete</TextBlock>
@@ -102,8 +103,13 @@
             </ToolBar>
             </ToolBarTray>
 
-        <TextBox Visibility="Hidden"  Height="auto" HorizontalAlignment="Stretch"  Grid.Column="1" Margin="0,0,10,10" Grid.Row="2" Grid.ColumnSpan="2" Background="Ivory"/>
-        
+        <StackPanel x:Name="displayedMail" Visibility="Hidden" Height="auto" HorizontalAlignment="Stretch"  Grid.Column="1" Margin="0,0,10,10" Grid.Row="2" Grid.ColumnSpan="2" Background="Ivory">
+            <TextBox x:Name="senderMail" Height="25" IsReadOnly="True" BorderThickness="0"/>
+            <TextBox x:Name="receiverMail" Height="25" IsReadOnly="True" BorderThickness="0"/>
+            <TextBox x:Name="topicMail" Height="40" FontWeight="Bold" IsReadOnly="True" BorderThickness="0"/>
+            <TextBox x:Name="contentMail" Height="auto" IsReadOnly="True" Background="Ivory" BorderThickness="0"/>
+        </StackPanel>
+
     </Grid>
 </Window>
   

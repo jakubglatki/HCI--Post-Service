@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HCI__Post_Service"
         mc:Ignorable="d"
         Title="Post Service" Height="640" Width="1280">
-    <Grid>
+    <Grid x:Name="gridView1">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="320" />
             <ColumnDefinition Width="480"/>
@@ -27,20 +27,20 @@
         <!--<Button Content="Open" Grid.Column="0" Grid.Row="0" Width="35" Height="75" Click="Button_Click_1"/>-->
 
         <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,-10" Grid.Row="2"  Width="300" Height="Auto">
-            <TreeView>
-                <TreeViewItem Header="jurgen@klopp.de">
-                    <TreeViewItem Header="Inbox" MouseLeftButtonUp="inboxMails1"/>
-                    <TreeViewItem Header="Sent"/>
-                    <TreeViewItem Header="Deleted"/>
-                    <TreeViewItem Header="Starred" MouseLeftButtonUp="starredMails1"/>
-                    <TreeViewItem Header="Drafts"/>
+            <TreeView x:Name="treeView1">
+                <TreeViewItem x:Name="header1" Header="jurgen@klopp.de">
+                    <TreeViewItem x:Name="inbox1" Header="Inbox" MouseLeftButtonUp="inboxMails1"/>
+                    <TreeViewItem x:Name="sent1" Header="Sent"/>
+                    <TreeViewItem x:Name="starred1" Header="Starred" MouseLeftButtonUp="starredMails1"/>
+                    <TreeViewItem x:Name="drafts1" Header="Drafts"/>
+                    <TreeViewItem x:Name="deleted1" Header="Deleted" MouseLeftButtonUp="deletedMails1"/>
                 </TreeViewItem>
-                <TreeViewItem Header="bobby@firmino.br">
-                    <TreeViewItem Header="Inbox"/>
-                    <TreeViewItem Header="Sent"/>
-                    <TreeViewItem Header="Deleted"/>
-                    <TreeViewItem Header="Starred"/>
-                    <TreeViewItem Header="Drafts"/>
+                <TreeViewItem x:Name="header2" Header="bobby@firmino.br">
+                    <TreeViewItem x:Name="inbox2" Header="Inbox" MouseLeftButtonUp="inboxMails1"/>
+                    <TreeViewItem x:Name="sent2" Header="Sent"/>
+                    <TreeViewItem x:Name="starred2" Header="Starred" MouseLeftButtonUp="starredMails1"/>
+                    <TreeViewItem x:Name="drafts2" Header="Drafts"/>
+                    <TreeViewItem x:Name="deleted2" Header="Deleted" MouseLeftButtonUp="deletedMails1"/>
                 </TreeViewItem>
             </TreeView>
         </StackPanel>
@@ -53,13 +53,12 @@
         </Menu>
 
         <ListView x:Name="messageList" Height="auto" HorizontalAlignment="Stretch"  Grid.Column="1" Margin="0,0,10,10" Grid.Row="2" Grid.ColumnSpan="2" Background="Ivory">
-            <ListViewItem Margin="5,0,0,5" FontSize="18" MouseLeftButtonUp="showMessage">Message 1</ListViewItem>
+            <ListViewItem x:Name="message1" Margin="5,0,0,5" FontSize="18" MouseLeftButtonUp="showMessage">Message 1</ListViewItem>
             <ListViewItem Margin="5,0,0,5" FontSize="18">Message 2</ListViewItem>
             <ListViewItem Margin="5,0,0,5" FontSize="18">Message 3</ListViewItem>
             <ListViewItem Margin="5,0,0,5" FontSize="18">Message 4</ListViewItem>
         </ListView>
 
-       
         <ToolBarTray Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Left"  Margin="10,20,0,0" VerticalAlignment="Top"  Background="Ivory">
             <ToolBar Margin="50,10,50,10">
                 <Button  Margin="50,0,0,0" FontSize="18" BorderBrush="Ivory" Width="30" Height="30" x:Name="bBack" Visibility="Collapsed" Click="backButtonClick">
@@ -93,7 +92,7 @@
                     </StackPanel>
                 </Button>
 
-                <Button HorizontalAlignment="Left"  >
+                <Button HorizontalAlignment="Left"  Click="deleteButtonClick">
                     <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
                         <Image x:Name="bDelete" Source="delete.png" Width="30" Height="30"/>
                         <TextBlock Margin="5,0,0,0" FontSize="18" >Delete</TextBlock>

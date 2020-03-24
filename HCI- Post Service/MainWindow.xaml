@@ -52,9 +52,9 @@
             </MenuItem>
         </Menu>
 
-        <ListView x:Name="messageList" Height="auto" HorizontalAlignment="Stretch"  Grid.Column="1" Margin="0,0,10,10" Grid.Row="2" Grid.ColumnSpan="2" Background="Ivory">
+        <local:MailsList x:Name="messageList" Height="auto" HorizontalAlignment="Stretch"  Grid.Column="1" Margin="0,0,10,10" Grid.Row="2" Grid.ColumnSpan="2" Background="Ivory">
 
-        </ListView>
+        </local:MailsList>
 
         <ToolBarTray Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Left"  Margin="10,20,0,0" VerticalAlignment="Top"  Background="Ivory">
             <ToolBar Margin="50,10,50,10">

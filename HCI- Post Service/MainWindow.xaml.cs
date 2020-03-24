@@ -14,8 +14,8 @@ namespace HCI__Post_Service
         string text = Properties.Settings.Default.Text;
         public bool starredListBool1 = false;
         public bool deletedListBool1 = false;
-        public ListView starredList1;
-        public ListView deletedList1;
+        public MailsList starredList1;
+        public MailsList deletedList1;
         private MailManager mailManager;
         public MainWindow()
         {
@@ -23,13 +23,30 @@ namespace HCI__Post_Service
             mailManager= new MailManager(this);
             //code to get after startup here
 
-            starredList1 = new ListView();
-            deletedList1 = new ListView();
+            starredList1 = new MailsList();
+            deletedList1 = new MailsList();
             gridView1.Children.Add(starredList1);
             gridView1.Children.Add(deletedList1);
+            messageList.listComponents(messageList);
             mailManager.setMessages();
         }
 
+
+        //private void Button_Click_1(object sender, RoutedEventArgs e)
+        //{
+        //    DialogWindow dw = new DialogWindow();
+        //    dw.textBox.Text = text;
+
+        //    //if we left DialogWindow by pressing "OK" button
+        //    if(dw.ShowDialog()==true)
+        //    {
+        //        text = dw.textBox.Text;
+
+        //        //it will save the value until the next session
+        //        Properties.Settings.Default.Text = text;
+        //        Properties.Settings.Default.Save();
+        //    }
+        //}
 
 
         private void inboxMails1(object sender, MouseButtonEventArgs e)
@@ -42,7 +59,7 @@ namespace HCI__Post_Service
         {
             if (starredListBool1 == false)
             {
-                mailManager.listComponents(starredList1);
+                starredList1.listComponents(starredList1);
 
                 Mail starred1 = new Mail("Sender1", "Receiver1", "Starred 1", "StarredMessage1");
                 Mail starred2 = new Mail("Sender2", "Receiver2", "Starred 2", "StarredMessage2");
@@ -69,8 +86,9 @@ namespace HCI__Post_Service
 
             if (deletedListBool1 == false)
             {
-                mailManager.listComponents(deletedList1);
+                deletedList1.listComponents(deletedList1);
             }
+            deletedListBool1 = true;
 
             mailManager.setVisibility();
             deletedList1.Visibility = Visibility.Visible;
@@ -100,11 +118,25 @@ namespace HCI__Post_Service
             bBack.Visibility = Visibility.Collapsed;
         }
 
+
+        private void showMessage(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Mail message1 = new Mail("Sender1", "Receiver1", "Message 1", "messageMessage1");
+            senderMail.Text = message1.Sender;
+            receiverMail.Text = message1.Receiver;
+            topicMail.Text = message1.Topic;
+            contentMail.Text = message1.Content;
+
+            mailManager.setVisibility();
+            displayedMail.Visibility = Visibility.Visible;
+            bBack.Visibility = Visibility.Visible;
+        }
+
         private void deleteButtonClick(object sender, RoutedEventArgs e)
         {
             //if (treeView1.SelectedItem == deleted1 || treeView1.SelectedItem == deleted2)
             //{
-            //    deletingMessage();
+            //    mailManager.deletingMessage();
             //}
             //else
             //{

@@ -59,6 +59,8 @@
     <Compile Include="deleteMessage.xaml.cs">
       <DependentUpon>deleteMessage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MailManager.cs" />
+    <Compile Include="MailsList.cs" />
     <Compile Include="Settings.cs" />
     <Page Include="deleteMessage.xaml">
       <SubType>Designer</SubType>

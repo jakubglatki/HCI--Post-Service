@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HCI__Post_Service
+﻿namespace HCI__Post_Service
 {
-    class Mail
+    public class Mail
     {
         public string Sender { get; set; }
         public string Receiver { get; set; }
@@ -29,5 +23,18 @@ namespace HCI__Post_Service
             this.Topic = Topic;
             this.Content = Content;
         }
+
+        //private void showMessage(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        //{
+        //    Mail message1 = new Mail("Sender1", "Receiver1", "Message 1", "messageMessage1");
+        //    senderMail.Text = message1.Sender;
+        //    receiverMail.Text = message1.Receiver;
+        //    topicMail.Text = message1.Topic;
+        //    contentMail.Text = message1.Content;
+
+        //    setVisibility();
+        //    displayedMail.Visibility = Visibility.Visible;
+        //    bBack.Visibility = Visibility.Visible;
+        //}
     }
 }

@@ -53,10 +53,7 @@
         </Menu>
 
         <ListView x:Name="messageList" Height="auto" HorizontalAlignment="Stretch"  Grid.Column="1" Margin="0,0,10,10" Grid.Row="2" Grid.ColumnSpan="2" Background="Ivory">
-            <ListViewItem x:Name="message1" Margin="5,0,0,5" FontSize="18" MouseLeftButtonUp="showMessage">Message 1</ListViewItem>
-            <ListViewItem Margin="5,0,0,5" FontSize="18">Message 2</ListViewItem>
-            <ListViewItem Margin="5,0,0,5" FontSize="18">Message 3</ListViewItem>
-            <ListViewItem Margin="5,0,0,5" FontSize="18">Message 4</ListViewItem>
+
         </ListView>
 
         <ToolBarTray Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Left"  Margin="10,20,0,0" VerticalAlignment="Top"  Background="Ivory">

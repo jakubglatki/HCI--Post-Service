@@ -15,7 +15,7 @@ namespace HCI__Post_Service
         {
 
         }
-        public void listComponents(MailsList list)
+        public void ListComponents(MailsList list)
         {
             //it's the same as Height=auto
             list.Height = Double.NaN;

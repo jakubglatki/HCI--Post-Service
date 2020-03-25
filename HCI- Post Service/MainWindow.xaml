@@ -29,18 +29,18 @@
         <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,-10" Grid.Row="2"  Width="300" Height="Auto">
             <TreeView x:Name="treeView1">
                 <TreeViewItem x:Name="header1" Header="jurgen@klopp.de">
-                    <TreeViewItem x:Name="inbox1" Header="Inbox" MouseLeftButtonUp="inboxMails1"/>
+                    <TreeViewItem x:Name="inbox1" Header="Inbox" MouseLeftButtonUp="InboxMails1"/>
                     <TreeViewItem x:Name="sent1" Header="Sent"/>
-                    <TreeViewItem x:Name="starred1" Header="Starred" MouseLeftButtonUp="starredMails1"/>
+                    <TreeViewItem x:Name="starred1" Header="Starred" MouseLeftButtonUp="StarredMails1"/>
                     <TreeViewItem x:Name="drafts1" Header="Drafts"/>
-                    <TreeViewItem x:Name="deleted1" Header="Deleted" MouseLeftButtonUp="deletedMails1"/>
+                    <TreeViewItem x:Name="deleted1" Header="Deleted" MouseLeftButtonUp="DeletedMails1"/>
                 </TreeViewItem>
                 <TreeViewItem x:Name="header2" Header="bobby@firmino.br">
-                    <TreeViewItem x:Name="inbox2" Header="Inbox" MouseLeftButtonUp="inboxMails1"/>
+                    <TreeViewItem x:Name="inbox2" Header="Inbox" MouseLeftButtonUp="InboxMails1"/>
                     <TreeViewItem x:Name="sent2" Header="Sent"/>
-                    <TreeViewItem x:Name="starred2" Header="Starred" MouseLeftButtonUp="starredMails1"/>
+                    <TreeViewItem x:Name="starred2" Header="Starred" MouseLeftButtonUp="StarredMails1"/>
                     <TreeViewItem x:Name="drafts2" Header="Drafts"/>
-                    <TreeViewItem x:Name="deleted2" Header="Deleted" MouseLeftButtonUp="deletedMails1"/>
+                    <TreeViewItem x:Name="deleted2" Header="Deleted" MouseLeftButtonUp="DeletedMails1"/>
                 </TreeViewItem>
             </TreeView>
         </StackPanel>
@@ -48,7 +48,7 @@
         <Menu Name="menu" HorizontalAlignment="Left" Height="24" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="300" Background="AntiqueWhite">
             <MenuItem Header="File" FontSize="18" Width="300">
                 <MenuItem Header="New Message" Width="300"/>
-                <MenuItem Header="Exit" Width="300" Click="exitApplication"/>
+                <MenuItem Header="Exit" Width="300" Click="ExitApplication"/>
             </MenuItem>
         </Menu>
 
@@ -58,7 +58,7 @@
 
         <ToolBarTray Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Left"  Margin="10,20,0,0" VerticalAlignment="Top"  Background="Ivory">
             <ToolBar Margin="50,10,50,10">
-                <Button  Margin="50,0,0,0" FontSize="18" BorderBrush="Ivory" Width="30" Height="30" x:Name="bBack" Visibility="Collapsed" Click="backButtonClick">
+                <Button  Margin="50,0,0,0" FontSize="18" BorderBrush="Ivory" Width="30" Height="30" x:Name="bBack" Visibility="Collapsed" Click="BackButtonClick">
                     <Image Source="back.png" />
                 </Button>
                 <Button>
@@ -89,7 +89,7 @@
                     </StackPanel>
                 </Button>
 
-                <Button HorizontalAlignment="Left"  Click="deleteButtonClick">
+                <Button HorizontalAlignment="Left"  Click="DeleteButtonClick">
                     <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
                         <Image x:Name="bDelete" Source="delete.png" Width="30" Height="30"/>
                         <TextBlock Margin="5,0,0,0" FontSize="18" >Delete</TextBlock>

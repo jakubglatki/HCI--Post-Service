@@ -13,7 +13,7 @@ namespace HCI__Post_Service
 
         public Mail() {
 
-            MouseLeftButtonUp += showMessage;
+            MouseLeftButtonUp += ShowMessage;
         }
 
         public Mail(string Sender, string Receiver, string Content)
@@ -23,7 +23,7 @@ namespace HCI__Post_Service
             this.Topic = "";
             this.Content = Content;
 
-            MouseLeftButtonUp += showMessage;
+            MouseLeftButtonUp += ShowMessage;
         }
         public Mail(string Sender, string Receiver, string Topic, string Content)
         {
@@ -32,18 +32,18 @@ namespace HCI__Post_Service
             this.Topic = Topic;
             this.Content = Content;
 
-            this.MouseDoubleClick += showMessage;
+            this.MouseDoubleClick += ShowMessage;
         }
 
 
-        private void showMessage(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void ShowMessage(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Mail message1 = new Mail("Sender1", "Receiver1", "Message 1", "messageMessage1");
             
 
             MailManager mailManager = new MailManager();
             mailManager.SetCurrentMail(this);
-            mailManager.showMessage(this);
+            mailManager.ShowMessage(this);
         }
     }
 }

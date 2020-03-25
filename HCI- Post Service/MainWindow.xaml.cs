@@ -27,8 +27,9 @@ namespace HCI__Post_Service
             deletedList1 = new MailsList();
             gridView1.Children.Add(starredList1);
             gridView1.Children.Add(deletedList1);
-            messageList.listComponents(messageList);
-            mailManager.setMessages();
+            messageList.ListComponents(messageList);
+            mailManager.SetMessages();
+            mailManager.SetCurrentMailsList(messageList);
         }
 
 
@@ -49,17 +50,18 @@ namespace HCI__Post_Service
         //}
 
 
-        private void inboxMails1(object sender, MouseButtonEventArgs e)
+        private void InboxMails1(object sender, MouseButtonEventArgs e)
         {
-            mailManager.setVisibility();
+            mailManager.SetVisibility();
             messageList.Visibility = Visibility.Visible;
+            mailManager.SetCurrentMailsList(messageList);
         }
 
-        private void starredMails1(object sender, MouseButtonEventArgs e)
+        private void StarredMails1(object sender, MouseButtonEventArgs e)
         {
             if (starredListBool1 == false)
             {
-                starredList1.listComponents(starredList1);
+                starredList1.ListComponents(starredList1);
 
                 Mail starred1 = new Mail("Sender1", "Receiver1", "Starred 1", "StarredMessage1");
                 Mail starred2 = new Mail("Sender2", "Receiver2", "Starred 2", "StarredMessage2");
@@ -68,58 +70,50 @@ namespace HCI__Post_Service
                 Mail starred5 = new Mail("Sender5", "Receiver5", "Starred 5", "StarredMessage5");
 
 
-                mailManager.addMailItem(starred1, starredList1);
-                mailManager.addMailItem(starred2, starredList1);
-                mailManager.addMailItem(starred3, starredList1);
-                mailManager.addMailItem(starred4, starredList1);
-                mailManager.addMailItem(starred5, starredList1);
+                mailManager.AddMailItem(starred1, starredList1);
+                mailManager.AddMailItem(starred2, starredList1);
+                mailManager.AddMailItem(starred3, starredList1);
+                mailManager.AddMailItem(starred4, starredList1);
+                mailManager.AddMailItem(starred5, starredList1);
             }
             starredListBool1 = true;
 
-            mailManager.setVisibility();
+            mailManager.SetVisibility();
             starredList1.Visibility = Visibility.Visible;
+            mailManager.SetCurrentMailsList(starredList1);
 
         }
 
-        private void deletedMails1(object sender, MouseButtonEventArgs e)
+        private void DeletedMails1(object sender, MouseButtonEventArgs e)
         {
 
             if (deletedListBool1 == false)
             {
-                deletedList1.listComponents(deletedList1);
+                deletedList1.ListComponents(deletedList1);
             }
             deletedListBool1 = true;
 
-            mailManager.setVisibility();
+            mailManager.SetVisibility();
+            mailManager.SetCurrentMailsList(deletedList1);
             deletedList1.Visibility = Visibility.Visible;
         }
 
 
 
-        private void exitApplication(object sender, RoutedEventArgs e)
+        private void ExitApplication(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
 
-        private void backButtonClick(object sender, RoutedEventArgs e)
+        private void BackButtonClick(object sender, RoutedEventArgs e)
         {
-            if (treeView1.SelectedItem == starredList1)
-            {
-                starredList1.Visibility = Visibility.Visible;
-                messageList.Visibility = Visibility.Hidden;
-            }
-            else
-            {
-                starredList1.Visibility = Visibility.Hidden;
-                messageList.Visibility = Visibility.Visible;
-            }
-            displayedMail.Visibility = Visibility.Hidden;
-            bBack.Visibility = Visibility.Collapsed;
+            mailManager.SetVisibility();
+            mailManager.GetCurrentList().Visibility = Visibility.Visible;
         }
 
 
-        private void showMessage(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void ShowMessage(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Mail message1 = new Mail("Sender1", "Receiver1", "Message 1", "messageMessage1");
             senderMail.Text = message1.Sender;
@@ -127,12 +121,12 @@ namespace HCI__Post_Service
             topicMail.Text = message1.Topic;
             contentMail.Text = message1.Content;
 
-            mailManager.setVisibility();
+            mailManager.SetVisibility();
             displayedMail.Visibility = Visibility.Visible;
             bBack.Visibility = Visibility.Visible;
         }
 
-        private void deleteButtonClick(object sender, RoutedEventArgs e)
+        private void DeleteButtonClick(object sender, RoutedEventArgs e)
         {
             //if (treeView1.SelectedItem == deleted1 || treeView1.SelectedItem == deleted2)
             //{

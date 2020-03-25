@@ -14,6 +14,7 @@ namespace HCI__Post_Service
     {
         static private MainWindow window;
         private Mail currentMail;
+        private MailsList currentList;
 
         public MailManager() { }
         public MailManager(MainWindow mainWindow)
@@ -21,7 +22,7 @@ namespace HCI__Post_Service
             window = mainWindow;
            // window.menu = 
         }
-        public void setVisibility()
+        public void SetVisibility()
         {
             window.deletedList1.Visibility = Visibility.Hidden;
             window.starredList1.Visibility = Visibility.Hidden;
@@ -31,7 +32,7 @@ namespace HCI__Post_Service
         }
 
 
-        public void addMailItem(Mail mail, MailsList list)
+        public void AddMailItem(Mail mail, MailsList list)
         {
             ListViewItem newMailItem = new Mail(mail.Sender, mail.Receiver, mail.Topic, mail.Content);
             newMailItem.FontSize = 18;
@@ -43,32 +44,41 @@ namespace HCI__Post_Service
 
        
 
-        public void setMessages()
+        public void SetMessages()
         {
             Mail message1 = new Mail("Sender1", "Receiver1", "Message 1", "messageMessage1");
             Mail message2 = new Mail("Sender2", "Receiver2", "Message 2", "messageMessage2");
             Mail message3 = new Mail("Sender3", "Receiver3", "Message 3", "messageMessage3");
             Mail message4 = new Mail("Sender4", "Receiver4", "Message 4", "messageMessage4");
 
-            addMailItem(message1, window.messageList);
-            addMailItem(message2, window.messageList);
-            addMailItem(message3, window.messageList);
-            addMailItem(message4, window.messageList);
+            AddMailItem(message1, window.messageList);
+            AddMailItem(message2, window.messageList);
+            AddMailItem(message3, window.messageList);
+            AddMailItem(message4, window.messageList);
         }
 
         public void SetCurrentMail(Mail mail)
         {
             currentMail = mail;
         }
+        public void SetCurrentMailsList(MailsList mailsList)
+        {
+            currentList=mailsList;
+        }
 
-        public void showMessage(Mail mail)
+        public MailsList GetCurrentList()
+        {
+            return this.currentList;
+        }
+
+        public void ShowMessage(Mail mail)
         {
             window.senderMail.Text = mail.Sender;
             window.receiverMail.Text = mail.Receiver;
             window.topicMail.Text = mail.Topic;
             window.contentMail.Text = mail.Content;
 
-            setVisibility();
+            SetVisibility();
             window.displayedMail.Visibility = Visibility.Visible;
             window.bBack.Visibility = Visibility.Visible;
         }

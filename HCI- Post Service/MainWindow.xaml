@@ -30,17 +30,17 @@
             <TreeView x:Name="treeView1">
                 <TreeViewItem x:Name="header1" Header="jurgen@klopp.de">
                     <TreeViewItem x:Name="inbox1" Header="Inbox" MouseLeftButtonUp="InboxMails1"/>
-                    <TreeViewItem x:Name="sent1" Header="Sent"/>
+                    <TreeViewItem x:Name="sent1" Header="Sent" MouseLeftButtonUp="SentMails1"/>
                     <TreeViewItem x:Name="starred1" Header="Starred" MouseLeftButtonUp="StarredMails1"/>
-                    <TreeViewItem x:Name="drafts1" Header="Drafts"/>
+                    <TreeViewItem x:Name="drafts1" Header="Drafts" MouseLeftButtonUp="DraftsMails1"/>
                     <TreeViewItem x:Name="deleted1" Header="Deleted" MouseLeftButtonUp="DeletedMails1"/>
                 </TreeViewItem>
                 <TreeViewItem x:Name="header2" Header="bobby@firmino.br">
-                    <TreeViewItem x:Name="inbox2" Header="Inbox" MouseLeftButtonUp="InboxMails1"/>
-                    <TreeViewItem x:Name="sent2" Header="Sent"/>
-                    <TreeViewItem x:Name="starred2" Header="Starred" MouseLeftButtonUp="StarredMails1"/>
-                    <TreeViewItem x:Name="drafts2" Header="Drafts"/>
-                    <TreeViewItem x:Name="deleted2" Header="Deleted" MouseLeftButtonUp="DeletedMails1"/>
+                    <TreeViewItem x:Name="inbox2" Header="Inbox" MouseLeftButtonUp="InboxMails2"/>
+                    <TreeViewItem x:Name="sent2" Header="Sent" MouseLeftButtonUp="SentMails2"/>
+                    <TreeViewItem x:Name="starred2" Header="Starred" MouseLeftButtonUp="StarredMails2"/>
+                    <TreeViewItem x:Name="drafts2" Header="Drafts" MouseLeftButtonUp="DraftsMails2"/>
+                    <TreeViewItem x:Name="deleted2" Header="Deleted" MouseLeftButtonUp="DeletedMails2"/>
                 </TreeViewItem>
             </TreeView>
         </StackPanel>
@@ -52,7 +52,7 @@
             </MenuItem>
         </Menu>
 
-        <local:MailsList x:Name="messageList" Height="auto" HorizontalAlignment="Stretch"  Grid.Column="1" Margin="0,0,10,10" Grid.Row="2" Grid.ColumnSpan="2" Background="Ivory">
+        <local:MailsList x:Name="messageList1" Height="auto" HorizontalAlignment="Stretch"  Grid.Column="1" Margin="0,0,10,10" Grid.Row="2" Grid.ColumnSpan="2" Background="Ivory">
 
         </local:MailsList>
 

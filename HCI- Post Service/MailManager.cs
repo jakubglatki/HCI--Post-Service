@@ -24,9 +24,19 @@ namespace HCI__Post_Service
         }
         public void SetVisibility()
         {
+            window.sentList1.Visibility = Visibility.Hidden;
             window.deletedList1.Visibility = Visibility.Hidden;
             window.starredList1.Visibility = Visibility.Hidden;
-            window.messageList.Visibility = Visibility.Hidden;
+            window.messageList1.Visibility = Visibility.Hidden;
+            window.draftsList1.Visibility = Visibility.Hidden;
+
+
+            window.sentList2.Visibility = Visibility.Hidden;
+            window.deletedList2.Visibility = Visibility.Hidden;
+            window.starredList2.Visibility = Visibility.Hidden;
+            window.messageList2.Visibility = Visibility.Hidden;
+            window.draftsList2.Visibility = Visibility.Hidden;
+
             window.displayedMail.Visibility = Visibility.Hidden;
             window.bBack.Visibility = Visibility.Collapsed;
         }
@@ -42,8 +52,6 @@ namespace HCI__Post_Service
 
         }
 
-       
-
         public void SetMessages()
         {
             Mail message1 = new Mail("Sender1", "Receiver1", "Message 1", "messageMessage1");
@@ -51,10 +59,8 @@ namespace HCI__Post_Service
             Mail message3 = new Mail("Sender3", "Receiver3", "Message 3", "messageMessage3");
             Mail message4 = new Mail("Sender4", "Receiver4", "Message 4", "messageMessage4");
 
-            AddMailItem(message1, window.messageList);
-            AddMailItem(message2, window.messageList);
-            AddMailItem(message3, window.messageList);
-            AddMailItem(message4, window.messageList);
+            window.messageList1.ListComponents(window.messageList1);
+            MakeNewMailsList(window.messageList1, message1, message2, message3, message4);
         }
 
         public void SetCurrentMail(Mail mail)
@@ -82,5 +88,14 @@ namespace HCI__Post_Service
             window.displayedMail.Visibility = Visibility.Visible;
             window.bBack.Visibility = Visibility.Visible;
         }
+
+        public void MakeNewMailsList(MailsList mailsList, params Mail[] mail)
+        {
+            foreach(Mail mailParam in mail)
+            {
+                AddMailItem(mailParam, mailsList);
+            }
+        }
+
     }
 }

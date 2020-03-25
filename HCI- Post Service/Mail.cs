@@ -38,9 +38,6 @@ namespace HCI__Post_Service
 
         private void ShowMessage(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            Mail message1 = new Mail("Sender1", "Receiver1", "Message 1", "messageMessage1");
-            
-
             MailManager mailManager = new MailManager();
             mailManager.SetCurrentMail(this);
             mailManager.ShowMessage(this);

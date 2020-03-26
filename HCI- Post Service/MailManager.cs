@@ -13,14 +13,13 @@ namespace HCI__Post_Service
     public class MailManager
     {
         static private MainWindow window;
-        private Mail currentMail;
+        static private Mail currentMail;
         private MailsList currentList;
 
         public MailManager() { }
         public MailManager(MainWindow mainWindow)
         {
             window = mainWindow;
-           // window.menu = 
         }
         public void SetVisibility()
         {
@@ -39,6 +38,8 @@ namespace HCI__Post_Service
 
             window.displayedMail.Visibility = Visibility.Hidden;
             window.bBack.Visibility = Visibility.Collapsed;
+
+            DisableDeleteButton();
         }
 
 
@@ -77,6 +78,8 @@ namespace HCI__Post_Service
             return this.currentList;
         }
 
+
+
         public void ShowMessage(Mail mail)
         {
             window.senderMail.Text = mail.Sender;
@@ -85,6 +88,7 @@ namespace HCI__Post_Service
             window.contentMail.Text = mail.Content;
 
             SetVisibility();
+            EnableDeleteButton();
             window.displayedMail.Visibility = Visibility.Visible;
             window.bBack.Visibility = Visibility.Visible;
         }
@@ -95,6 +99,59 @@ namespace HCI__Post_Service
             {
                 AddMailItem(mailParam, mailsList);
             }
+        }
+
+        public void DisableDeleteButton()
+        {
+            window.deleteButton.IsEnabled = false;
+        }
+        public void EnableDeleteButton()
+        {
+            window.deleteButton.IsEnabled = true;
+        }
+        public void DeletingMail()
+        {
+
+                MessageBoxResult result = MessageBox.Show("“Do you really wish to delete the message?", "Delete Message", MessageBoxButton.YesNo);
+                switch (result)
+                {
+                    case MessageBoxResult.Yes:
+                    if (currentList == window.deletedList1)
+                    {
+                        window.deletedList1.Items.Remove(currentMail);
+                        DisableDeleteButton();
+                    }
+
+                    else if (currentList == window.deletedList2)
+                    {
+                        window.deletedList2.Items.Remove(currentMail);
+                        DisableDeleteButton();
+                    }
+                        break;
+                    case MessageBoxResult.No:
+                        break;
+                }
+
+        }
+
+            public void MoveMailToDeleted()
+        {
+                currentList.Items.Remove(currentMail);
+                if (GetCurrentList() == window.messageList1 || GetCurrentList() == window.sentList1
+                    || GetCurrentList() == window.starredList1 || GetCurrentList() == window.draftsList1)
+                {
+                    window.deletedList1.Items.Add(currentMail);
+                    DisableDeleteButton();
+                    currentMail = null;
+                }
+
+                else
+                {
+                    window.deletedList2.Items.Add(currentMail);
+                DisableDeleteButton();
+                currentMail = null;
+            }
+            
         }
 
     }

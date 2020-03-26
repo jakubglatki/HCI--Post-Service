@@ -34,8 +34,8 @@ namespace HCI__Post_Service
         public MainWindow()
         {
             InitializeComponent();
-            mailManager= new MailManager(this);
             //code to get after startup here
+            mailManager = new MailManager(this);
 
             starredList1 = new MailsList();
             starredList2 = new MailsList();
@@ -46,15 +46,8 @@ namespace HCI__Post_Service
             draftsList1 = new MailsList();
             draftsList2 = new MailsList();
             messageList2 = new MailsList();
-            gridView1.Children.Add(starredList1);
-            gridView1.Children.Add(starredList2);
-            gridView1.Children.Add(deletedList1);
-            gridView1.Children.Add(deletedList2);
-            gridView1.Children.Add(sentList1);
-            gridView1.Children.Add(sentList2);
-            gridView1.Children.Add(draftsList1);
-            gridView1.Children.Add(draftsList2);
-            gridView1.Children.Add(messageList2);
+
+
             mailManager.SetMessages();
             mailManager.SetCurrentMailsList(messageList1);
         }
@@ -87,7 +80,7 @@ namespace HCI__Post_Service
 
         private void InboxMails2(object sender, MouseButtonEventArgs e)
         {
-            if (messageListBool2 == false)
+            if (messageListBool2  == false)
             {
                 messageList2.ListComponents(messageList2);
 
@@ -99,6 +92,8 @@ namespace HCI__Post_Service
                 Mail message6b = new Mail("Sender6b", "Receiver6b", "Message 6b", "messageMessage6b");
 
                 mailManager.MakeNewMailsList(messageList2, message1b, message2b, message3b, message4b, message5b, message6b);
+
+                gridView1.Children.Add(messageList2);
             }
             messageListBool2 = true;
 
@@ -117,6 +112,7 @@ namespace HCI__Post_Service
                 Mail sent2 = new Mail("Sender2", "Receiver2", "Sent 2", "sentMessage2");
 
                 mailManager.MakeNewMailsList(sentList1, sent1, sent2);
+                gridView1.Children.Add(sentList1);
             }
             sentListBool1 = true;
 
@@ -136,6 +132,7 @@ namespace HCI__Post_Service
                 Mail sent3b = new Mail("Sender3b", "Receiver3b", "Sent 3b", "sentMessage3b");
 
                 mailManager.MakeNewMailsList(sentList2, sent1b, sent2b, sent3b);
+                gridView1.Children.Add(sentList2);
             }
             sentListBool2 = true;
 
@@ -157,6 +154,7 @@ namespace HCI__Post_Service
                 Mail starred5 = new Mail("Sender5", "Receiver5", "Starred 5", "StarredMessage5");
 
                 mailManager.MakeNewMailsList(starredList1, starred1, starred2, starred3, starred4, starred5);
+                gridView1.Children.Add(starredList1);
             }
             starredListBool1 = true;
 
@@ -176,6 +174,7 @@ namespace HCI__Post_Service
                 Mail starred3b = new Mail("Sender3b", "Receiver3b", "Starred 3b", "StarredMessage3b");
 
                 mailManager.MakeNewMailsList(starredList2, starred1b, starred2b, starred3b);
+                gridView1.Children.Add(starredList2);
             }
             starredListBool2 = true;
 
@@ -193,6 +192,7 @@ namespace HCI__Post_Service
                 Mail drafts1 = new Mail("Sender1", "Receiver1", "Drafts 1", "draftsMessage1");
 
                 mailManager.MakeNewMailsList(draftsList1, drafts1);
+                gridView1.Children.Add(draftsList1);
             }
             draftsListBool1 = true;
 
@@ -212,6 +212,7 @@ namespace HCI__Post_Service
                 Mail drafts3b = new Mail("Sender3b", "Receiver3b", "Drafts 3b", "draftsMessage3b");
 
                 mailManager.MakeNewMailsList(draftsList2, drafts1b, drafts2b, drafts3b);
+                gridView1.Children.Add(draftsList2);
             }
             draftsListBool2 = true;
 
@@ -225,6 +226,7 @@ namespace HCI__Post_Service
             if (deletedListBool1 == false)
             {
                 deletedList1.ListComponents(deletedList1);
+                gridView1.Children.Add(deletedList1);
             }
             deletedListBool1 = true;
 
@@ -239,6 +241,7 @@ namespace HCI__Post_Service
             if (deletedListBool2 == false)
             {
                 deletedList2.ListComponents(deletedList2);
+                gridView1.Children.Add(deletedList2);
             }
             deletedListBool2 = true;
 
@@ -264,19 +267,14 @@ namespace HCI__Post_Service
       
         private void DeleteButtonClick(object sender, RoutedEventArgs e)
         {
-            //if (treeView1.SelectedItem == deleted1 || treeView1.SelectedItem == deleted2)
-            //{
-            //    mailManager.deletingMessage();
-            //}
-            //else
-            //{
-            //    if (messageList1.SelectedItems.Contains(message1))
-            //    {
-            //        messageList1.Items.Remove(message1);
-            //        deletedList1.Items.Add(message1);
-            //    }
-
-            //}
+            if (mailManager.GetCurrentList()==deletedList1 || mailManager.GetCurrentList()==deletedList2)
+            {
+                mailManager.DeletingMail();
+            }
+            else
+            {
+                mailManager.MoveMailToDeleted();
+            }
 
         }
 

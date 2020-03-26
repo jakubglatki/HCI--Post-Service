@@ -135,5 +135,23 @@
   <ItemGroup>
     <Resource Include="delete.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="mailInbox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="mailSent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="mailStarred.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="mailDrafts.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="mailDeleted.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="exit.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

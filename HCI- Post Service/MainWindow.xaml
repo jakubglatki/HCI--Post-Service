@@ -28,27 +28,123 @@
 
         <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,-10" Grid.Row="2"  Width="300" Height="Auto">
             <TreeView x:Name="treeView1">
-                <TreeViewItem x:Name="header1" Header="jurgen@klopp.de">
-                    <TreeViewItem x:Name="inbox1" Header="Inbox" MouseLeftButtonUp="InboxMails1"/>
-                    <TreeViewItem x:Name="sent1" Header="Sent" MouseLeftButtonUp="SentMails1"/>
-                    <TreeViewItem x:Name="starred1" Header="Starred" MouseLeftButtonUp="StarredMails1"/>
-                    <TreeViewItem x:Name="drafts1" Header="Drafts" MouseLeftButtonUp="DraftsMails1"/>
-                    <TreeViewItem x:Name="deleted1" Header="Deleted" MouseLeftButtonUp="DeletedMails1"/>
+                
+                <TreeViewItem x:Name="header1" Header="jurgen@klopp.de" FontSize="15">
+                    <TreeViewItem x:Name="inbox1" MouseLeftButtonUp="InboxMails1">
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="mailInbox.png"  Width="25" Height="25"/>
+                                <TextBlock Margin="10, 10, 0, 0" >Inbox</TextBlock>
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+
+                    <TreeViewItem x:Name="sent1" MouseLeftButtonUp="SentMails1">
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="mailSent.png"  Width="25" Height="25"/>
+                                <TextBlock Margin="10, 10, 0, 0" >Sent</TextBlock>
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+
+                    <TreeViewItem x:Name="starred1" MouseLeftButtonUp="StarredMails1">
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="mailStarred.png"  Width="25" Height="25"/>
+                                <TextBlock Margin="10, 10, 0, 0" >Starred</TextBlock>
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+
+                    <TreeViewItem x:Name="drafts1" MouseLeftButtonUp="DraftsMails1">
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="mailDrafts.png"  Width="25" Height="25"/>
+                                <TextBlock Margin="10, 10, 0, 0" >Drafts</TextBlock>
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+
+                    <TreeViewItem x:Name="deleted1" MouseLeftButtonUp="DeletedMails1">
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="mailDeleted.png"  Width="25" Height="25"/>
+                                <TextBlock Margin="10, 10, 0, 0" >Deleted</TextBlock>
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+
                 </TreeViewItem>
-                <TreeViewItem x:Name="header2" Header="bobby@firmino.br">
-                    <TreeViewItem x:Name="inbox2" Header="Inbox" MouseLeftButtonUp="InboxMails2"/>
-                    <TreeViewItem x:Name="sent2" Header="Sent" MouseLeftButtonUp="SentMails2"/>
-                    <TreeViewItem x:Name="starred2" Header="Starred" MouseLeftButtonUp="StarredMails2"/>
-                    <TreeViewItem x:Name="drafts2" Header="Drafts" MouseLeftButtonUp="DraftsMails2"/>
-                    <TreeViewItem x:Name="deleted2" Header="Deleted" MouseLeftButtonUp="DeletedMails2"/>
+
+                <TreeViewItem x:Name="header2" Header="bobby@firmino.br" FontSize="15">
+                    <TreeViewItem x:Name="inbox2" MouseLeftButtonUp="InboxMails2">
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="mailInbox.png"  Width="25" Height="25"/>
+                                <TextBlock Margin="10, 10, 0, 0" >Inbox</TextBlock>
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+
+                    <TreeViewItem x:Name="sent2" MouseLeftButtonUp="SentMails2" >
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="mailSent.png"  Width="25" Height="25"/>
+                                <TextBlock Margin="10, 10, 0, 0" >Sent</TextBlock>
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+
+                    <TreeViewItem x:Name="starred2" MouseLeftButtonUp="StarredMails2">
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="mailStarred.png"  Width="25" Height="25"/>
+                                <TextBlock Margin="10, 10, 0, 0" >Starred</TextBlock>
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+
+                    <TreeViewItem x:Name="drafts2" MouseLeftButtonUp="DraftsMails2">
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="mailDrafts.png"  Width="25" Height="25"/>
+                                <TextBlock Margin="10, 10, 0, 0" >Drafts</TextBlock>
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+
+                    <TreeViewItem x:Name="deleted2" MouseLeftButtonUp="DeletedMails2">
+                        <TreeViewItem.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="mailDeleted.png"  Width="25" Height="25"/>
+                                <TextBlock Margin="10, 10, 0, 0" >Deleted</TextBlock>
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
                 </TreeViewItem>
             </TreeView>
         </StackPanel>
 
         <Menu Name="menu" HorizontalAlignment="Left" Height="24" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="300" Background="AntiqueWhite">
             <MenuItem Header="File" FontSize="18" Width="300">
-                <MenuItem Header="New Message" Width="300"/>
-                <MenuItem Header="Exit" Width="300" Click="ExitApplication"/>
+                <MenuItem  Width="300">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="25" Height="25" Source="newMessage.png"/>
+                            <TextBlock Margin="10,0,0,0">New Message</TextBlock>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+
+                <MenuItem Width="300"  Margin="0,4,0,0" Click="ExitApplication">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="25" Height="25" Source="exit.png"/>
+                            <TextBlock Margin="10,0,0,0">Exit</TextBlock>
+                        </StackPanel>
+                    </MenuItem.Header>
+                    </MenuItem>
             </MenuItem>
         </Menu>
 
@@ -89,7 +185,7 @@
                     </StackPanel>
                 </Button>
 
-                <Button HorizontalAlignment="Left"  Click="DeleteButtonClick">
+                <Button x:Name="deleteButton" HorizontalAlignment="Left" IsEnabled="False" Click="DeleteButtonClick">
                     <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
                         <Image x:Name="bDelete" Source="delete.png" Width="30" Height="30"/>
                         <TextBlock Margin="5,0,0,0" FontSize="18" >Delete</TextBlock>

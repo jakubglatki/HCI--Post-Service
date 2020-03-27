@@ -33,7 +33,7 @@
                     <TreeViewItem x:Name="inbox1" MouseLeftButtonUp="InboxMails1">
                         <TreeViewItem.Header>
                             <StackPanel Orientation="Horizontal">
-                                <Image Source="mailInbox.png"  Width="25" Height="25"/>
+                                <Image Source="Resources\mailInbox.png"  Width="25" Height="25"/>
                                 <TextBlock Margin="10, 10, 0, 0" >Inbox</TextBlock>
                             </StackPanel>
                         </TreeViewItem.Header>
@@ -42,7 +42,7 @@
                     <TreeViewItem x:Name="sent1" MouseLeftButtonUp="SentMails1">
                         <TreeViewItem.Header>
                             <StackPanel Orientation="Horizontal">
-                                <Image Source="mailSent.png"  Width="25" Height="25"/>
+                                <Image Source="Resources\mailSent.png"  Width="25" Height="25"/>
                                 <TextBlock Margin="10, 10, 0, 0" >Sent</TextBlock>
                             </StackPanel>
                         </TreeViewItem.Header>
@@ -51,7 +51,7 @@
                     <TreeViewItem x:Name="starred1" MouseLeftButtonUp="StarredMails1">
                         <TreeViewItem.Header>
                             <StackPanel Orientation="Horizontal">
-                                <Image Source="mailStarred.png"  Width="25" Height="25"/>
+                                <Image Source="Resources\mailStarred.png"  Width="25" Height="25"/>
                                 <TextBlock Margin="10, 10, 0, 0" >Starred</TextBlock>
                             </StackPanel>
                         </TreeViewItem.Header>
@@ -60,7 +60,7 @@
                     <TreeViewItem x:Name="drafts1" MouseLeftButtonUp="DraftsMails1">
                         <TreeViewItem.Header>
                             <StackPanel Orientation="Horizontal">
-                                <Image Source="mailDrafts.png"  Width="25" Height="25"/>
+                                <Image Source="Resources\mailDrafts.png"  Width="25" Height="25"/>
                                 <TextBlock Margin="10, 10, 0, 0" >Drafts</TextBlock>
                             </StackPanel>
                         </TreeViewItem.Header>
@@ -69,7 +69,7 @@
                     <TreeViewItem x:Name="deleted1" MouseLeftButtonUp="DeletedMails1">
                         <TreeViewItem.Header>
                             <StackPanel Orientation="Horizontal">
-                                <Image Source="mailDeleted.png"  Width="25" Height="25"/>
+                                <Image Source="Resources\mailDeleted.png"  Width="25" Height="25"/>
                                 <TextBlock Margin="10, 10, 0, 0" >Deleted</TextBlock>
                             </StackPanel>
                         </TreeViewItem.Header>
@@ -81,7 +81,7 @@
                     <TreeViewItem x:Name="inbox2" MouseLeftButtonUp="InboxMails2">
                         <TreeViewItem.Header>
                             <StackPanel Orientation="Horizontal">
-                                <Image Source="mailInbox.png"  Width="25" Height="25"/>
+                                <Image Source="Resources\mailInbox.png"  Width="25" Height="25"/>
                                 <TextBlock Margin="10, 10, 0, 0" >Inbox</TextBlock>
                             </StackPanel>
                         </TreeViewItem.Header>
@@ -90,7 +90,7 @@
                     <TreeViewItem x:Name="sent2" MouseLeftButtonUp="SentMails2" >
                         <TreeViewItem.Header>
                             <StackPanel Orientation="Horizontal">
-                                <Image Source="mailSent.png"  Width="25" Height="25"/>
+                                <Image Source="Resources\mailSent.png"  Width="25" Height="25"/>
                                 <TextBlock Margin="10, 10, 0, 0" >Sent</TextBlock>
                             </StackPanel>
                         </TreeViewItem.Header>
@@ -99,7 +99,7 @@
                     <TreeViewItem x:Name="starred2" MouseLeftButtonUp="StarredMails2">
                         <TreeViewItem.Header>
                             <StackPanel Orientation="Horizontal">
-                                <Image Source="mailStarred.png"  Width="25" Height="25"/>
+                                <Image Source="Resources\mailStarred.png"  Width="25" Height="25"/>
                                 <TextBlock Margin="10, 10, 0, 0" >Starred</TextBlock>
                             </StackPanel>
                         </TreeViewItem.Header>
@@ -108,7 +108,7 @@
                     <TreeViewItem x:Name="drafts2" MouseLeftButtonUp="DraftsMails2">
                         <TreeViewItem.Header>
                             <StackPanel Orientation="Horizontal">
-                                <Image Source="mailDrafts.png"  Width="25" Height="25"/>
+                                <Image Source="Resources\mailDrafts.png"  Width="25" Height="25"/>
                                 <TextBlock Margin="10, 10, 0, 0" >Drafts</TextBlock>
                             </StackPanel>
                         </TreeViewItem.Header>
@@ -117,7 +117,7 @@
                     <TreeViewItem x:Name="deleted2" MouseLeftButtonUp="DeletedMails2">
                         <TreeViewItem.Header>
                             <StackPanel Orientation="Horizontal">
-                                <Image Source="mailDeleted.png"  Width="25" Height="25"/>
+                                <Image Source="Resources\mailDeleted.png"  Width="25" Height="25"/>
                                 <TextBlock Margin="10, 10, 0, 0" >Deleted</TextBlock>
                             </StackPanel>
                         </TreeViewItem.Header>
@@ -131,7 +131,7 @@
                 <MenuItem  Width="300">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <Image Width="25" Height="25" Source="newMessage.png"/>
+                            <Image Width="25" Height="25" Source="Resources\newMessage.png"/>
                             <TextBlock Margin="10,0,0,0">New Message</TextBlock>
                         </StackPanel>
                     </MenuItem.Header>
@@ -140,7 +140,7 @@
                 <MenuItem Width="300"  Margin="0,4,0,0" Click="ExitApplication">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
-                            <Image Width="25" Height="25" Source="exit.png"/>
+                            <Image Width="25" Height="25" Source="Resources\exit.png"/>
                             <TextBlock Margin="10,0,0,0">Exit</TextBlock>
                         </StackPanel>
                     </MenuItem.Header>
@@ -155,39 +155,39 @@
         <ToolBarTray Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Left"  Margin="10,20,0,0" VerticalAlignment="Top"  Background="Ivory">
             <ToolBar Margin="50,10,50,10">
                 <Button  Margin="50,0,0,0" FontSize="18" BorderBrush="Ivory" Width="30" Height="30" x:Name="bBack" Visibility="Collapsed" Click="BackButtonClick">
-                    <Image Source="back.png" />
+                    <Image Source="Resources\back.png" />
                 </Button>
                 <Button>
                     <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
-                        <Image x:Name="bReply" Source="reply.png" Width="30" Height="30"/>
+                        <Image x:Name="bReply" Source="Resources\reply.png" Width="30" Height="30"/>
                         <TextBlock Margin="0,0,0,0" FontSize="18" >Reply</TextBlock>
                     </StackPanel>
                 </Button>
 
                 <Button>
                     <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
-                        <Image x:Name="bReplyAll" Source="reply-all.png" Width="30" Height="30"/>
+                        <Image x:Name="bReplyAll" Source="Resources\reply-all.png" Width="30" Height="30"/>
                         <TextBlock Margin="0,0,0,0" FontSize="18" >Reply To All</TextBlock>
                     </StackPanel>
                 </Button>
 
                 <Button HorizontalAlignment="Left" >
                     <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
-                        <Image x:Name="bForward" Source="forward.png" Width="30" Height="30"/>
+                        <Image x:Name="bForward" Source="Resources\forward.png" Width="30" Height="30"/>
                         <TextBlock Margin="0,0,0,0" FontSize="18" >Forward</TextBlock>
                     </StackPanel>
                 </Button>
 
                 <Button HorizontalAlignment="Left" >
                     <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
-                        <Image x:Name="bNewMessage" Source="newMessage.png" Width="30" Height="30"/>
+                        <Image x:Name="bNewMessage" Source="Resources\newMessage.png" Width="30" Height="30"/>
                         <TextBlock Margin="5,0,0,0" FontSize="18" >New Message</TextBlock>
                     </StackPanel>
                 </Button>
 
                 <Button x:Name="deleteButton" HorizontalAlignment="Left" IsEnabled="False" Click="DeleteButtonClick">
                     <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
-                        <Image x:Name="bDelete" Source="delete.png" Width="30" Height="30"/>
+                        <Image x:Name="bDelete" Source="Resources\delete.png" Width="30" Height="30"/>
                         <TextBlock Margin="5,0,0,0" FontSize="18" >Delete</TextBlock>
                     </StackPanel>
                 </Button>

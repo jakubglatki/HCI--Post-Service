@@ -114,44 +114,42 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <Resource Include="Resources\back.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="back.png" />
+    <Resource Include="Resources\reply-all.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="reply-all.png" />
+    <Resource Include="Resources\reply.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="reply.png" />
+    <Resource Include="Resources\forward.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="forward.png" />
+    <Resource Include="Resources\newMessage.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="newMessage.png" />
+    <Resource Include="Resources\delete.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="delete.png" />
+    <Resource Include="Resources\mailInbox.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="mailInbox.png" />
+    <Resource Include="Resources\mailSent.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="mailSent.png" />
+    <Resource Include="Resources\mailStarred.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="mailStarred.png" />
+    <Resource Include="Resources\mailDrafts.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="mailDrafts.png" />
+    <Resource Include="Resources\mailDeleted.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="mailDeleted.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="exit.png" />
+    <Resource Include="Resources\exit.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

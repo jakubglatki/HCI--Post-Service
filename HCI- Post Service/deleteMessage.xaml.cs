@@ -5,9 +5,9 @@ namespace HCI__Post_Service
     /// <summary>
     /// Interaction logic for deleteMessage.xaml
     /// </summary>
-    public partial class deleteMessage : Window
+    public partial class SendingMessageWindow : Window
     {
-        public deleteMessage()
+        public SendingMessageWindow()
         {
             InitializeComponent();
         }

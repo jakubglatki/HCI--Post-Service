@@ -49,8 +49,7 @@ namespace HCI__Post_Service
             newMailItem.FontSize = 18;
             newMailItem.Margin = new Thickness(5, 0, 0, 5);
             newMailItem.Content = mail.Topic;
-            list.Items.Add(newMailItem);
-
+            list.Items.Insert(0, newMailItem);
         }
 
         public void SetMessages()
@@ -62,6 +61,26 @@ namespace HCI__Post_Service
 
             window.messageList1.ListComponents(window.messageList1);
             MakeNewMailsList(window.messageList1, message1, message2, message3, message4);
+
+            window.sentList1.ListComponents(window.sentList1);
+
+            Mail sent1 = new Mail("Sender1", "Receiver1", "Sent 1", "sentMessage1");
+            Mail sent2 = new Mail("Sender2", "Receiver2", "Sent 2", "sentMessage2");
+
+            MakeNewMailsList(window.sentList1, sent1, sent2);
+            window.gridView1.Children.Add(window.sentList1);
+
+            window.sentList2.ListComponents(window.sentList2);
+
+            Mail sent1b = new Mail("Sender1b", "Receiver1b", "Sent 1b", "sentMessage1b");
+            Mail sent2b = new Mail("Sender2b", "Receiver2b", "Sent 2b", "sentMessage2b");
+            Mail sent3b = new Mail("Sender3b", "Receiver3b", "Sent 3b", "sentMessage3b");
+
+            MakeNewMailsList(window.sentList2, sent1b, sent2b, sent3b);
+            window.gridView1.Children.Add(window.sentList2);
+
+            SetVisibility();
+            window.messageList1.Visibility = Visibility.Visible;
         }
 
         public void SetCurrentMail(Mail mail)
@@ -112,7 +131,7 @@ namespace HCI__Post_Service
         public void DeletingMail()
         {
 
-                MessageBoxResult result = MessageBox.Show("“Do you really wish to delete the message?", "Delete Message", MessageBoxButton.YesNo);
+                MessageBoxResult result = MessageBox.Show("Do you really wish to delete the message?", "Delete Message", MessageBoxButton.YesNo);
                 switch (result)
                 {
                     case MessageBoxResult.Yes:

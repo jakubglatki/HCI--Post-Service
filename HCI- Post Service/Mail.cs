@@ -17,12 +17,12 @@ namespace HCI__Post_Service
             this.MouseLeftButtonUp += MailSetCurrentMail;
         }
 
-        public Mail(string Sender, string Receiver, string Content)
+        public Mail(string Sender, string Receiver, string Topic)
         {
             this.Sender = Sender;
             this.Receiver = Receiver;
-            this.Topic = "";
-            this.Content = Content;
+            this.Topic = Topic;
+            this.Content = "";
 
             MouseLeftButtonUp += ShowMessage;
             this.MouseLeftButtonUp += MailSetCurrentMail;

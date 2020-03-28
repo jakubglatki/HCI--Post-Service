@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\App.xaml
-41128387431
+31940711534
 
-12-1283072576
+111301386254
 13-1505183044
-deleteMessage.xaml;DialogWindow.xaml;MainWindow.xaml;SendingMessageWindow.xaml;
+deleteMessage.xaml;MainWindow.xaml;SendMessageWindow.xaml;
 
-True
+False
 

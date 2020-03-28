@@ -22,9 +22,8 @@
         <Rectangle Fill="LightCoral" IsHitTestVisible="False" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1"/>
 
 
-        <TextBox Grid.Column="0" Grid.ColumnSpan="3" Name="searchBox" HorizontalAlignment="Center" Width="400"  VerticalAlignment="Center" Margin="10,10,10,10" Text="Search"   FontSize="18"/>
+        <TextBox Grid.Column="0" Grid.ColumnSpan="3" Name="searchBox" HorizontalAlignment="Center" Width="400"  VerticalAlignment="Center" Margin="10,10,10,10" Text="Search" FontSize="18" GotFocus="SearchGotFocus"/>
 
-        <!--<Button Content="Open" Grid.Column="0" Grid.Row="0" Width="35" Height="75" Click="Button_Click_1"/>-->
 
         <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,-10" Grid.Row="2"  Width="300" Height="Auto">
             <TreeView x:Name="treeView1">
@@ -128,7 +127,7 @@
 
         <Menu Name="menu" HorizontalAlignment="Left" Height="24" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="300" Background="AntiqueWhite">
             <MenuItem Header="File" FontSize="18" Width="300">
-                <MenuItem  Width="300">
+                <MenuItem x:Name="newMessageMenu" Width="300" Click="NewMessage">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <Image Width="25" Height="25" Source="Resources\newMessage.png"/>
@@ -137,7 +136,7 @@
                     </MenuItem.Header>
                 </MenuItem>
 
-                <MenuItem Width="300"  Margin="0,4,0,0" Click="ExitApplication">
+                <MenuItem Width="300" x:Name="exitMenu" Margin="0,4,0,0" Click="ExitApplication">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
                             <Image Width="25" Height="25" Source="Resources\exit.png"/>
@@ -178,7 +177,7 @@
                     </StackPanel>
                 </Button>
 
-                <Button HorizontalAlignment="Left" >
+                <Button HorizontalAlignment="Left" Click="NewMessage">
                     <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
                         <Image x:Name="bNewMessage" Source="Resources\newMessage.png" Width="30" Height="30"/>
                         <TextBlock Margin="5,0,0,0" FontSize="18" >New Message</TextBlock>

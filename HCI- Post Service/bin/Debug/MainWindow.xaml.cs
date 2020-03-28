@@ -17,8 +17,6 @@ namespace HCI__Post_Service
         public bool starredListBool2 = false;
         public bool deletedListBool1 = false;
         public bool deletedListBool2 = false;
-        public bool sentListBool1 = false;
-        public bool sentListBool2 = false;
         public bool draftsListBool1 = false;
         public bool draftsListBool2 = false;
         public MailsList messageList2;
@@ -53,22 +51,13 @@ namespace HCI__Post_Service
         }
 
 
-        //private void Button_Click_1(object sender, RoutedEventArgs e)
-        //{
-        //    DialogWindow dw = new DialogWindow();
-        //    dw.textBox.Text = text;
 
-        //    //if we left DialogWindow by pressing "OK" button
-        //    if(dw.ShowDialog()==true)
-        //    {
-        //        text = dw.textBox.Text;
+        private void NewMessage(object sender, RoutedEventArgs e)
+        {
+            SendMessageWindow sendMessage = new SendMessageWindow(this, mailManager);
+            sendMessage.Show();
 
-        //        //it will save the value until the next session
-        //        Properties.Settings.Default.Text = text;
-        //        Properties.Settings.Default.Save();
-        //    }
-        //}
-
+        }
 
         private void InboxMails1(object sender, MouseButtonEventArgs e)
         {
@@ -104,38 +93,13 @@ namespace HCI__Post_Service
 
         private void SentMails1(object sender, MouseButtonEventArgs e)
         {
-            if (sentListBool1 == false)
-            {
-                sentList1.ListComponents(sentList1);
-
-                Mail sent1 = new Mail("Sender1", "Receiver1", "Sent 1", "sentMessage1");
-                Mail sent2 = new Mail("Sender2", "Receiver2", "Sent 2", "sentMessage2");
-
-                mailManager.MakeNewMailsList(sentList1, sent1, sent2);
-                gridView1.Children.Add(sentList1);
-            }
-            sentListBool1 = true;
-
             mailManager.SetVisibility();
             sentList1.Visibility = Visibility.Visible;
             mailManager.SetCurrentMailsList(sentList1);
         }
 
         private void SentMails2(object sender, MouseButtonEventArgs e)
-        {
-            if (sentListBool2 == false)
-            {
-                sentList2.ListComponents(sentList2);
-
-                Mail sent1b = new Mail("Sender1b", "Receiver1b", "Sent 1b", "sentMessage1b");
-                Mail sent2b = new Mail("Sender2b", "Receiver2b", "Sent 2b", "sentMessage2b");
-                Mail sent3b = new Mail("Sender3b", "Receiver3b", "Sent 3b", "sentMessage3b");
-
-                mailManager.MakeNewMailsList(sentList2, sent1b, sent2b, sent3b);
-                gridView1.Children.Add(sentList2);
-            }
-            sentListBool2 = true;
-
+        { 
             mailManager.SetVisibility();
             sentList2.Visibility = Visibility.Visible;
             mailManager.SetCurrentMailsList(sentList2);
@@ -250,6 +214,12 @@ namespace HCI__Post_Service
             deletedList2.Visibility = Visibility.Visible;
         }
 
+        public void SearchGotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            textBox.Text = string.Empty;
+            textBox.GotFocus -= SearchGotFocus;
+        }
 
         private void ExitApplication(object sender, RoutedEventArgs e)
         {
@@ -277,6 +247,7 @@ namespace HCI__Post_Service
             }
 
         }
+
 
     }
 }

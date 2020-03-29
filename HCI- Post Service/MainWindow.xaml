@@ -151,40 +151,40 @@
 
         </local:MailsList>
 
-        <ToolBarTray Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Left"  Margin="10,20,0,0" VerticalAlignment="Top"  Background="Ivory">
+        <ToolBarTray x:Name="buttonTray" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Left"  Margin="10,20,0,0" VerticalAlignment="Top"  Background="Ivory">
             <ToolBar Margin="50,10,50,10">
                 <Button  Margin="50,0,0,0" FontSize="18" BorderBrush="Ivory" Width="30" Height="30" x:Name="bBack" Visibility="Collapsed" Click="BackButtonClick">
                     <Image Source="Resources\back.png" />
                 </Button>
-                <Button>
+                <Button x:Name="buttonReply" IsEnabled="False">
                     <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
                         <Image x:Name="bReply" Source="Resources\reply.png" Width="30" Height="30"/>
                         <TextBlock Margin="0,0,0,0" FontSize="18" >Reply</TextBlock>
                     </StackPanel>
                 </Button>
 
-                <Button>
+                <Button x:Name="buttonReplyAll" IsEnabled="False">
                     <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
                         <Image x:Name="bReplyAll" Source="Resources\reply-all.png" Width="30" Height="30"/>
                         <TextBlock Margin="0,0,0,0" FontSize="18" >Reply To All</TextBlock>
                     </StackPanel>
                 </Button>
 
-                <Button HorizontalAlignment="Left" >
+                <Button x:Name="buttonForward" HorizontalAlignment="Left" IsEnabled="False">
                     <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
                         <Image x:Name="bForward" Source="Resources\forward.png" Width="30" Height="30"/>
                         <TextBlock Margin="0,0,0,0" FontSize="18" >Forward</TextBlock>
                     </StackPanel>
                 </Button>
 
-                <Button HorizontalAlignment="Left" Click="NewMessage">
+                <Button x:Name="buttonNewMessage" HorizontalAlignment="Left" Click="NewMessage" IsEnabled="True">
                     <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
                         <Image x:Name="bNewMessage" Source="Resources\newMessage.png" Width="30" Height="30"/>
                         <TextBlock Margin="5,0,0,0" FontSize="18" >New Message</TextBlock>
                     </StackPanel>
                 </Button>
 
-                <Button x:Name="deleteButton" HorizontalAlignment="Left" IsEnabled="False" Click="DeleteButtonClick">
+                <Button x:Name="buttonDelete" HorizontalAlignment="Left" IsEnabled="False" Click="buttonDeleteClick">
                     <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
                         <Image x:Name="bDelete" Source="Resources\delete.png" Width="30" Height="30"/>
                         <TextBlock Margin="5,0,0,0" FontSize="18" >Delete</TextBlock>

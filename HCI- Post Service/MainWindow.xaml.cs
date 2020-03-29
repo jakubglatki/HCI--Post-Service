@@ -235,7 +235,7 @@ namespace HCI__Post_Service
 
 
       
-        private void DeleteButtonClick(object sender, RoutedEventArgs e)
+        private void buttonDeleteClick(object sender, RoutedEventArgs e)
         {
             if (mailManager.GetCurrentList()==deletedList1 || mailManager.GetCurrentList()==deletedList2)
             {

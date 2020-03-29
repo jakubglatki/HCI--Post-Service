@@ -21,14 +21,38 @@ namespace HCI__Post_Service
     {
         static private MainWindow mWindow;
         static private MailManager mailManager;
+        //constructor resposnsible for showing email
+        public SendMessageWindow(Mail mail)
+        {
+            InitializeComponent();
+            receiverName.IsReadOnly = true;
+            subject.IsReadOnly = true;
+            this.content.IsReadOnly = true;
+            senderSelect.Visibility = Visibility.Hidden;
+            buttonAttachment.Visibility = Visibility.Hidden;
+            buttonSend.Content = "Close";
 
+            receiverName.Text = mail.Sender;
+            subject.Text = mail.Topic;
+            content.Text = mail.Content;
 
+        }
+
+        //constructor responsible for sending email
         public SendMessageWindow(MainWindow mainWindow, MailManager mManager)
         {
             mWindow = mainWindow;
             mailManager = mManager;
             InitializeComponent();
-            
+
+            AddComboBoxElements();
+        }
+
+        private void AddComboBoxElements()
+        {
+            senderSelect.Items.Add(mWindow.header1.Header);
+            senderSelect.Items.Add(mWindow.header2.Header);
+            senderSelect.SelectedItem = senderSelect.Items[0];
         }
 
         private void SendMessage(object sender, RoutedEventArgs e)
@@ -50,9 +74,15 @@ namespace HCI__Post_Service
 
             else
             {
-                //Sender is a placeholder, as well as not selecting proper sender
-                Mail mail = new Mail("Sender", receiverName.Text, subject.Text, content.Text);
-                mailManager.AddMailItem(mail, mWindow.sentList1);
+                if (buttonSend.Content.ToString() == "Send")
+                {
+                    //Sender is a placeholder, as well as not selecting proper sender
+                    Mail mail = new Mail(senderSelect.SelectedItem.ToString(), receiverName.Text, subject.Text, content.Text);
+                    if (senderSelect.SelectedItem == senderSelect.Items[0])
+                        mailManager.AddMailItem(mail, mWindow.sentList1);
+                    else if (senderSelect.SelectedItem == senderSelect.Items[1])
+                        mailManager.AddMailItem(mail, mWindow.sentList2);
+                }
                 this.Close();
             }
         }

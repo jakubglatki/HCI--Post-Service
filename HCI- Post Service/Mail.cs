@@ -15,6 +15,7 @@ namespace HCI__Post_Service
 
             MouseLeftButtonUp += ShowMessage;
             this.MouseLeftButtonUp += MailSetCurrentMail;
+            this.MouseDoubleClick += ShowMessageInSendMessageWindow;
         }
 
         public Mail(string Sender, string Receiver, string Topic)
@@ -24,8 +25,9 @@ namespace HCI__Post_Service
             this.Topic = Topic;
             this.Content = "";
 
-            MouseLeftButtonUp += ShowMessage;
+            MouseDoubleClick += ShowMessage;
             this.MouseLeftButtonUp += MailSetCurrentMail;
+            this.MouseDoubleClick += ShowMessageInSendMessageWindow;
         }
 
         public Mail(string Sender, string Receiver, string Topic, string Content)
@@ -37,6 +39,7 @@ namespace HCI__Post_Service
 
             this.MouseDoubleClick += ShowMessage;
             this.MouseLeftButtonUp += MailSetCurrentMail;
+            this.MouseDoubleClick += ShowMessageInSendMessageWindow;
         }
 
 
@@ -44,15 +47,23 @@ namespace HCI__Post_Service
         {
             MailManager mailManager = new MailManager();
             mailManager.SetCurrentMail(this);
-            mailManager.EnableDeleteButton();
+            mailManager.EnebaleButtons();
             mailManager.ShowMessage(this);
+        }
+        private void ShowMessageInSendMessageWindow(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            SendMessageWindow sendMessage = new SendMessageWindow(this);
+            sendMessage.Show();
+
         }
         private void MailSetCurrentMail(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             MailManager mailManager = new MailManager();
-            mailManager.EnableDeleteButton();
+            mailManager.EnebaleButtons();
             mailManager.SetCurrentMail(this);
         }
+
+
 
     }
 }

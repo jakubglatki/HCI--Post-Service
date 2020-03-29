@@ -39,7 +39,7 @@ namespace HCI__Post_Service
             window.displayedMail.Visibility = Visibility.Hidden;
             window.bBack.Visibility = Visibility.Collapsed;
 
-            DisableDeleteButton();
+            DisableButtons();
         }
 
 
@@ -107,7 +107,7 @@ namespace HCI__Post_Service
             window.contentMail.Text = mail.Content;
 
             SetVisibility();
-            EnableDeleteButton();
+            EnebaleButtons();
             window.displayedMail.Visibility = Visibility.Visible;
             window.bBack.Visibility = Visibility.Visible;
         }
@@ -120,13 +120,19 @@ namespace HCI__Post_Service
             }
         }
 
-        public void DisableDeleteButton()
+        public void DisableButtons()
         {
-            window.deleteButton.IsEnabled = false;
+            window.buttonDelete.IsEnabled = false;
+            window.buttonForward.IsEnabled = false;
+            window.buttonReply.IsEnabled = false;
+            window.buttonReplyAll.IsEnabled = false;
         }
-        public void EnableDeleteButton()
+        public void EnebaleButtons()
         {
-            window.deleteButton.IsEnabled = true;
+            window.buttonDelete.IsEnabled = true;
+            window.buttonForward.IsEnabled = true;
+            window.buttonReply.IsEnabled = true;
+            window.buttonReplyAll.IsEnabled = true;
         }
         public void DeletingMail()
         {
@@ -138,13 +144,13 @@ namespace HCI__Post_Service
                     if (currentList == window.deletedList1)
                     {
                         window.deletedList1.Items.Remove(currentMail);
-                        DisableDeleteButton();
+                        DisableButtons();
                     }
 
                     else if (currentList == window.deletedList2)
                     {
                         window.deletedList2.Items.Remove(currentMail);
-                        DisableDeleteButton();
+                        DisableButtons();
                     }
                         break;
                     case MessageBoxResult.No:
@@ -160,14 +166,14 @@ namespace HCI__Post_Service
                     || GetCurrentList() == window.starredList1 || GetCurrentList() == window.draftsList1)
                 {
                     window.deletedList1.Items.Add(currentMail);
-                    DisableDeleteButton();
+                    DisableButtons();
                     currentMail = null;
                 }
 
                 else
                 {
                     window.deletedList2.Items.Add(currentMail);
-                DisableDeleteButton();
+                DisableButtons();
                 currentMail = null;
             }
             

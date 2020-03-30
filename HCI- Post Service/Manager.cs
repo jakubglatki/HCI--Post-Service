@@ -12,8 +12,6 @@ namespace HCI__Post_Service
     {
 
         static protected MainWindow window;
-        static protected Mail currentMail;
-        protected MailsList currentList;
         static private ButtonManager buttonManager;
         static private MailManager mailManager;
 
@@ -21,7 +19,7 @@ namespace HCI__Post_Service
         public Manager(MainWindow mainWindow)
         {
             window = mainWindow;
-            buttonManager = new ButtonManager(mainWindow, currentMail, currentList);
+            buttonManager = new ButtonManager(mainWindow);
             mailManager = new MailManager(mainWindow);
         }
 
@@ -46,20 +44,19 @@ namespace HCI__Post_Service
             buttonManager.DisableButtons();
         }
 
-
         public void SetCurrentMail(Mail mail)
         {
-            currentMail = mail;
+            buttonManager.SetCurrentMail(mail);
         }
         public void SetCurrentMailsList(MailsList mailsList)
         {
-            currentList = mailsList;
+            buttonManager.SetCurrentMailsList(mailsList);
         }
 
 
         public MailsList GetCurrentList()
         {
-            return this.currentList;
+            return buttonManager.GetCurrentList();
         }
 
         public void AddMailItem(Mail mail, MailsList list)

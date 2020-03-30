@@ -15,11 +15,9 @@ namespace HCI__Post_Service
         static private MailsList currentList;
 
         public ButtonManager() { }
-        public ButtonManager(MainWindow mainWindow, Mail cMail, MailsList cList)
+        public ButtonManager(MainWindow mainWindow)
         {
             window = mainWindow;
-            currentList = cList;
-            currentMail = cMail;
         }
 
 
@@ -68,7 +66,18 @@ namespace HCI__Post_Service
 
         }
 
-        private MailsList GetCurrentList()
+
+        public void SetCurrentMail(Mail mail)
+        {
+            currentMail = mail;
+        }
+        public void SetCurrentMailsList(MailsList mailsList)
+        {
+            currentList = mailsList;
+        }
+
+
+        public MailsList GetCurrentList()
         {
             return currentList;
         }

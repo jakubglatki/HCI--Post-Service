@@ -45,10 +45,10 @@ namespace HCI__Post_Service
 
         private void ShowMessage(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            MailManager mailManager = new MailManager();
-            mailManager.SetCurrentMail(this);
-            mailManager.EnebaleButtons();
-            mailManager.ShowMessage(this);
+            Manager manager = new Manager();
+            manager.SetCurrentMail(this);
+            manager.EnableButtons();
+            manager.ShowMessage(this);
         }
         private void ShowMessageInSendMessageWindow(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
@@ -58,12 +58,10 @@ namespace HCI__Post_Service
         }
         private void MailSetCurrentMail(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            MailManager mailManager = new MailManager();
-            mailManager.EnebaleButtons();
-            mailManager.SetCurrentMail(this);
+            Manager manager = new Manager();
+            manager.EnableButtons();
+            manager.SetCurrentMail(this);
         }
-
-
 
     }
 }

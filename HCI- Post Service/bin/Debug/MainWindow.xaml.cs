@@ -28,12 +28,12 @@ namespace HCI__Post_Service
         public MailsList sentList2;
         public MailsList draftsList1;
         public MailsList draftsList2;
-        private MailManager mailManager;
+        private Manager manager;
         public MainWindow()
         {
             InitializeComponent();
             //code to get after startup here
-            mailManager = new MailManager(this);
+            manager = new Manager(this);
 
             starredList1 = new MailsList();
             starredList2 = new MailsList();
@@ -46,24 +46,24 @@ namespace HCI__Post_Service
             messageList2 = new MailsList();
 
 
-            mailManager.SetMessages();
-            mailManager.SetCurrentMailsList(messageList1);
+            manager.SetMessages();
+            manager.SetCurrentMailsList(messageList1);
         }
 
 
 
         private void NewMessage(object sender, RoutedEventArgs e)
         {
-            SendMessageWindow sendMessage = new SendMessageWindow(this, mailManager);
+            SendMessageWindow sendMessage = new SendMessageWindow(this, manager);
             sendMessage.Show();
 
         }
 
         private void InboxMails1(object sender, MouseButtonEventArgs e)
         {
-            mailManager.SetVisibility();
+            manager.SetVisibility();
             messageList1.Visibility = Visibility.Visible;
-            mailManager.SetCurrentMailsList(messageList1);
+            manager.SetCurrentMailsList(messageList1);
         }
 
 
@@ -80,29 +80,29 @@ namespace HCI__Post_Service
                 Mail message5b = new Mail("Sender5b", "Receiver5b", "Message 5b", "messageMessage5b");
                 Mail message6b = new Mail("Sender6b", "Receiver6b", "Message 6b", "messageMessage6b");
 
-                mailManager.MakeNewMailsList(messageList2, message1b, message2b, message3b, message4b, message5b, message6b);
+                manager.MakeNewMailsList(messageList2, message1b, message2b, message3b, message4b, message5b, message6b);
 
                 gridView1.Children.Add(messageList2);
             }
             messageListBool2 = true;
 
-            mailManager.SetVisibility();
+            manager.SetVisibility();
             messageList2.Visibility = Visibility.Visible;
-            mailManager.SetCurrentMailsList(messageList2);
+            manager.SetCurrentMailsList(messageList2);
         }
 
         private void SentMails1(object sender, MouseButtonEventArgs e)
         {
-            mailManager.SetVisibility();
+            manager.SetVisibility();
             sentList1.Visibility = Visibility.Visible;
-            mailManager.SetCurrentMailsList(sentList1);
+            manager.SetCurrentMailsList(sentList1);
         }
 
         private void SentMails2(object sender, MouseButtonEventArgs e)
         { 
-            mailManager.SetVisibility();
+            manager.SetVisibility();
             sentList2.Visibility = Visibility.Visible;
-            mailManager.SetCurrentMailsList(sentList2);
+            manager.SetCurrentMailsList(sentList2);
         }
 
         private void StarredMails1(object sender, MouseButtonEventArgs e)
@@ -117,14 +117,14 @@ namespace HCI__Post_Service
                 Mail starred4 = new Mail("Sender4", "Receiver4", "Starred 4", "StarredMessage4");
                 Mail starred5 = new Mail("Sender5", "Receiver5", "Starred 5", "StarredMessage5");
 
-                mailManager.MakeNewMailsList(starredList1, starred1, starred2, starred3, starred4, starred5);
+                manager.MakeNewMailsList(starredList1, starred1, starred2, starred3, starred4, starred5);
                 gridView1.Children.Add(starredList1);
             }
             starredListBool1 = true;
 
-            mailManager.SetVisibility();
+            manager.SetVisibility();
             starredList1.Visibility = Visibility.Visible;
-            mailManager.SetCurrentMailsList(starredList1);
+            manager.SetCurrentMailsList(starredList1);
         }
 
         private void StarredMails2(object sender, MouseButtonEventArgs e)
@@ -137,14 +137,14 @@ namespace HCI__Post_Service
                 Mail starred2b = new Mail("Sender2b", "Receiver2b", "Starred 2b", "StarredMessage2b");
                 Mail starred3b = new Mail("Sender3b", "Receiver3b", "Starred 3b", "StarredMessage3b");
 
-                mailManager.MakeNewMailsList(starredList2, starred1b, starred2b, starred3b);
+                manager.MakeNewMailsList(starredList2, starred1b, starred2b, starred3b);
                 gridView1.Children.Add(starredList2);
             }
             starredListBool2 = true;
 
-            mailManager.SetVisibility();
+            manager.SetVisibility();
             starredList2.Visibility = Visibility.Visible;
-            mailManager.SetCurrentMailsList(starredList2);
+            manager.SetCurrentMailsList(starredList2);
         }
 
         private void DraftsMails1(object sender, MouseButtonEventArgs e)
@@ -155,14 +155,14 @@ namespace HCI__Post_Service
 
                 Mail drafts1 = new Mail("Sender1", "Receiver1", "Drafts 1", "draftsMessage1");
 
-                mailManager.MakeNewMailsList(draftsList1, drafts1);
+                manager.MakeNewMailsList(draftsList1, drafts1);
                 gridView1.Children.Add(draftsList1);
             }
             draftsListBool1 = true;
 
-            mailManager.SetVisibility();
+            manager.SetVisibility();
             draftsList1.Visibility = Visibility.Visible;
-            mailManager.SetCurrentMailsList(draftsList1);
+            manager.SetCurrentMailsList(draftsList1);
         }
 
         private void DraftsMails2(object sender, MouseButtonEventArgs e)
@@ -175,14 +175,14 @@ namespace HCI__Post_Service
                 Mail drafts2b = new Mail("Sender2b", "Receiver2b", "Drafts 2b", "draftsMessage2b");
                 Mail drafts3b = new Mail("Sender3b", "Receiver3b", "Drafts 3b", "draftsMessage3b");
 
-                mailManager.MakeNewMailsList(draftsList2, drafts1b, drafts2b, drafts3b);
+                manager.MakeNewMailsList(draftsList2, drafts1b, drafts2b, drafts3b);
                 gridView1.Children.Add(draftsList2);
             }
             draftsListBool2 = true;
 
-            mailManager.SetVisibility();
+            manager.SetVisibility();
             draftsList2.Visibility = Visibility.Visible;
-            mailManager.SetCurrentMailsList(draftsList2);
+            manager.SetCurrentMailsList(draftsList2);
         }
         private void DeletedMails1(object sender, MouseButtonEventArgs e)
         {
@@ -194,8 +194,8 @@ namespace HCI__Post_Service
             }
             deletedListBool1 = true;
 
-            mailManager.SetVisibility();
-            mailManager.SetCurrentMailsList(deletedList1);
+            manager.SetVisibility();
+            manager.SetCurrentMailsList(deletedList1);
             deletedList1.Visibility = Visibility.Visible;
         }
 
@@ -209,8 +209,8 @@ namespace HCI__Post_Service
             }
             deletedListBool2 = true;
 
-            mailManager.SetVisibility();
-            mailManager.SetCurrentMailsList(deletedList2);
+            manager.SetVisibility();
+            manager.SetCurrentMailsList(deletedList2);
             deletedList2.Visibility = Visibility.Visible;
         }
 
@@ -229,21 +229,21 @@ namespace HCI__Post_Service
 
         private void BackButtonClick(object sender, RoutedEventArgs e)
         {
-            mailManager.SetVisibility();
-            mailManager.GetCurrentList().Visibility = Visibility.Visible;
+            manager.SetVisibility();
+            manager.GetCurrentList().Visibility = Visibility.Visible;
         }
 
 
       
         private void buttonDeleteClick(object sender, RoutedEventArgs e)
         {
-            if (mailManager.GetCurrentList()==deletedList1 || mailManager.GetCurrentList()==deletedList2)
+            if (manager.GetCurrentList()==deletedList1 || manager.GetCurrentList()==deletedList2)
             {
-                mailManager.DeletingMail();
+                manager.DeletingMail();
             }
             else
             {
-                mailManager.MoveMailToDeleted();
+                manager.MoveMailToDeleted();
             }
 
         }

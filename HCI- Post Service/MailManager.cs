@@ -12,36 +12,16 @@ namespace HCI__Post_Service
 {
     public class MailManager
     {
-        static private MainWindow window;
-        static private Mail currentMail;
-        private MailsList currentList;
+
+        static protected MainWindow window;
+        static protected Mail currentMail;
+        protected MailsList currentList;
 
         public MailManager() { }
         public MailManager(MainWindow mainWindow)
         {
             window = mainWindow;
         }
-        public void SetVisibility()
-        {
-            window.sentList1.Visibility = Visibility.Hidden;
-            window.deletedList1.Visibility = Visibility.Hidden;
-            window.starredList1.Visibility = Visibility.Hidden;
-            window.messageList1.Visibility = Visibility.Hidden;
-            window.draftsList1.Visibility = Visibility.Hidden;
-
-
-            window.sentList2.Visibility = Visibility.Hidden;
-            window.deletedList2.Visibility = Visibility.Hidden;
-            window.starredList2.Visibility = Visibility.Hidden;
-            window.messageList2.Visibility = Visibility.Hidden;
-            window.draftsList2.Visibility = Visibility.Hidden;
-
-            window.displayedMail.Visibility = Visibility.Hidden;
-            window.bBack.Visibility = Visibility.Collapsed;
-
-            DisableButtons();
-        }
-
 
         public void AddMailItem(Mail mail, MailsList list)
         {
@@ -79,25 +59,8 @@ namespace HCI__Post_Service
             MakeNewMailsList(window.sentList2, sent1b, sent2b, sent3b);
             window.gridView1.Children.Add(window.sentList2);
 
-            SetVisibility();
             window.messageList1.Visibility = Visibility.Visible;
         }
-
-        public void SetCurrentMail(Mail mail)
-        {
-            currentMail = mail;
-        }
-        public void SetCurrentMailsList(MailsList mailsList)
-        {
-            currentList=mailsList;
-        }
-
-        public MailsList GetCurrentList()
-        {
-            return this.currentList;
-        }
-
-
 
         public void ShowMessage(Mail mail)
         {
@@ -106,8 +69,6 @@ namespace HCI__Post_Service
             window.topicMail.Text = mail.Topic;
             window.contentMail.Text = mail.Content;
 
-            SetVisibility();
-            EnebaleButtons();
             window.displayedMail.Visibility = Visibility.Visible;
             window.bBack.Visibility = Visibility.Visible;
         }
@@ -120,64 +81,6 @@ namespace HCI__Post_Service
             }
         }
 
-        public void DisableButtons()
-        {
-            window.buttonDelete.IsEnabled = false;
-            window.buttonForward.IsEnabled = false;
-            window.buttonReply.IsEnabled = false;
-            window.buttonReplyAll.IsEnabled = false;
-        }
-        public void EnebaleButtons()
-        {
-            window.buttonDelete.IsEnabled = true;
-            window.buttonForward.IsEnabled = true;
-            window.buttonReply.IsEnabled = true;
-            window.buttonReplyAll.IsEnabled = true;
-        }
-        public void DeletingMail()
-        {
-
-                MessageBoxResult result = MessageBox.Show("Do you really wish to delete the message?", "Delete Message", MessageBoxButton.YesNo);
-                switch (result)
-                {
-                    case MessageBoxResult.Yes:
-                    if (currentList == window.deletedList1)
-                    {
-                        window.deletedList1.Items.Remove(currentMail);
-                        DisableButtons();
-                    }
-
-                    else if (currentList == window.deletedList2)
-                    {
-                        window.deletedList2.Items.Remove(currentMail);
-                        DisableButtons();
-                    }
-                        break;
-                    case MessageBoxResult.No:
-                        break;
-                }
-
-        }
-
-            public void MoveMailToDeleted()
-        {
-                currentList.Items.Remove(currentMail);
-                if (GetCurrentList() == window.messageList1 || GetCurrentList() == window.sentList1
-                    || GetCurrentList() == window.starredList1 || GetCurrentList() == window.draftsList1)
-                {
-                    window.deletedList1.Items.Add(currentMail);
-                    DisableButtons();
-                    currentMail = null;
-                }
-
-                else
-                {
-                    window.deletedList2.Items.Add(currentMail);
-                DisableButtons();
-                currentMail = null;
-            }
-            
-        }
 
     }
 }

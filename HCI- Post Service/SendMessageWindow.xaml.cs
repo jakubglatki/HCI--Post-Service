@@ -20,7 +20,7 @@ namespace HCI__Post_Service
     public partial class SendMessageWindow : Window
     {
         static private MainWindow mWindow;
-        static private MailManager mailManager;
+        static private Manager manager;
         //constructor resposnsible for showing email
         public SendMessageWindow(Mail mail)
         {
@@ -39,10 +39,10 @@ namespace HCI__Post_Service
         }
 
         //constructor responsible for sending email
-        public SendMessageWindow(MainWindow mainWindow, MailManager mManager)
+        public SendMessageWindow(MainWindow mainWindow, Manager mManager)
         {
             mWindow = mainWindow;
-            mailManager = mManager;
+            manager = mManager;
             InitializeComponent();
 
             AddComboBoxElements();
@@ -79,9 +79,9 @@ namespace HCI__Post_Service
                     //Sender is a placeholder, as well as not selecting proper sender
                     Mail mail = new Mail(senderSelect.SelectedItem.ToString(), receiverName.Text, subject.Text, content.Text);
                     if (senderSelect.SelectedItem == senderSelect.Items[0])
-                        mailManager.AddMailItem(mail, mWindow.sentList1);
+                        manager.AddMailItem(mail, mWindow.sentList1);
                     else if (senderSelect.SelectedItem == senderSelect.Items[1])
-                        mailManager.AddMailItem(mail, mWindow.sentList2);
+                        manager.AddMailItem(mail, mWindow.sentList2);
                 }
                 this.Close();
             }

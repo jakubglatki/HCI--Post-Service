@@ -56,11 +56,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ButtonManager.cs" />
     <Compile Include="deleteMessage.xaml.cs">
       <DependentUpon>deleteMessage.xaml</DependentUpon>
     </Compile>
     <Compile Include="MailManager.cs" />
     <Compile Include="MailsList.cs" />
+    <Compile Include="Manager.cs" />
     <Compile Include="SendMessageWindow.xaml.cs">
       <DependentUpon>SendMessageWindow.xaml</DependentUpon>
     </Compile>

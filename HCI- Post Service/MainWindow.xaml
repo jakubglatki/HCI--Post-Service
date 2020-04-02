@@ -163,14 +163,14 @@
                     </StackPanel>
                 </Button>
 
-                <Button x:Name="buttonReplyAll" IsEnabled="False">
+                <Button x:Name="buttonReplyAll" IsEnabled="False" Click="ReplyToAllMessage">
                     <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
                         <Image x:Name="bReplyAll" Source="Resources\reply-all.png" Width="30" Height="30"/>
                         <TextBlock Margin="0,0,0,0" FontSize="18" >Reply To All</TextBlock>
                     </StackPanel>
                 </Button>
 
-                <Button x:Name="buttonForward" HorizontalAlignment="Left" IsEnabled="False">
+                <Button x:Name="buttonForward" HorizontalAlignment="Left" IsEnabled="False" Click="ForwardMessage">
                     <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
                         <Image x:Name="bForward" Source="Resources\forward.png" Width="30" Height="30"/>
                         <TextBlock Margin="0,0,0,0" FontSize="18" >Forward</TextBlock>

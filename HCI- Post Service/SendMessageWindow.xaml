@@ -33,11 +33,11 @@
         <ComboBox x:Name="senderSelect" Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="1" VerticalAlignment="Center" Width="300"/>
 
 
-        <TextBox x:Name="receiverName" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="2" Grid.ColumnSpan="2" TextWrapping="Wrap" Text="Receiver" VerticalAlignment="Center" />
+        <TextBox x:Name="receiverName" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="2" Grid.ColumnSpan="2" TextWrapping="Wrap" Text="Receiver" VerticalAlignment="Center" GotFocus="TextGotFocus"/>
 
-        <TextBox x:Name="subject" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="3" Grid.ColumnSpan="2" TextWrapping="Wrap" Text="Subject" VerticalAlignment="Center" />
+        <TextBox x:Name="subject" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="3" Grid.ColumnSpan="2" TextWrapping="Wrap" Text="Subject" VerticalAlignment="Center" GotFocus="TextGotFocus"/>
 
-        <TextBox x:Name="content" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="4" TextWrapping="Wrap" Text="Mail content" VerticalAlignment="Stretch"  Grid.ColumnSpan="2"/>
+        <TextBox x:Name="content" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="4" TextWrapping="Wrap" Text="Mail content" VerticalAlignment="Stretch"  Grid.ColumnSpan="2" GotFocus="TextGotFocus"/>
 
         <Button x:Name="buttonAttachment" Content="Add Attachment" Grid.Column="2" HorizontalAlignment="Left" Margin="50,10,0,0" Grid.Row="5" VerticalAlignment="Top" Width="140" Height="30" Background="Ivory" FontSize="13"/>
 

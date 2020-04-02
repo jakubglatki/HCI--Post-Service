@@ -48,7 +48,7 @@ namespace HCI__Post_Service
 
             manager.SetMessages();
             manager.SetCurrentMailsList(messageList1);
-            header1.IsSelected = true;
+            manager.SetCurrentTreeViewItem(header1);
         }
 
 
@@ -65,8 +65,7 @@ namespace HCI__Post_Service
             manager.SetVisibility();
             messageList1.Visibility = Visibility.Visible;
             manager.SetCurrentMailsList(messageList1);
-            header1.IsSelected = true;
-            header2.IsSelected = false;
+            manager.SetCurrentTreeViewItem(header1);
         }
 
 
@@ -76,7 +75,7 @@ namespace HCI__Post_Service
             {
                 messageList2.ListComponents(messageList2);
 
-                Mail message1b = new Mail("Sender1b", "Receiver1b", "Message 1b", "messageMessage1b");
+                Mail message1b = new Mail("Sender1b, Receiver1c", "Receiver1b", "Message 1b", "messageMessage1b");
                 Mail message2b = new Mail("Sender2b", "Receiver2b", "Message 2b", "messageMessage2b");
                 Mail message3b = new Mail("Sender3b", "Receiver3b", "Message 3b", "messageMessage3b");
                 Mail message4b = new Mail("Sender4b", "Receiver4b", "Message 4b", "messageMessage4b");
@@ -92,8 +91,7 @@ namespace HCI__Post_Service
             manager.SetVisibility();
             messageList2.Visibility = Visibility.Visible;
             manager.SetCurrentMailsList(messageList2);
-            header1.IsSelected = false;
-            header2.IsSelected = true;
+            manager.SetCurrentTreeViewItem(header2);
         }
 
         private void SentMails1(object sender, MouseButtonEventArgs e)
@@ -101,8 +99,7 @@ namespace HCI__Post_Service
             manager.SetVisibility();
             sentList1.Visibility = Visibility.Visible;
             manager.SetCurrentMailsList(sentList1);
-            header1.IsSelected = true;
-            header2.IsSelected = false;
+            manager.SetCurrentTreeViewItem(header1);
         }
 
         private void SentMails2(object sender, MouseButtonEventArgs e)
@@ -110,8 +107,7 @@ namespace HCI__Post_Service
             manager.SetVisibility();
             sentList2.Visibility = Visibility.Visible;
             manager.SetCurrentMailsList(sentList2);
-            header1.IsSelected = false;
-            header2.IsSelected = true;
+            manager.SetCurrentTreeViewItem(header2);
         }
 
         private void StarredMails1(object sender, MouseButtonEventArgs e)
@@ -134,8 +130,7 @@ namespace HCI__Post_Service
             manager.SetVisibility();
             starredList1.Visibility = Visibility.Visible;
             manager.SetCurrentMailsList(starredList1);
-            header1.IsSelected = true;
-            header2.IsSelected = false;
+            manager.SetCurrentTreeViewItem(header1);
         }
 
         private void StarredMails2(object sender, MouseButtonEventArgs e)
@@ -156,8 +151,7 @@ namespace HCI__Post_Service
             manager.SetVisibility();
             starredList2.Visibility = Visibility.Visible;
             manager.SetCurrentMailsList(starredList2);
-            header1.IsSelected = false;
-            header2.IsSelected = true;
+            manager.SetCurrentTreeViewItem(header2);
         }
 
         private void DraftsMails1(object sender, MouseButtonEventArgs e)
@@ -176,8 +170,7 @@ namespace HCI__Post_Service
             manager.SetVisibility();
             draftsList1.Visibility = Visibility.Visible;
             manager.SetCurrentMailsList(draftsList1);
-            header1.IsSelected = true;
-            header2.IsSelected = false;
+            manager.SetCurrentTreeViewItem(header1);
         }
 
         private void DraftsMails2(object sender, MouseButtonEventArgs e)
@@ -198,8 +191,7 @@ namespace HCI__Post_Service
             manager.SetVisibility();
             draftsList2.Visibility = Visibility.Visible;
             manager.SetCurrentMailsList(draftsList2);
-            header1.IsSelected = false;
-            header2.IsSelected = true;
+            manager.SetCurrentTreeViewItem(header2);
         }
         private void DeletedMails1(object sender, MouseButtonEventArgs e)
         {
@@ -214,8 +206,7 @@ namespace HCI__Post_Service
             manager.SetVisibility();
             manager.SetCurrentMailsList(deletedList1);
             deletedList1.Visibility = Visibility.Visible;
-            header1.IsSelected = true;
-            header2.IsSelected = false;
+            manager.SetCurrentTreeViewItem(header1);
         }
 
         private void DeletedMails2(object sender, MouseButtonEventArgs e)
@@ -231,8 +222,7 @@ namespace HCI__Post_Service
             manager.SetVisibility();
             manager.SetCurrentMailsList(deletedList2);
             deletedList2.Visibility = Visibility.Visible;
-            header1.IsSelected = false;
-            header2.IsSelected = true;
+            manager.SetCurrentTreeViewItem(header2);
         }
 
         public void SearchGotFocus(object sender, RoutedEventArgs e)
@@ -272,6 +262,16 @@ namespace HCI__Post_Service
         private void ReplyMessage(object sender, RoutedEventArgs e)
         {
             manager.SendReply();
+        }
+
+        private void ReplyToAllMessage(object sender, RoutedEventArgs e)
+        {
+            manager.ReplyToAllMessage();
+        }
+
+        private void ForwardMessage(object sender, RoutedEventArgs e)
+        {
+            manager.ForwardMessage();
         }
     }
 }

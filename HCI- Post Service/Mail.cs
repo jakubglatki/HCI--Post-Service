@@ -53,8 +53,8 @@ namespace HCI__Post_Service
         private void ShowMessageInSendMessageWindow(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Manager manager = new Manager();
-            SendMessageWindow sendMessage = new SendMessageWindow(this, false, manager.GetMainWindow(), manager);
-            sendMessage.Show();
+            MailType mailType = MailType.view;
+            manager.ShowSendMessageWindow(manager.GetCurrentMail(), manager.GetMainWindow(), manager, mailType);
 
         }
         private void MailSetCurrentMail(object sender, System.Windows.Input.MouseButtonEventArgs e)

@@ -62,7 +62,9 @@
     </Compile>
     <Compile Include="MailManager.cs" />
     <Compile Include="MailsList.cs" />
+    <Compile Include="mailType.cs" />
     <Compile Include="Manager.cs" />
+    <Compile Include="SendMessageManager.cs" />
     <Compile Include="SendMessageWindow.xaml.cs">
       <DependentUpon>SendMessageWindow.xaml</DependentUpon>
     </Compile>

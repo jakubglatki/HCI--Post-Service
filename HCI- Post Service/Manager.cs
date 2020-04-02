@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace HCI__Post_Service
 {
@@ -14,6 +15,8 @@ namespace HCI__Post_Service
         static protected MainWindow window;
         static private ButtonManager buttonManager;
         static private MailManager mailManager;
+        static private TreeViewItem treeViewItem;
+
 
         //Constructors
         public Manager() { }
@@ -25,6 +28,11 @@ namespace HCI__Post_Service
         }
 
         //Getters and setters
+
+        public void SetCurrentTreeViewItem(TreeViewItem treeView)
+        {
+            treeViewItem = treeView;
+        }
         public void SetCurrentMail(Mail mail)
         {
             buttonManager.SetCurrentMail(mail);
@@ -34,6 +42,10 @@ namespace HCI__Post_Service
             buttonManager.SetCurrentMailsList(mailsList);
         }
 
+        public TreeViewItem GetCurrentTreeViewItem()
+        {
+            return treeViewItem;
+        }
         public MainWindow GetMainWindow()
         {
             return window;
@@ -43,6 +55,14 @@ namespace HCI__Post_Service
         {
             return buttonManager.GetCurrentList();
         }
+
+        public Mail GetCurrentMail()
+        {
+            return buttonManager.GetCurrentMail();
+        }
+
+
+        //Methods
 
         public void AddMailItem(Mail mail, MailsList list)
         {
@@ -56,7 +76,6 @@ namespace HCI__Post_Service
             mailManager.SetMessages();
         }
 
-        //Methods
         public void SetVisibility()
         {
             window.sentList1.Visibility = Visibility.Hidden;
@@ -107,10 +126,27 @@ namespace HCI__Post_Service
             buttonManager.EnableButtons();
         }
 
+        public void ShowSendMessageWindow(Mail mail, MainWindow window, Manager manager, MailType mailType)
+        {
+            SendMessageWindow sendMessageWindow = new SendMessageWindow(mail, window, manager, mailType);
+            sendMessageWindow.Show();
+        }
         public void SendReply()
         {
-            SendMessageWindow sendMessageWindow = new SendMessageWindow(buttonManager.GetCurrentMail(), true, window, this);
-            sendMessageWindow.Show();
+            MailType mailType= MailType.reply;
+            ShowSendMessageWindow(buttonManager.GetCurrentMail(), window, this, mailType);
+        }
+
+        public void ReplyToAllMessage()
+        {
+            MailType mailType = MailType.replyToAll;
+            ShowSendMessageWindow(buttonManager.GetCurrentMail(), window, this, mailType);
+        }
+
+        public void ForwardMessage()
+        {
+            MailType mailType = MailType.forward;
+            ShowSendMessageWindow(buttonManager.GetCurrentMail(), window, this, mailType);
         }
     }
 }

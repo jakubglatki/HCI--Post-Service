@@ -21,45 +21,56 @@ namespace HCI__Post_Service
     {
         static private MainWindow mWindow;
         static private Manager manager;
+        static private SendMessageManager messageManager;
+        private bool isSendMessageManagerInitialized = false;
+
         //constructor resposnsible for showing email
-        public SendMessageWindow(Mail mail, bool isReplying, MainWindow mainWindow, Manager mManager)
+        public SendMessageWindow(Mail mail, MainWindow mainWindow, Manager mManager, MailType mailType)
         {
+            if (isSendMessageManagerInitialized==false)
+            {
+                messageManager = new SendMessageManager(this);
+                isSendMessageManagerInitialized = true;
+            }
             mWindow = mainWindow;
             manager = mManager;
             InitializeComponent();
-            receiverName.IsReadOnly = true;
-            subject.IsReadOnly = true;
 
-            if (isReplying == false)
+            if (mailType.ToString()=="view")
             {
-                senderSelect.Visibility = Visibility.Hidden;
-                buttonAttachment.Visibility = Visibility.Hidden;
-                this.content.IsReadOnly = true;
-                receiverName.Text = mail.Sender;
-                subject.Text = mail.Topic;
-                content.Text = mail.Content;
-                buttonSend.Content = "Close";
+                messageManager.ViewMessage(mail);
             }
-            else
+            else if (mailType.ToString() == "reply")
             {
-                receiverName.Text = mail.Sender;
-                subject.Text = ("Re: " + mail.Topic);
-                buttonSend.Content = "Reply";
-                if(mWindow.header1.IsSelected)
+                messageManager.ReplyMessage(mail, manager, mWindow);
+            }
+            else if (mailType.ToString() == "replyToAll")
+            {
+                //if there were no other receivers than do just normal reply 
+                if (!mail.Sender.Contains(","))
                 {
-                    senderSelect.Items.Add(mWindow.header1.Header);
+                    messageManager.ReplyMessage(mail, manager, mWindow);
                 }
-                else if (mWindow.header2.IsSelected)
+                //TO DO:
+                else
                 {
-                    senderSelect.Items.Add(mWindow.header2.Header);
+                    messageManager.ReplyToAllMessage(mail, manager, mWindow);
                 }
-                senderSelect.SelectedItem = senderSelect.Items[0];
+            }
+            else if (mailType.ToString() == "forward")
+            {
+                messageManager.ForwardMessage(mail, mWindow, manager);
             }
         }
 
         //constructor responsible for sending email
         public SendMessageWindow(MainWindow mainWindow, Manager mManager)
         {
+            if (isSendMessageManagerInitialized == false)
+            {
+                messageManager = new SendMessageManager(this);
+                isSendMessageManagerInitialized = true;
+            }
             mWindow = mainWindow;
             manager = mManager;
             InitializeComponent();
@@ -69,40 +80,26 @@ namespace HCI__Post_Service
 
         private void AddComboBoxElements()
         {
-            senderSelect.Items.Add(mWindow.header1.Header);
-            senderSelect.Items.Add(mWindow.header2.Header);
-            senderSelect.SelectedItem = senderSelect.Items[0];
+            messageManager.AddComboBoxElements(mWindow);
         }
 
         private void SendMessage(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(receiverName.Text) && string.IsNullOrWhiteSpace(subject.Text))
+            if (messageManager.CheckIfMailIsCorrect() == true)
             {
-                MessageBoxResult result = MessageBox.Show("You can't send an email without receiver's address and subject", "Can't Send Message", MessageBoxButton.OK);
-            }
-
-            else if (string.IsNullOrWhiteSpace(receiverName.Text))
-            {
-                MessageBoxResult result = MessageBox.Show("You can't send an email without receiver's address", "Can't Send Message", MessageBoxButton.OK);
-            }
-
-            else if (string.IsNullOrWhiteSpace(subject.Text))
-            {
-                MessageBoxResult result = MessageBox.Show("You can't send an email without subject", "Can't Send Message", MessageBoxButton.OK);
-            }
-
-            else
-            {
-                if (buttonSend.Content.ToString() == "Send" || buttonSend.Content.ToString() == "Reply")
-                {
-                    //Sender is a placeholder, as well as not selecting proper sender
-                    Mail mail = new Mail(senderSelect.SelectedItem.ToString(), receiverName.Text, subject.Text, content.Text);
-                    if (senderSelect.SelectedItem == mWindow.header1.Header)
-                        manager.AddMailItem(mail, mWindow.sentList1);
-                    else if (senderSelect.SelectedItem == mWindow.header2.Header)
-                        manager.AddMailItem(mail, mWindow.sentList2);
-                }
+                messageManager.AddMailToSent(manager, mWindow);
                 this.Close();
+            }
+        }
+
+        private void TextGotFocus(object sender, RoutedEventArgs e)
+        {
+            
+            TextBox textBox = (TextBox)sender;
+            if (!textBox.IsReadOnly)
+            {
+                textBox.Text = string.Empty;
+                textBox.GotFocus -= TextGotFocus;
             }
         }
     }

@@ -77,6 +77,11 @@ namespace HCI__Post_Service
         }
 
 
+        public Mail GetCurrentMail()
+        {
+            return currentMail;
+        }
+
         public MailsList GetCurrentList()
         {
             return currentList;
@@ -96,5 +101,7 @@ namespace HCI__Post_Service
             window.buttonReply.IsEnabled = true;
             window.buttonReplyAll.IsEnabled = true;
         }
+
+
     }
 }

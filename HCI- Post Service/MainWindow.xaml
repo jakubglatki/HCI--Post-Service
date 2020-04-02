@@ -156,7 +156,7 @@
                 <Button  Margin="50,0,0,0" FontSize="18" BorderBrush="Ivory" Width="30" Height="30" x:Name="bBack" Visibility="Collapsed" Click="BackButtonClick">
                     <Image Source="Resources\back.png" />
                 </Button>
-                <Button x:Name="buttonReply" IsEnabled="False">
+                <Button x:Name="buttonReply" IsEnabled="False" Click="ReplyMessage">
                     <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
                         <Image x:Name="bReply" Source="Resources\reply.png" Width="30" Height="30"/>
                         <TextBlock Margin="0,0,0,0" FontSize="18" >Reply</TextBlock>
@@ -184,7 +184,7 @@
                     </StackPanel>
                 </Button>
 
-                <Button x:Name="buttonDelete" HorizontalAlignment="Left" IsEnabled="False" Click="buttonDeleteClick">
+                <Button x:Name="buttonDelete" HorizontalAlignment="Left" IsEnabled="False" Click="ButtonDeleteClick">
                     <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
                         <Image x:Name="bDelete" Source="Resources\delete.png" Width="30" Height="30"/>
                         <TextBlock Margin="5,0,0,0" FontSize="18" >Delete</TextBlock>

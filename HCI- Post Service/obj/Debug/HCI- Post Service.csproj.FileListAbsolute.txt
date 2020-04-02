@@ -18,3 +18,4 @@ D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Servi
 D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\SendMessageWindow.g.cs
 D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\SendMessageWindow.baml
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\HCI- Post Service.csproj.CoreCompileInputs.cache

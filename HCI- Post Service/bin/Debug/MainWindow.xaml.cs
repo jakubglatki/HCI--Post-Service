@@ -48,6 +48,7 @@ namespace HCI__Post_Service
 
             manager.SetMessages();
             manager.SetCurrentMailsList(messageList1);
+            header1.IsSelected = true;
         }
 
 
@@ -64,6 +65,8 @@ namespace HCI__Post_Service
             manager.SetVisibility();
             messageList1.Visibility = Visibility.Visible;
             manager.SetCurrentMailsList(messageList1);
+            header1.IsSelected = true;
+            header2.IsSelected = false;
         }
 
 
@@ -89,6 +92,8 @@ namespace HCI__Post_Service
             manager.SetVisibility();
             messageList2.Visibility = Visibility.Visible;
             manager.SetCurrentMailsList(messageList2);
+            header1.IsSelected = false;
+            header2.IsSelected = true;
         }
 
         private void SentMails1(object sender, MouseButtonEventArgs e)
@@ -96,6 +101,8 @@ namespace HCI__Post_Service
             manager.SetVisibility();
             sentList1.Visibility = Visibility.Visible;
             manager.SetCurrentMailsList(sentList1);
+            header1.IsSelected = true;
+            header2.IsSelected = false;
         }
 
         private void SentMails2(object sender, MouseButtonEventArgs e)
@@ -103,6 +110,8 @@ namespace HCI__Post_Service
             manager.SetVisibility();
             sentList2.Visibility = Visibility.Visible;
             manager.SetCurrentMailsList(sentList2);
+            header1.IsSelected = false;
+            header2.IsSelected = true;
         }
 
         private void StarredMails1(object sender, MouseButtonEventArgs e)
@@ -125,6 +134,8 @@ namespace HCI__Post_Service
             manager.SetVisibility();
             starredList1.Visibility = Visibility.Visible;
             manager.SetCurrentMailsList(starredList1);
+            header1.IsSelected = true;
+            header2.IsSelected = false;
         }
 
         private void StarredMails2(object sender, MouseButtonEventArgs e)
@@ -145,6 +156,8 @@ namespace HCI__Post_Service
             manager.SetVisibility();
             starredList2.Visibility = Visibility.Visible;
             manager.SetCurrentMailsList(starredList2);
+            header1.IsSelected = false;
+            header2.IsSelected = true;
         }
 
         private void DraftsMails1(object sender, MouseButtonEventArgs e)
@@ -163,6 +176,8 @@ namespace HCI__Post_Service
             manager.SetVisibility();
             draftsList1.Visibility = Visibility.Visible;
             manager.SetCurrentMailsList(draftsList1);
+            header1.IsSelected = true;
+            header2.IsSelected = false;
         }
 
         private void DraftsMails2(object sender, MouseButtonEventArgs e)
@@ -183,6 +198,8 @@ namespace HCI__Post_Service
             manager.SetVisibility();
             draftsList2.Visibility = Visibility.Visible;
             manager.SetCurrentMailsList(draftsList2);
+            header1.IsSelected = false;
+            header2.IsSelected = true;
         }
         private void DeletedMails1(object sender, MouseButtonEventArgs e)
         {
@@ -197,6 +214,8 @@ namespace HCI__Post_Service
             manager.SetVisibility();
             manager.SetCurrentMailsList(deletedList1);
             deletedList1.Visibility = Visibility.Visible;
+            header1.IsSelected = true;
+            header2.IsSelected = false;
         }
 
         private void DeletedMails2(object sender, MouseButtonEventArgs e)
@@ -212,6 +231,8 @@ namespace HCI__Post_Service
             manager.SetVisibility();
             manager.SetCurrentMailsList(deletedList2);
             deletedList2.Visibility = Visibility.Visible;
+            header1.IsSelected = false;
+            header2.IsSelected = true;
         }
 
         public void SearchGotFocus(object sender, RoutedEventArgs e)
@@ -235,7 +256,7 @@ namespace HCI__Post_Service
 
 
       
-        private void buttonDeleteClick(object sender, RoutedEventArgs e)
+        private void ButtonDeleteClick(object sender, RoutedEventArgs e)
         {
             if (manager.GetCurrentList()==deletedList1 || manager.GetCurrentList()==deletedList2)
             {
@@ -248,6 +269,9 @@ namespace HCI__Post_Service
 
         }
 
-
+        private void ReplyMessage(object sender, RoutedEventArgs e)
+        {
+            manager.SendReply();
+        }
     }
 }

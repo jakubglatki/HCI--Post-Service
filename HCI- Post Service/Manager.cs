@@ -15,6 +15,7 @@ namespace HCI__Post_Service
         static private ButtonManager buttonManager;
         static private MailManager mailManager;
 
+        //Constructors
         public Manager() { }
         public Manager(MainWindow mainWindow)
         {
@@ -23,6 +24,39 @@ namespace HCI__Post_Service
             mailManager = new MailManager(mainWindow);
         }
 
+        //Getters and setters
+        public void SetCurrentMail(Mail mail)
+        {
+            buttonManager.SetCurrentMail(mail);
+        }
+        public void SetCurrentMailsList(MailsList mailsList)
+        {
+            buttonManager.SetCurrentMailsList(mailsList);
+        }
+
+        public MainWindow GetMainWindow()
+        {
+            return window;
+        }
+
+        public MailsList GetCurrentList()
+        {
+            return buttonManager.GetCurrentList();
+        }
+
+        public void AddMailItem(Mail mail, MailsList list)
+        {
+            mailManager.AddMailItem(mail, list);
+        }
+
+        public void SetMessages()
+        {
+            SetVisibility();
+            buttonManager.DisableButtons();
+            mailManager.SetMessages();
+        }
+
+        //Methods
         public void SetVisibility()
         {
             window.sentList1.Visibility = Visibility.Hidden;
@@ -42,33 +76,6 @@ namespace HCI__Post_Service
             window.bBack.Visibility = Visibility.Collapsed;
 
             buttonManager.DisableButtons();
-        }
-
-        public void SetCurrentMail(Mail mail)
-        {
-            buttonManager.SetCurrentMail(mail);
-        }
-        public void SetCurrentMailsList(MailsList mailsList)
-        {
-            buttonManager.SetCurrentMailsList(mailsList);
-        }
-
-
-        public MailsList GetCurrentList()
-        {
-            return buttonManager.GetCurrentList();
-        }
-
-        public void AddMailItem(Mail mail, MailsList list)
-        {
-            mailManager.AddMailItem(mail, list);
-        }
-
-        public void SetMessages()
-        {
-            SetVisibility();
-            buttonManager.DisableButtons();
-            mailManager.SetMessages();
         }
 
         public void ShowMessage(Mail mail)
@@ -98,6 +105,12 @@ namespace HCI__Post_Service
         public void EnableButtons()
         {
             buttonManager.EnableButtons();
+        }
+
+        public void SendReply()
+        {
+            SendMessageWindow sendMessageWindow = new SendMessageWindow(buttonManager.GetCurrentMail(), true, window, this);
+            sendMessageWindow.Show();
         }
     }
 }

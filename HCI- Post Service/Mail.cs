@@ -52,7 +52,8 @@ namespace HCI__Post_Service
         }
         private void ShowMessageInSendMessageWindow(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            SendMessageWindow sendMessage = new SendMessageWindow(this);
+            Manager manager = new Manager();
+            SendMessageWindow sendMessage = new SendMessageWindow(this, false, manager.GetMainWindow(), manager);
             sendMessage.Show();
 
         }

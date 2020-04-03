@@ -60,6 +60,7 @@ namespace HCI__Post_Service
         {
             Manager manager = new Manager();
             manager.SetCurrentMail(this);
+
             manager.EnableButtons();
             manager.ShowMessage(this);
         }
@@ -73,7 +74,11 @@ namespace HCI__Post_Service
         private void MailSetCurrentMail(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Manager manager = new Manager();
-            manager.EnableButtons();
+            if (manager.GetCurrentList() != manager.GetMainWindow().draftsList1 && manager.GetCurrentList() != manager.GetMainWindow().draftsList2)
+            {
+                manager.EnableButtons();
+            }
+            else manager.GetMainWindow().buttonDelete.IsEnabled = true;
             manager.SetCurrentMail(this);
         }
 

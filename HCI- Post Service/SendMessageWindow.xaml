@@ -39,11 +39,17 @@
 
         <TextBox x:Name="content" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="4" TextWrapping="Wrap" Text="Mail content" VerticalAlignment="Stretch"  Grid.ColumnSpan="2" GotFocus="TextGotFocus"/>
 
-        <Button x:Name="buttonAttachment" Content="Add Attachment" Grid.Column="2" HorizontalAlignment="Left" Margin="50,10,0,0" Grid.Row="5" VerticalAlignment="Top" Width="140" Height="30" Background="Ivory" FontSize="13"/>
+        <Button x:Name="buttonAttachment" Content="Add Attachment" Grid.Column="2" HorizontalAlignment="Left" Margin="50,10,0,0" Grid.Row="5" VerticalAlignment="Top" Width="140" Height="30" Background="Ivory" FontSize="13" Click="AddAttachment"/>
 
         <Button  x:Name="buttonSend" Content="Send" Grid.Column="2" HorizontalAlignment="Right" Margin="0,10,0,0" Grid.Row="5" VerticalAlignment="Top" Width="140" Height="30" Background="Ivory" FontSize="20" Click="SendMessage"/>
 
-        <ListBox Grid.Column="1" HorizontalAlignment="Stretch" Height="30" Margin="0,10,0,0" Grid.Row="5" VerticalAlignment="Stretch" />
+        <ListBox x:Name="boxAttachments" Grid.Column="1" HorizontalAlignment="Stretch" Height="40" Margin="0,10,0,0" Grid.Row="5" VerticalAlignment="Stretch">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel IsItemsHost="True" Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
 
     </Grid>
 </Window>

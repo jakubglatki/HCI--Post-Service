@@ -38,7 +38,7 @@ namespace HCI__Post_Service
 
             if (mailType.ToString()=="view")
             {
-                messageManager.ViewMessage(mail);
+                messageManager.ViewMessage(mail, manager);
             }
             else if (mailType.ToString() == "reply")
             {
@@ -88,6 +88,7 @@ namespace HCI__Post_Service
             if (messageManager.CheckIfMailIsCorrect() == true)
             {
                 messageManager.AddMailToSent(manager, mWindow);
+                boxAttachments.Items.Clear();
                 this.Close();
             }
         }
@@ -101,6 +102,11 @@ namespace HCI__Post_Service
                 textBox.Text = string.Empty;
                 textBox.GotFocus -= TextGotFocus;
             }
+        }
+
+        private void AddAttachment(object sender, RoutedEventArgs e)
+        {
+            messageManager.AddAttachment(manager);
         }
     }
 }

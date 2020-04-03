@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace HCI__Post_Service
@@ -9,7 +10,7 @@ namespace HCI__Post_Service
         public string Receiver { get; set; }
         public string Topic { get; set; }
         public string Content { get; set; }
-
+        public List<string> AttachmentList { get; set; }
 
         public Mail() {
 
@@ -42,6 +43,18 @@ namespace HCI__Post_Service
             this.MouseDoubleClick += ShowMessageInSendMessageWindow;
         }
 
+        public Mail(string Sender, string Receiver, string Topic, string Content, List<string> list)
+        {
+            this.Sender = Sender;
+            this.Receiver = Receiver;
+            this.Topic = Topic;
+            this.Content = Content;
+            this.AttachmentList=list;
+
+            this.MouseDoubleClick += ShowMessage;
+            this.MouseLeftButtonUp += MailSetCurrentMail;
+            this.MouseDoubleClick += ShowMessageInSendMessageWindow;
+        }
 
         private void ShowMessage(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {

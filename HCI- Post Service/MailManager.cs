@@ -25,7 +25,7 @@ namespace HCI__Post_Service
 
         public void AddMailItem(Mail mail, MailsList list)
         {
-            ListViewItem newMailItem = new Mail(mail.Sender, mail.Receiver, mail.Topic, mail.Content);
+            ListViewItem newMailItem = new Mail(mail.Sender, mail.Receiver, mail.Topic, mail.Content, mail.AttachmentList);
             newMailItem.FontSize = 18;
             newMailItem.Margin = new Thickness(5, 0, 0, 5);
             newMailItem.Content = mail.Topic;
@@ -34,7 +34,11 @@ namespace HCI__Post_Service
 
         public void SetMessages()
         {
+            List<string> list = new List<string>();
+            list.Add("olo.jpg");
+            list.Add("dsafas.mpeg");
             Mail message1 = new Mail("Sender1", "Receiver1", "Message 1", "messageMessage1");
+            message1.AttachmentList = list;
             Mail message2 = new Mail("Sender2", "Receiver2", "Message 2", "messageMessage2");
             Mail message3 = new Mail("Sender3", "Receiver3", "Message 3", "messageMessage3");
             Mail message4 = new Mail("Sender4", "Receiver4", "Message 4", "messageMessage4");

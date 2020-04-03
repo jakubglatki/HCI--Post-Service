@@ -16,9 +16,9 @@ namespace HCI__Post_Service
             messageWindow = sendMessageWindow;
         }
 
-        public void ViewMessage(Mail mail)
+        public void ViewMessage(Mail mail, Manager manager)
         {
-
+            messageWindow.Title = "View message";
             messageWindow.subject.IsReadOnly = true;
             messageWindow.receiverName.IsReadOnly = true;
             messageWindow.content.IsReadOnly = true;
@@ -28,12 +28,20 @@ namespace HCI__Post_Service
             messageWindow.receiverName.Text = mail.Sender;
             messageWindow.subject.Text = mail.Topic;
             messageWindow.content.Text = mail.Content;
+            if (mail.AttachmentList != null)
+            {
+                foreach (String attachement in mail.AttachmentList)
+                {
+                    messageWindow.boxAttachments.Items.Add(attachement);
+                }
+            }
             messageWindow.buttonSend.Content = "Close";
         }
 
         public void ReplyMessage(Mail mail, Manager manager, MainWindow mWindow)
         {
 
+            messageWindow.Title = "Send reply";
             messageWindow.subject.IsReadOnly = false;
             messageWindow.receiverName.IsReadOnly = true;
             messageWindow.content.IsReadOnly = false;
@@ -51,6 +59,8 @@ namespace HCI__Post_Service
         }
         public void ReplyToAllMessage(Mail mail, Manager manager, MainWindow mWindow)
         {
+
+            messageWindow.Title = "Send reply to all";
             messageWindow.subject.IsReadOnly = false;
             messageWindow.receiverName.IsReadOnly = true;
             messageWindow.content.IsReadOnly = false;
@@ -62,6 +72,7 @@ namespace HCI__Post_Service
         }
         public void ForwardMessage(Mail mail, MainWindow mWindow, Manager manager)
         {
+            messageWindow.Title = "Send message forward";
             messageWindow.subject.IsReadOnly = true;
             messageWindow.receiverName.IsReadOnly = false;
             messageWindow.content.IsReadOnly = true;
@@ -123,11 +134,35 @@ namespace HCI__Post_Service
         {
             if (messageWindow.buttonSend.Content.ToString() == "Send" || messageWindow.buttonSend.Content.ToString() == "Reply" || messageWindow.buttonSend.Content.ToString() == "Reply to all" || messageWindow.buttonSend.Content.ToString() == "Forward")
             {
-                Mail mail = new Mail(messageWindow.senderSelect.SelectedItem.ToString(), messageWindow.receiverName.Text, messageWindow.subject.Text, messageWindow.content.Text);
+
+                Mail mail = new Mail(messageWindow.senderSelect.SelectedItem.ToString(), messageWindow.receiverName.Text, messageWindow.subject.Text, messageWindow.content.Text, messageWindow.boxAttachments.Items.OfType<string>().ToList());
                 if (messageWindow.senderSelect.SelectedItem == mWindow.header1.Header)
                     manager.AddMailItem(mail, mWindow.sentList1);
                 else if (messageWindow.senderSelect.SelectedItem == mWindow.header2.Header)
                     manager.AddMailItem(mail, mWindow.sentList2);
+            }
+        }
+
+          public void AddAttachment(Manager manager)
+        {
+            {
+                Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
+                fileDialog.Multiselect = true;
+                fileDialog.Title = "Select Attachments";
+
+                string images = "Image(*.JPG; *.PNG; *.BMP; *.GIF)| *.JPG; *.PNG; *.BMP; *.GIF |";
+                string videos = "Video(*.WMV;*.MPG;*.MPEG)| *.WMV;*.MPG;*.MPEG |";
+                string audios = "Audio(*.MP3)| *.MP3 |";
+                fileDialog.Filter = images + videos + audios + "All files (*.*)|*.*";
+
+                if (fileDialog.ShowDialog() == true)
+                {
+                    foreach (String attachement in fileDialog.FileNames)
+                    {
+                        string fileName = System.IO.Path.GetFileName(attachement);
+                        messageWindow.boxAttachments.Items.Add(fileName);
+                    }
+                }
             }
         }
     }

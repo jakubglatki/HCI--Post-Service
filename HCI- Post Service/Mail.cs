@@ -78,6 +78,11 @@ namespace HCI__Post_Service
             {
                 manager.EnableButtons();
             }
+            if (manager.GetCurrentList() != manager.GetMainWindow().sentList1 && manager.GetCurrentList() != manager.GetMainWindow().sentList2
+                 && manager.GetCurrentList() != manager.GetMainWindow().messageList1 && manager.GetCurrentList() != manager.GetMainWindow().messageList2)
+            {
+                manager.GetMainWindow().buttonStar.IsEnabled = false;
+            }
             else manager.GetMainWindow().buttonDelete.IsEnabled = true;
             manager.SetCurrentMail(this);
         }

@@ -32,6 +32,7 @@ namespace HCI__Post_Service
             list.Items.Insert(0, newMailItem);
         }
 
+        //List when something might be added are made at the beggining, the rest when given button is clicked
         public void SetMessages()
         {
             List<string> list = new List<string>();
@@ -63,6 +64,27 @@ namespace HCI__Post_Service
             MakeNewMailsList(window.sentList2, sent1b, sent2b, sent3b);
             window.gridView1.Children.Add(window.sentList2);
 
+
+            window.starredList1.ListComponents(window.starredList1);
+
+            Mail starred1 = new Mail("Sender1", "Receiver1", "Starred 1", "StarredMessage1");
+            Mail starred2 = new Mail("Sender2", "Receiver2", "Starred 2", "StarredMessage2");
+            Mail starred3 = new Mail("Sender3", "Receiver3", "Starred 3", "StarredMessage3");
+            Mail starred4 = new Mail("Sender4", "Receiver4", "Starred 4", "StarredMessage4");
+            Mail starred5 = new Mail("Sender5", "Receiver5", "Starred 5", "StarredMessage5");
+
+            MakeNewMailsList(window.starredList1, starred1, starred2, starred3, starred4, starred5);
+            window.gridView1.Children.Add(window.starredList1);
+
+            window.starredList2.ListComponents(window.starredList2);
+
+            Mail starred1b = new Mail("Sender1b", "Receiver1b", "Starred 1b", "StarredMessage1b");
+            Mail starred2b = new Mail("Sender2b", "Receiver2b", "Starred 2b", "StarredMessage2b");
+            Mail starred3b = new Mail("Sender3b", "Receiver3b", "Starred 3b", "StarredMessage3b");
+
+            MakeNewMailsList(window.starredList2, starred1b, starred2b, starred3b);
+            window.gridView1.Children.Add(window.starredList2);
+
             window.messageList1.Visibility = Visibility.Visible;
         }
 
@@ -85,6 +107,18 @@ namespace HCI__Post_Service
             }
         }
 
+        public void StarMessage()
+        {
+            Manager manager = new Manager(window);
+            if(manager.GetCurrentList()==window.sentList1 || manager.GetCurrentList() == window.messageList1)
+            {
+                AddMailItem(manager.GetCurrentMail(), window.starredList1);
+            }
+            else if (manager.GetCurrentList() == window.sentList2 || manager.GetCurrentList() == window.messageList2)
+            {
+                AddMailItem(manager.GetCurrentMail(), window.starredList2);
+            }
+        }
 
     }
 }

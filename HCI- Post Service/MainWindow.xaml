@@ -177,6 +177,13 @@
                     </StackPanel>
                 </Button>
 
+                <Button x:Name="buttonStar" HorizontalAlignment="Left" IsEnabled="False" Click="StarMessage">
+                    <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
+                        <Image x:Name="bStar" Source="star.png" Width="30" Height="30"/>
+                        <TextBlock Margin="5,0,0,0" FontSize="18" >Star</TextBlock>
+                    </StackPanel>
+                </Button>
+                
                 <Button x:Name="buttonNewMessage" HorizontalAlignment="Left" Click="NewMessage" IsEnabled="True">
                     <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
                         <Image x:Name="bNewMessage" Source="Resources\newMessage.png" Width="30" Height="30"/>

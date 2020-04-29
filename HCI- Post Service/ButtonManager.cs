@@ -93,6 +93,7 @@ namespace HCI__Post_Service
             window.buttonForward.IsEnabled = false;
             window.buttonReply.IsEnabled = false;
             window.buttonReplyAll.IsEnabled = false;
+            window.buttonStar.IsEnabled = false;
         }
         public void EnableButtons()
         {
@@ -100,6 +101,7 @@ namespace HCI__Post_Service
             window.buttonForward.IsEnabled = true;
             window.buttonReply.IsEnabled = true;
             window.buttonReplyAll.IsEnabled = true;
+            window.buttonStar.IsEnabled = true;
         }
 
 

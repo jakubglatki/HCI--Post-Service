@@ -13,8 +13,6 @@ namespace HCI__Post_Service
     {
         string text = Properties.Settings.Default.Text;
         public bool messageListBool2 = false;
-        public bool starredListBool1 = false;
-        public bool starredListBool2 = false;
         public bool deletedListBool1 = false;
         public bool deletedListBool2 = false;
         public bool draftsListBool1 = false;
@@ -112,20 +110,6 @@ namespace HCI__Post_Service
 
         private void StarredMails1(object sender, MouseButtonEventArgs e)
         {
-            if (starredListBool1 == false)
-            {
-                starredList1.ListComponents(starredList1);
-
-                Mail starred1 = new Mail("Sender1", "Receiver1", "Starred 1", "StarredMessage1");
-                Mail starred2 = new Mail("Sender2", "Receiver2", "Starred 2", "StarredMessage2");
-                Mail starred3 = new Mail("Sender3", "Receiver3", "Starred 3", "StarredMessage3");
-                Mail starred4 = new Mail("Sender4", "Receiver4", "Starred 4", "StarredMessage4");
-                Mail starred5 = new Mail("Sender5", "Receiver5", "Starred 5", "StarredMessage5");
-
-                manager.MakeNewMailsList(starredList1, starred1, starred2, starred3, starred4, starred5);
-                gridView1.Children.Add(starredList1);
-            }
-            starredListBool1 = true;
 
             manager.SetVisibility();
             starredList1.Visibility = Visibility.Visible;
@@ -135,19 +119,6 @@ namespace HCI__Post_Service
 
         private void StarredMails2(object sender, MouseButtonEventArgs e)
         {
-            if (starredListBool2 == false)
-            {
-                starredList2.ListComponents(starredList2);
-                
-                Mail starred1b = new Mail("Sender1b", "Receiver1b", "Starred 1b", "StarredMessage1b");
-                Mail starred2b = new Mail("Sender2b", "Receiver2b", "Starred 2b", "StarredMessage2b");
-                Mail starred3b = new Mail("Sender3b", "Receiver3b", "Starred 3b", "StarredMessage3b");
-
-                manager.MakeNewMailsList(starredList2, starred1b, starred2b, starred3b);
-                gridView1.Children.Add(starredList2);
-            }
-            starredListBool2 = true;
-
             manager.SetVisibility();
             starredList2.Visibility = Visibility.Visible;
             manager.SetCurrentMailsList(starredList2);
@@ -272,6 +243,11 @@ namespace HCI__Post_Service
         private void ForwardMessage(object sender, RoutedEventArgs e)
         {
             manager.ForwardMessage();
+        }
+
+        private void StarMessage(object sender, RoutedEventArgs e)
+        {
+            manager.StarMessage();
         }
     }
 }

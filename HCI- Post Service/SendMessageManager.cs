@@ -81,9 +81,11 @@ namespace HCI__Post_Service
             messageWindow.receiverName.Text = "Forward to";
             messageWindow.subject.Text = mail.Topic;
             messageWindow.content.Text = mail.Content;
-            messageWindow.buttonSend.Content = "Close";
+            messageWindow.buttonSend.Content = "Forward";
             AddOneComboBoxElement(manager, mWindow);
         }
+
+
 
         public void AddComboBoxElements(MainWindow mWindow)
         {

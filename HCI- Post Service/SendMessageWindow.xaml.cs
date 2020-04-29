@@ -36,7 +36,7 @@ namespace HCI__Post_Service
             manager = mManager;
             InitializeComponent();
 
-            if (mailType.ToString()=="view")
+            if (mailType.ToString() == "view")
             {
                 messageManager.ViewMessage(mail, manager);
             }
@@ -51,7 +51,6 @@ namespace HCI__Post_Service
                 {
                     messageManager.ReplyMessage(mail, manager, mWindow);
                 }
-                //TO DO:
                 else
                 {
                     messageManager.ReplyToAllMessage(mail, manager, mWindow);

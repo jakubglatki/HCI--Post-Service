@@ -148,5 +148,10 @@ namespace HCI__Post_Service
             MailType mailType = MailType.forward;
             ShowSendMessageWindow(buttonManager.GetCurrentMail(), window, this, mailType);
         }
+
+        public void StarMessage()
+        {
+            mailManager.StarMessage();
+        }
     }
 }

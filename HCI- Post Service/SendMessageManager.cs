@@ -79,7 +79,7 @@ namespace HCI__Post_Service
 
             messageWindow.buttonAttachment.Visibility = Visibility.Hidden;
             messageWindow.receiverName.Text = "Forward to";
-            messageWindow.subject.Text = mail.Topic;
+            messageWindow.subject.Text = ("Fwd: " + mail.Topic);
             messageWindow.content.Text = mail.Content;
             messageWindow.buttonSend.Content = "Forward";
             AddOneComboBoxElement(manager, mWindow);

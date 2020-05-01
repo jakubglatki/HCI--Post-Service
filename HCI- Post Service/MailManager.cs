@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Xml.Serialization;
 
 namespace HCI__Post_Service
 {
@@ -122,12 +125,50 @@ namespace HCI__Post_Service
 
         public void ImportFile()
         {
+            Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
+            fileDialog.Multiselect = false;
+            fileDialog.Title = "Import file";
 
+            string XML = "XML(*.xml)| *.xml";
+            fileDialog.Filter = XML;
+
+
+            if (fileDialog.ShowDialog() == true)
+            {
+                var filePath = fileDialog.FileName;
+               // Deserialize(filePath);
+            }
         }
 
         public void ExportFile()
         {
 
+            SaveFileDialog fileDialog = new SaveFileDialog();
+
+            fileDialog.Title = "Export file";
+            string XML = "XML(*.xml)| *.xml";
+
+            fileDialog.Filter = XML;
+
+            if (fileDialog.ShowDialog() == true)
+            {
+                string file = fileDialog.FileName;
+                this.Serialize(file);
+            }
+        }
+
+        private void Serialize(String file)
+        {
+            using (Stream fs = new FileStream(file, FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                MailBox mailBox = new MailBox(window.header1.Header.ToString());
+                MailBox mailBox2 = new MailBox(window.header2.Header.ToString());
+                List<MailBox> mailBoxes = new List<MailBox>();
+                mailBoxes.Add(mailBox);
+                mailBoxes.Add(mailBox2);
+                XmlSerializer xml = new XmlSerializer(typeof(List<MailBox>));
+                xml.Serialize(fs, mailBoxes);
+            }
         }
     }
 }

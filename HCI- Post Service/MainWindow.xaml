@@ -25,7 +25,7 @@
         <TextBox Grid.Column="0" Grid.ColumnSpan="3" Name="searchBox" HorizontalAlignment="Center" Width="400"  VerticalAlignment="Center" Margin="10,10,10,10" Text="Search" FontSize="18" GotFocus="SearchGotFocus"/>
 
 
-        <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,-10" Grid.Row="2"  Width="300" Height="Auto">
+        <StackPanel x:Name="mailsBoxPanel" HorizontalAlignment="Stretch" Margin="10,0,10,-10" Grid.Row="2"  Width="300" Height="Auto">
             <TreeView x:Name="treeView1">
                 
                 <TreeViewItem x:Name="header1" Header="jurgen@klopp.de" FontSize="15" IsExpanded="True">

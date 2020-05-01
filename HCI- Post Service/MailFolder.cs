@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 namespace HCI__Post_Service
 {
-    class MailFolder
+    public class MailFolder
     {
-        private string name;
-        private MailsList mailList;
+        public string name;
+        public List<Mail> mailList;
 
+        public MailFolder() { }
         public MailFolder(string name)
         {
             this.name = name;
         }
 
-        public MailFolder(string name, MailsList mails)
+        public MailFolder(string name, List<Mail> mails)
         {
             this.name = name;
             this.mailList = mails;

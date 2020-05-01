@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace HCI__Post_Service
 {
@@ -89,21 +90,21 @@ namespace HCI__Post_Service
 
         public void AddComboBoxElements(MainWindow mWindow)
         {
-            messageWindow.senderSelect.Items.Add(mWindow.header1.Header);
-            messageWindow.senderSelect.Items.Add(mWindow.header2.Header);
+            foreach(TreeViewItem header in mWindow.treeView1.Items)
+            {
+                messageWindow.senderSelect.Items.Add(header.Header);
+            }
+            //messageWindow.senderSelect.Items.Add(mWindow.header1.Header);
+            //messageWindow.senderSelect.Items.Add(mWindow.header2.Header);
             messageWindow.senderSelect.SelectedItem = messageWindow.senderSelect.Items[0];
         }
 
         private void AddOneComboBoxElement(Manager manager, MainWindow mWindow)
         {
-
-            if (manager.GetCurrentTreeViewItem().Header == mWindow.header1.Header)
+            foreach (TreeViewItem header in mWindow.treeView1.Items)
             {
-                messageWindow.senderSelect.Items.Add(mWindow.header1.Header);
-            }
-            else if (manager.GetCurrentTreeViewItem().Header == mWindow.header2.Header)
-            {
-                messageWindow.senderSelect.Items.Add(mWindow.header2.Header);
+                if(manager.GetCurrentTreeViewItem().Header== header.Header)
+                messageWindow.senderSelect.Items.Add(header.Header);
             }
             messageWindow.senderSelect.SelectedItem = messageWindow.senderSelect.Items[0];
         }
@@ -147,7 +148,7 @@ namespace HCI__Post_Service
 
           public void AddAttachment(Manager manager)
         {
-            {
+            
                 Microsoft.Win32.OpenFileDialog fileDialog = new Microsoft.Win32.OpenFileDialog();
                 fileDialog.Multiselect = true;
                 fileDialog.Title = "Select Attachments";
@@ -165,7 +166,7 @@ namespace HCI__Post_Service
                         messageWindow.boxAttachments.Items.Add(fileName);
                     }
                 }
-            }
+            
         }
     }
 }

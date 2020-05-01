@@ -1,13 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Windows;
 using System.Windows.Controls;
+using System.Xml;
+using System.Xml.Schema;
+using System.Xml.Serialization;
 
 namespace HCI__Post_Service
 {
-    public class Mail : ListViewItem
+    [Serializable]
+    public class Mail : ListViewItem, ISerializable, IXmlSerializable
     {
         public string Sender { get; set; }
         public string Receiver { get; set; }
+        public string CopyReceiver { get; set; }
         public string Topic { get; set; }
         public string Content { get; set; }
         public List<string> AttachmentList { get; set; }
@@ -87,5 +94,50 @@ namespace HCI__Post_Service
             manager.SetCurrentMail(this);
         }
 
+        public void GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("Author", Sender);
+            info.AddValue("Receiver", Receiver);
+            info.AddValue("Topic", Topic);
+            info.AddValue("Content", Content);
+            info.AddValue("Attachment list", AttachmentList);
+            info.AddValue("Copy receiver", CopyReceiver);
+        }
+
+        public XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public void ReadXml(XmlReader reader)
+        {
+            Type type = Type.GetType(reader.GetAttribute("type"));
+            reader.ReadStartElement();
+            this.Sender = (string)new
+                          XmlSerializer(type).Deserialize(reader);
+            this.Receiver = (string)new
+                          XmlSerializer(type).Deserialize(reader);
+            this.Topic = (string)new
+                          XmlSerializer(type).Deserialize(reader);
+            this.Content = (string)new
+                          XmlSerializer(type).Deserialize(reader);
+            this.AttachmentList = (List<string>)new
+                          XmlSerializer(type).Deserialize(reader);
+            this.CopyReceiver = (string)new
+                          XmlSerializer(type).Deserialize(reader);
+            reader.ReadEndElement();
+        }
+
+        public void WriteXml(XmlWriter writer)
+        {
+            new XmlSerializer(Sender.GetType()).Serialize(writer, Sender);
+            new XmlSerializer(Receiver.GetType()).Serialize(writer, Receiver);
+            new XmlSerializer(Topic.GetType()).Serialize(writer, Topic);
+            new XmlSerializer(Content.GetType()).Serialize(writer, Content);
+            if(AttachmentList!=null)
+            new XmlSerializer(AttachmentList.GetType()).Serialize(writer, AttachmentList);
+            if(CopyReceiver != null)
+            new XmlSerializer(CopyReceiver.GetType()).Serialize(writer, CopyReceiver);
+        }
     }
 }

@@ -60,6 +60,8 @@
     <Compile Include="deleteMessage.xaml.cs">
       <DependentUpon>deleteMessage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MailBox.cs" />
+    <Compile Include="MailFolder.cs" />
     <Compile Include="MailManager.cs" />
     <Compile Include="MailsList.cs" />
     <Compile Include="mailType.cs" />
@@ -119,7 +121,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="star.png" />
+    <Resource Include="Resources\star.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\back.png" />
@@ -156,6 +158,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\import.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\export.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

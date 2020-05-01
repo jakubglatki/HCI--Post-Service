@@ -11,9 +11,15 @@ namespace HCI__Post_Service
 {
     public class MailsList : ListView
     {
+        private List<Mail> mails;
         public MailsList()
         {
-
+            this.MouseLeftButtonUp += SetCurrentMailList;
+        }
+        public MailsList(List<Mail> mails)
+        {
+            this.mails = mails;
+            this.MouseLeftButtonUp += SetCurrentMailList;
         }
         public void ListComponents(MailsList list)
         {
@@ -26,5 +32,11 @@ namespace HCI__Post_Service
             list.Background = Brushes.Ivory;
             list.Margin = new Thickness(0, 0, 10, 10);
         }
+        private void SetCurrentMailList(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Manager manager = new Manager();
+            manager.SetCurrentMailsList(this);
+        }
+
     }
 }

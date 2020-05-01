@@ -120,5 +120,14 @@ namespace HCI__Post_Service
             }
         }
 
+        public void ImportFile()
+        {
+
+        }
+
+        public void ExportFile()
+        {
+
+        }
     }
 }

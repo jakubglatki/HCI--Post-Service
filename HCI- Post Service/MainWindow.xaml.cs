@@ -249,5 +249,15 @@ namespace HCI__Post_Service
         {
             manager.StarMessage();
         }
+
+        private void ExportFile(object sender, RoutedEventArgs e)
+        {
+            manager.ExportFile();
+        }
+
+        private void ImportFile(object sender, RoutedEventArgs e)
+        {
+            manager.ImportFile();
+        }
     }
 }

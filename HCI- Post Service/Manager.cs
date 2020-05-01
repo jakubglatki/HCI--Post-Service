@@ -153,5 +153,15 @@ namespace HCI__Post_Service
         {
             mailManager.StarMessage();
         }
+
+        public void ImportFile()
+        {
+            mailManager.ImportFile();
+        }
+
+        public void ExportFile()
+        {
+            mailManager.ExportFile();
+        }
     }
 }

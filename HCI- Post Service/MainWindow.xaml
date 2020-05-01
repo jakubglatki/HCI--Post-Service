@@ -28,7 +28,7 @@
         <StackPanel HorizontalAlignment="Stretch" Margin="10,0,10,-10" Grid.Row="2"  Width="300" Height="Auto">
             <TreeView x:Name="treeView1">
                 
-                <TreeViewItem x:Name="header1" Header="jurgen@klopp.de" FontSize="15">
+                <TreeViewItem x:Name="header1" Header="jurgen@klopp.de" FontSize="15" IsExpanded="True">
                     <TreeViewItem x:Name="inbox1" MouseLeftButtonUp="InboxMails1">
                         <TreeViewItem.Header>
                             <StackPanel Orientation="Horizontal">
@@ -136,6 +136,24 @@
                     </MenuItem.Header>
                 </MenuItem>
 
+                <MenuItem Width="300" x:Name="importMenu" Margin="0,4,0,0" Click="ImportFile">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="25" Height="25" Source="Resources\import.png"/>
+                            <TextBlock Margin="10,0,0,0">Import</TextBlock>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+
+                <MenuItem Width="300" x:Name="exportMenu" Margin="0,4,0,0" Click="ExportFile">
+                    <MenuItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="25" Height="25" Source="Resources\export.png"/>
+                            <TextBlock Margin="10,0,0,0">Export</TextBlock>
+                        </StackPanel>
+                    </MenuItem.Header>
+                </MenuItem>
+
                 <MenuItem Width="300" x:Name="exitMenu" Margin="0,4,0,0" Click="ExitApplication">
                     <MenuItem.Header>
                         <StackPanel Orientation="Horizontal">
@@ -179,7 +197,7 @@
 
                 <Button x:Name="buttonStar" HorizontalAlignment="Left" IsEnabled="False" Click="StarMessage">
                     <StackPanel Orientation="Horizontal" Margin="20,0,0,0">
-                        <Image x:Name="bStar" Source="star.png" Width="30" Height="30"/>
+                        <Image x:Name="bStar" Source="Resources\star.png" Width="30" Height="30"/>
                         <TextBlock Margin="5,0,0,0" FontSize="18" >Star</TextBlock>
                     </StackPanel>
                 </Button>

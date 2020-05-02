@@ -26,9 +26,9 @@
 
 
         <StackPanel x:Name="mailsBoxPanel" HorizontalAlignment="Stretch" Margin="10,0,10,-10" Grid.Row="2"  Width="300" Height="Auto">
-            <TreeView x:Name="treeView1">
+            <TreeView x:Name="treeViewMailBox">
                 
-                <TreeViewItem x:Name="header1" Header="jurgen@klopp.de" FontSize="15" IsExpanded="True">
+                <!--<TreeViewItem x:Name="header1" Header="jurgen@klopp.de" FontSize="15" IsExpanded="True">
                     <TreeViewItem x:Name="inbox1" MouseLeftButtonUp="InboxMails1">
                         <TreeViewItem.Header>
                             <StackPanel Orientation="Horizontal">
@@ -121,7 +121,7 @@
                             </StackPanel>
                         </TreeViewItem.Header>
                     </TreeViewItem>
-                </TreeViewItem>
+                </TreeViewItem>-->
             </TreeView>
         </StackPanel>
 
@@ -165,7 +165,7 @@
             </MenuItem>
         </Menu>
 
-        <local:MailsList x:Name="messageList1" Height="auto" HorizontalAlignment="Stretch"  Grid.Column="1" Margin="0,0,10,10" Grid.Row="2" Grid.ColumnSpan="2" Background="Ivory">
+        <local:MailsList x:Name="mailsListXAML" Height="auto" HorizontalAlignment="Stretch"  Grid.Column="1" Margin="0,0,10,10" Grid.Row="2" Grid.ColumnSpan="2" Background="Ivory">
 
         </local:MailsList>
 

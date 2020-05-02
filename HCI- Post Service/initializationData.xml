@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+<ArrayOfMailBox xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <MailBox>
+    <name>jurgen@klopp.de</name>
+    <inbox>
+      <name>Inbox</name>
+      <mailList>
+        <Mail>
+          <string>Sender1</string>
+          <string>Receiver1</string>
+          <string>Message 1</string>
+          <string>messageMessage1</string>
+          <ArrayOfString>
+            <string>olo.jpg</string>
+            <string>dsafas.mpeg</string>
+          </ArrayOfString>
+        </Mail>
+        <Mail>
+          <string>Sender2</string>
+          <string>Receiver2</string>
+          <string>Message 2</string>
+          <string>messageMessage2</string>
+        </Mail>
+        <Mail>
+          <string>Sender3</string>
+          <string>Receiver3</string>
+          <string>Message 3</string>
+          <string>messageMessage3</string>
+        </Mail>
+        <Mail>
+          <string>Sender4</string>
+          <string>Receiver4</string>
+          <string>Message 4</string>
+          <string>messageMessage4</string>
+        </Mail>
+      </mailList>
+    </inbox>
+    <sent>
+      <name>Sent</name>
+      <mailList>
+        <Mail>
+          <string>Sender1</string>
+          <string>Receiver1</string>
+          <string>Sent 1</string>
+          <string>sentMessage1</string>
+        </Mail>
+        <Mail>
+          <string>Sender2</string>
+          <string>Receiver2</string>
+          <string>Sent 2</string>
+          <string>sentMessage2</string>
+        </Mail>
+      </mailList>
+    </sent>
+    <starred>
+      <name>Starred</name>
+      <mailList>
+        <Mail>
+          <string>Sender1</string>
+          <string>Receiver1</string>
+          <string>Starred 1</string>
+          <string>StarredMessage1</string>
+        </Mail>
+        <Mail>
+          <string>Sender2</string>
+          <string>Receiver2</string>
+          <string>Starred 2</string>
+          <string>StarredMessage2</string>
+        </Mail>
+        <Mail>
+          <string>Sender3</string>
+          <string>Receiver3</string>
+          <string>Starred 3</string>
+          <string>StarredMessage3</string>
+        </Mail>
+        <Mail>
+          <string>Sender4</string>
+          <string>Receiver4</string>
+          <string>Starred 4</string>
+          <string>StarredMessage4</string>
+        </Mail>
+        <Mail>
+          <string>Sender5</string>
+          <string>Receiver5</string>
+          <string>Starred 5</string>
+          <string>StarredMessage5</string>
+        </Mail>
+      </mailList>
+    </starred>
+    <drafts>
+      <name>Drafts</name>
+      <mailList>
+        <Mail>
+          <string>Sender1</string>
+          <string>Receiver1</string>
+          <string>Drafts 1</string>
+          <string>draftsMessage1</string>
+        </Mail>
+      </mailList>
+    </drafts>
+    <deleted>
+      <name>Deleted</name>
+    </deleted>
+  </MailBox>
+  <MailBox>
+    <name>bobby@firmino.br</name>
+    <inbox>
+      <name>Inbox</name>
+      <mailList>
+        <Mail>
+          <string>Sender1b, Receiver1c</string>
+          <string>Receiver1b</string>
+          <string>Message 1b</string>
+          <string>messageMessage1b</string>
+        </Mail>
+        <Mail>
+          <string>Sender2b</string>
+          <string>Receiver2b</string>
+          <string>Message 2b</string>
+          <string>messageMessage2b</string>
+        </Mail>
+        <Mail>
+          <string>Sender3b</string>
+          <string>Receiver3b</string>
+          <string>Message 3b</string>
+          <string>messageMessage3b</string>
+        </Mail>
+        <Mail>
+          <string>Sender4b</string>
+          <string>Receiver4b</string>
+          <string>Message 4b</string>
+          <string>messageMessage4b</string>
+        </Mail>
+        <Mail>
+          <string>Sender5b</string>
+          <string>Receiver5b</string>
+          <string>Message 5b</string>
+          <string>messageMessage5b</string>
+        </Mail>
+        <Mail>
+          <string>Sender6b</string>
+          <string>Receiver6b</string>
+          <string>Message 6b</string>
+          <string>messageMessage6b</string>
+        </Mail>
+      </mailList>
+    </inbox>
+    <sent>
+      <name>Sent</name>
+      <mailList>
+        <Mail>
+          <string>Sender1b</string>
+          <string>Receiver1b</string>
+          <string>Sent 1b</string>
+          <string>sentMessage1b</string>
+        </Mail>
+        <Mail>
+          <string>Sender2b</string>
+          <string>Receiver2b</string>
+          <string>Sent 2b</string>
+          <string>sentMessage2b</string>
+        </Mail>
+        <Mail>
+          <string>Sender3b</string>
+          <string>Receiver3b</string>
+          <string>Sent 3b</string>
+          <string>sentMessage3b</string>
+        </Mail>
+      </mailList>
+    </sent>
+    <starred>
+      <name>Starred</name>
+      <mailList>
+        <Mail>
+          <string>Sender1b</string>
+          <string>Receiver1b</string>
+          <string>Starred 1b</string>
+          <string>StarredMessage1b</string>
+        </Mail>
+        <Mail>
+          <string>Sender2b</string>
+          <string>Receiver2b</string>
+          <string>Starred 2b</string>
+          <string>StarredMessage2b</string>
+        </Mail>
+        <Mail>
+          <string>Sender3b</string>
+          <string>Receiver3b</string>
+          <string>Starred 3b</string>
+          <string>StarredMessage3b</string>
+        </Mail>
+      </mailList>
+    </starred>
+    <drafts>
+      <name>Drafts</name>
+      <mailList>
+        <Mail>
+          <string>Sender1b</string>
+          <string>Receiver1b</string>
+          <string>Drafts 1b</string>
+          <string>draftsMessage1b</string>
+        </Mail>
+        <Mail>
+          <string>Sender2b</string>
+          <string>Receiver2b</string>
+          <string>Drafts 2b</string>
+          <string>draftsMessage2b</string>
+        </Mail>
+        <Mail>
+          <string>Sender3b</string>
+          <string>Receiver3b</string>
+          <string>Drafts 3b</string>
+          <string>draftsMessage3b</string>
+        </Mail>
+      </mailList>
+    </drafts>
+    <deleted>
+      <name>Deleted</name>
+    </deleted>
+  </MailBox>
+</ArrayOfMailBox>

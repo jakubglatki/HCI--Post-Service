@@ -13,6 +13,8 @@ namespace HCI__Post_Service
         static private MainWindow window;
         static private Mail currentMail;
         static private MailsList currentList;
+        static private MailBox currentMailBox;
+        static private MailFolder currentFolder;
 
         public ButtonManager() { }
         public ButtonManager(MainWindow mainWindow)
@@ -28,17 +30,12 @@ namespace HCI__Post_Service
             switch (result)
             {
                 case MessageBoxResult.Yes:
-                    if (currentList == window.deletedList1)
+                    if (GetCurrentFolder().name == "Deleted")
                     {
-                        window.deletedList1.Items.Remove(currentMail);
+                        currentList.Items.Remove(currentMail);
                         DisableButtons();
                     }
 
-                    else if (currentList == window.deletedList2)
-                    {
-                        window.deletedList2.Items.Remove(currentMail);
-                        DisableButtons();
-                    }
                     break;
                 case MessageBoxResult.No:
                     break;
@@ -48,18 +45,11 @@ namespace HCI__Post_Service
 
         public void MoveMailToDeleted()
         {
+            Manager manager = new Manager();
             currentList.Items.Remove(currentMail);
-            if (GetCurrentList() == window.messageList1 || GetCurrentList() == window.sentList1
-                || GetCurrentList() == window.starredList1 || GetCurrentList() == window.draftsList1)
+            if (GetCurrentFolder().name!="Deleted" )
             {
-                window.deletedList1.Items.Add(currentMail);
-                DisableButtons();
-                currentMail = null;
-            }
-
-            else
-            {
-                window.deletedList2.Items.Add(currentMail);
+                GetCurrentMailBox(manager.MailboxNameString()).deleted.mailList.Add(currentMail);
                 DisableButtons();
                 currentMail = null;
             }
@@ -76,6 +66,15 @@ namespace HCI__Post_Service
             currentList = mailsList;
         }
 
+        public void SetCurrentMailBox(MailBox mail)
+        {
+            currentMailBox = mail;
+        }
+        public void SetCurrentMailFolder(MailFolder mailsFolder)
+        {
+            currentFolder = mailsFolder;
+        }
+
 
         public Mail GetCurrentMail()
         {
@@ -85,6 +84,23 @@ namespace HCI__Post_Service
         public MailsList GetCurrentList()
         {
             return currentList;
+        }
+
+        public MailBox GetCurrentMailBox(string name)
+        {
+            foreach (MailBox m in window.mailBoxes)
+            {
+                if (m.name == name)
+                {
+                    return m;
+                }
+            }
+            return null;
+        }
+
+        public MailFolder GetCurrentFolder()
+        {
+            return currentFolder;
         }
 
         public void DisableButtons()

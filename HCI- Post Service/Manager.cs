@@ -42,6 +42,15 @@ namespace HCI__Post_Service
             buttonManager.SetCurrentMailsList(mailsList);
         }
 
+        public void SetCurrentMailBox(MailBox mail)
+        {
+            buttonManager.SetCurrentMailBox(mail);
+        }
+        public void SetCurrentFolder(MailFolder folder)
+        {
+            buttonManager.SetCurrentMailFolder(folder);
+        }
+
         public TreeViewItem GetCurrentTreeViewItem()
         {
             return treeViewItem;
@@ -61,6 +70,15 @@ namespace HCI__Post_Service
             return buttonManager.GetCurrentMail();
         }
 
+        public MailBox GetCurrentMailBox(string name)
+        {
+            return buttonManager.GetCurrentMailBox(name);
+        }
+
+        public MailFolder GetCurrentFolder()
+        {
+            return buttonManager.GetCurrentFolder();
+        }
 
         //Methods
 
@@ -69,27 +87,9 @@ namespace HCI__Post_Service
             mailManager.AddMailItem(mail, list);
         }
 
-        public void SetMessages()
-        {
-            SetVisibility();
-            buttonManager.DisableButtons();
-            mailManager.SetMessages();
-        }
-
-        public void SetVisibility()
-        {
-            window.sentList1.Visibility = Visibility.Hidden;
-            window.deletedList1.Visibility = Visibility.Hidden;
-            window.starredList1.Visibility = Visibility.Hidden;
-            window.messageList1.Visibility = Visibility.Hidden;
-            window.draftsList1.Visibility = Visibility.Hidden;
 
 
-            window.sentList2.Visibility = Visibility.Hidden;
-            window.deletedList2.Visibility = Visibility.Hidden;
-            window.starredList2.Visibility = Visibility.Hidden;
-            window.messageList2.Visibility = Visibility.Hidden;
-            window.draftsList2.Visibility = Visibility.Hidden;
+        public void SetVisibility() { 
 
             window.displayedMail.Visibility = Visibility.Hidden;
             window.bBack.Visibility = Visibility.Collapsed;
@@ -149,11 +149,26 @@ namespace HCI__Post_Service
             ShowSendMessageWindow(buttonManager.GetCurrentMail(), window, this, mailType);
         }
 
+        public string MailboxNameString()
+        {
+            if (window.treeViewMailBox.SelectedItem != null)
+            {
+                StackPanel selectedFolder = (StackPanel)window.treeViewMailBox.SelectedItem;
+                TreeViewItem selectedMailbox = (TreeViewItem)selectedFolder.Parent;
+                return selectedMailbox.Header.ToString();
+            }
+            else return window.mailBoxes[0].name;
+        }
+
         public void StarMessage()
         {
             mailManager.StarMessage();
         }
 
+        public void Deserialize(string path)
+        {
+            mailManager.Deserialize(path);
+        }
         public void ImportFile()
         {
             mailManager.ImportFile();

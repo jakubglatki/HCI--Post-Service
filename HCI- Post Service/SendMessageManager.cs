@@ -90,7 +90,7 @@ namespace HCI__Post_Service
 
         public void AddComboBoxElements(MainWindow mWindow)
         {
-            foreach(TreeViewItem header in mWindow.treeView1.Items)
+            foreach(TreeViewItem header in mWindow.treeViewMailBox.Items)
             {
                 messageWindow.senderSelect.Items.Add(header.Header);
             }
@@ -101,9 +101,10 @@ namespace HCI__Post_Service
 
         private void AddOneComboBoxElement(Manager manager, MainWindow mWindow)
         {
-            foreach (TreeViewItem header in mWindow.treeView1.Items)
+
+            foreach (TreeViewItem header in mWindow.treeViewMailBox.Items)
             {
-                if(manager.GetCurrentTreeViewItem().Header== header.Header)
+                if(manager.GetCurrentMailBox(manager.MailboxNameString()).name== header.Header.ToString())
                 messageWindow.senderSelect.Items.Add(header.Header);
             }
             messageWindow.senderSelect.SelectedItem = messageWindow.senderSelect.Items[0];
@@ -139,10 +140,7 @@ namespace HCI__Post_Service
             {
 
                 Mail mail = new Mail(messageWindow.senderSelect.SelectedItem.ToString(), messageWindow.receiverName.Text, messageWindow.subject.Text, messageWindow.content.Text, messageWindow.boxAttachments.Items.OfType<string>().ToList());
-                if (messageWindow.senderSelect.SelectedItem == mWindow.header1.Header)
-                    manager.AddMailItem(mail, mWindow.sentList1);
-                else if (messageWindow.senderSelect.SelectedItem == mWindow.header2.Header)
-                    manager.AddMailItem(mail, mWindow.sentList2);
+                manager.GetCurrentMailBox(manager.MailboxNameString()).sent.mailList.Add(mail);
             }
         }
 

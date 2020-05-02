@@ -9,11 +9,11 @@ namespace HCI__Post_Service
     public class MailBox
     {
         public string name;
-        public MailFolder inbox;
-        public MailFolder sent;
-        public MailFolder starred;
-        public MailFolder drafts;
-        public MailFolder deleted;
+        public MailFolder inbox { get; set; }
+        public MailFolder sent { get; set; }
+        public MailFolder starred { get; set; }
+        public MailFolder drafts { get; set; }
+        public MailFolder deleted { get; set; }
 
         public MailBox() { }
        public MailBox(string name)
@@ -34,6 +34,7 @@ namespace HCI__Post_Service
                 messageB.Add(message4b);
                 messageB.Add(message5b);
                 messageB.Add(message6b);
+               // MailsList mailsB = new MailsList(messageB);
                 this.inbox = new MailFolder("Inbox", messageB);
                 List<Mail> messageB1 = new List<Mail>();
 
@@ -44,6 +45,7 @@ namespace HCI__Post_Service
                 messageB1.Add(sent1b);
                 messageB1.Add(sent2b);
                 messageB1.Add(sent3b);
+              //  MailsList mailsB1 = new MailsList(messageB1);
                 this.sent = new MailFolder("Sent", messageB1);
 
 
@@ -55,6 +57,8 @@ namespace HCI__Post_Service
                 messageB2.Add(starred1b);
                 messageB2.Add(starred2b);
                 messageB2.Add(starred3b);
+               // MailsList mailsB2 = new MailsList(messageB2);
+
                 this.starred = new MailFolder("Starred", messageB2);
 
                 List<Mail> messageB3 = new List<Mail>();
@@ -65,11 +69,12 @@ namespace HCI__Post_Service
                 messageB3.Add(drafts1b);
                 messageB3.Add(drafts2b);
                 messageB3.Add(drafts3b);
+              //  MailsList mailsB3 = new MailsList(messageB3);
                 this.drafts = new MailFolder("Drafts", messageB3);
                 this.deleted = new MailFolder("Deleted");
             }
 
-            else
+            else if (name=="jurgen@klopp.de")
             {
                 List<string> list = new List<string>();
                 list.Add("olo.jpg");
@@ -84,6 +89,7 @@ namespace HCI__Post_Service
                 messageA.Add(message2);
                 messageA.Add(message3);
                 messageA.Add(message4);
+               // MailsList mailsA = new MailsList(messageA);
                 this.inbox = new MailFolder("Inbox", messageA);
 
 
@@ -92,6 +98,7 @@ namespace HCI__Post_Service
                 Mail sent2 = new Mail("Sender2", "Receiver2", "Sent 2", "sentMessage2");
                 messageA1.Add(sent1);
                 messageA1.Add(sent2);
+               // MailsList mailsA1 = new MailsList(messageA1);
                 this.sent = new MailFolder("Sent", messageA1);
                 List<Mail> messageA2 = new List<Mail>();
 
@@ -107,18 +114,25 @@ namespace HCI__Post_Service
                 messageA2.Add(starred3);
                 messageA2.Add(starred4);
                 messageA2.Add(starred5);
+              //  MailsList mailsA2 = new MailsList(messageA2);
                 this.starred = new MailFolder("Starred", messageA2);
 
                 List<Mail> messageA3 = new List<Mail>();
 
                 Mail drafts1 = new Mail("Sender1", "Receiver1", "Drafts 1", "draftsMessage1");
                 messageA3.Add(drafts1);
+               // MailsList mailsA3 = new MailsList(messageA3);
                 this.drafts = new MailFolder("Drafts", messageA3);
                 this.deleted = new MailFolder("Deleted");
 
             }
         }
 
+        public MailFolder GetCurrentFolder()
+        {
+            Manager manager = new Manager();
+            return manager.GetCurrentFolder();
+        }
         //public MailBox(string name, MailsList inboxMails, MailsList sentMails, MailsList starredMails, MailsList draftsMails, MailsList deletedMails)
         //{
         //    this.name = name;

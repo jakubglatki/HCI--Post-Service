@@ -6,14 +6,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
+using System.Xml;
+using System.Xml.Schema;
+using System.Xml.Serialization;
 
 namespace HCI__Post_Service
 {
     [Serializable]
-    public class MailsList : ListView, ISerializable
+ 
+    public class MailsList : ListView, ISerializable, IXmlSerializable
     {
-        public List<Mail> mails;
+        [XmlElement("Mail")]
+        public List<Mail> mails { get; set; }
         public MailsList()
         {
             this.MouseLeftButtonUp += SetCurrentMailList;
@@ -24,7 +30,7 @@ namespace HCI__Post_Service
            this.MouseLeftButtonUp += SetCurrentMailList;
         }
 
-        protected MailsList(SerializationInfo info, StreamingContext context)
+        public MailsList(SerializationInfo info, StreamingContext context)
         {
             //Clear out the current items in the ListViewItems if there are any
             base.Items.Clear();
@@ -65,11 +71,33 @@ namespace HCI__Post_Service
             list.Background = Brushes.Ivory;
             list.Margin = new Thickness(0, 0, 10, 10);
         }
-        private void SetCurrentMailList(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        public void SetCurrentMailList(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Manager manager = new Manager();
             manager.SetCurrentMailsList(this);
         }
 
+        public XmlSchema GetSchema()
+        {
+            return null;
+        }
+
+        public void ReadXml(XmlReader reader)
+        {
+            reader.ReadStartElement();
+            this.mails = (List<Mail>)new
+                          XmlSerializer(typeof(List<Mail>)).Deserialize(reader);
+            reader.ReadEndElement();
+        }
+
+        internal void SetCurrentMailsList(object sender, MouseButtonEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void WriteXml(XmlWriter writer)
+        {
+            new XmlSerializer(this.mails.GetType()).Serialize(writer, mails);
+        }
     }
 }

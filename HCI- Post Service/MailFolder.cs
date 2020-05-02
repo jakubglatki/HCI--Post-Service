@@ -8,8 +8,8 @@ namespace HCI__Post_Service
 {
     public class MailFolder
     {
-        public string name;
-        public List<Mail> mailList;
+        public string name { get; set; }
+        public List<Mail> mailList { get; set; }
 
         public MailFolder() { }
         public MailFolder(string name)
@@ -30,6 +30,12 @@ namespace HCI__Post_Service
         public string GetName()
         {
             return this.name;
+        }
+
+        private void FolderlSetCurrentFolder(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Manager manager = new Manager();
+            manager.SetCurrentFolder(this);
         }
     }
 }

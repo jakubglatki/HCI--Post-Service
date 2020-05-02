@@ -10,13 +10,19 @@ using System.Xml.Serialization;
 namespace HCI__Post_Service
 {
     [Serializable]
-    public class Mail : ListViewItem, ISerializable, IXmlSerializable
+    public class Mail : ListViewItem, IXmlSerializable
     {
+        [XmlAttribute("Sender")]
         public string Sender { get; set; }
+        [XmlAttribute("Receiver")]
         public string Receiver { get; set; }
+        [XmlAttribute("CopyReceiver")]
         public string CopyReceiver { get; set; }
+        [XmlAttribute("Topic")]
         public string Topic { get; set; }
+        [XmlAttribute("Content")]
         public string Content { get; set; }
+        [XmlAttribute("AttachmentList")]
         public List<string> AttachmentList { get; set; }
 
         public Mail() {
@@ -63,6 +69,10 @@ namespace HCI__Post_Service
             this.MouseDoubleClick += ShowMessageInSendMessageWindow;
         }
 
+        public Mail(SerializationInfo info, StreamingContext context)
+        {
+            Sender = (string)info.GetValue("Sender", typeof(string));
+        }
         private void ShowMessage(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Manager manager = new Manager();
@@ -81,12 +91,9 @@ namespace HCI__Post_Service
         private void MailSetCurrentMail(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Manager manager = new Manager();
-            if (manager.GetCurrentList() != manager.GetMainWindow().draftsList1 && manager.GetCurrentList() != manager.GetMainWindow().draftsList2)
-            {
                 manager.EnableButtons();
-            }
-            if (manager.GetCurrentList() != manager.GetMainWindow().sentList1 && manager.GetCurrentList() != manager.GetMainWindow().sentList2
-                 && manager.GetCurrentList() != manager.GetMainWindow().messageList1 && manager.GetCurrentList() != manager.GetMainWindow().messageList2)
+            
+            if (manager.GetCurrentFolder().name !="Inbox" && manager.GetCurrentFolder().name != "Sent")
             {
                 manager.GetMainWindow().buttonStar.IsEnabled = false;
             }
@@ -94,15 +101,6 @@ namespace HCI__Post_Service
             manager.SetCurrentMail(this);
         }
 
-        public void GetObjectData(SerializationInfo info, StreamingContext context)
-        {
-            info.AddValue("Author", Sender);
-            info.AddValue("Receiver", Receiver);
-            info.AddValue("Topic", Topic);
-            info.AddValue("Content", Content);
-            info.AddValue("Attachment list", AttachmentList);
-            info.AddValue("Copy receiver", CopyReceiver);
-        }
 
         public XmlSchema GetSchema()
         {
@@ -111,20 +109,21 @@ namespace HCI__Post_Service
 
         public void ReadXml(XmlReader reader)
         {
-            Type type = Type.GetType(reader.GetAttribute("type"));
             reader.ReadStartElement();
+
+
             this.Sender = (string)new
-                          XmlSerializer(type).Deserialize(reader);
+                          XmlSerializer(typeof(string)).Deserialize(reader);
             this.Receiver = (string)new
-                          XmlSerializer(type).Deserialize(reader);
+                          XmlSerializer(typeof(string)).Deserialize(reader);
             this.Topic = (string)new
-                          XmlSerializer(type).Deserialize(reader);
+                          XmlSerializer(typeof(string)).Deserialize(reader);
             this.Content = (string)new
-                          XmlSerializer(type).Deserialize(reader);
+                          XmlSerializer(typeof(string)).Deserialize(reader);
             this.AttachmentList = (List<string>)new
-                          XmlSerializer(type).Deserialize(reader);
+                          XmlSerializer(typeof(List<string>)).Deserialize(reader);
             this.CopyReceiver = (string)new
-                          XmlSerializer(type).Deserialize(reader);
+                          XmlSerializer(typeof(string)).Deserialize(reader);
             reader.ReadEndElement();
         }
 

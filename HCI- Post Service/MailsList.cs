@@ -14,20 +14,11 @@ using System.Xml.Serialization;
 
 namespace HCI__Post_Service
 {
-    [Serializable]
  
-    public class MailsList : ListView, ISerializable, IXmlSerializable
-    {
-        [XmlElement("Mail")]
-        public List<Mail> mails { get; set; }
+    public class MailsList : ListView { 
         public MailsList()
         {
             this.MouseLeftButtonUp += SetCurrentMailList;
-        }
-        public MailsList(List<Mail> mails)
-        {
-            this.mails = mails;
-           this.MouseLeftButtonUp += SetCurrentMailList;
         }
 
         public MailsList(SerializationInfo info, StreamingContext context)
@@ -45,20 +36,6 @@ namespace HCI__Post_Service
             }
         }
 
-        public void GetObjectData(SerializationInfo info, StreamingContext context)
-        {           
-            //Create a List of ListViewItems for serialization
-            List<ListViewItem> items = new List<ListViewItem>();
-
-            //Add each ListViewItem to the collection
-            foreach (ListViewItem item in base.Items)
-            {
-                items.Add(item);
-            }
-
-            //Add the collection to the SerializationInfo object
-            info.AddValue("ListViewItems", items);
-        }
 
         public void ListComponents(MailsList list)
         {
@@ -77,27 +54,6 @@ namespace HCI__Post_Service
             manager.SetCurrentMailsList(this);
         }
 
-        public XmlSchema GetSchema()
-        {
-            return null;
-        }
 
-        public void ReadXml(XmlReader reader)
-        {
-            reader.ReadStartElement();
-            this.mails = (List<Mail>)new
-                          XmlSerializer(typeof(List<Mail>)).Deserialize(reader);
-            reader.ReadEndElement();
-        }
-
-        internal void SetCurrentMailsList(object sender, MouseButtonEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void WriteXml(XmlWriter writer)
-        {
-            new XmlSerializer(this.mails.GetType()).Serialize(writer, mails);
-        }
     }
 }

@@ -26,7 +26,7 @@ namespace HCI__Post_Service
 
             currentMailBox = new MailBox();
             mailBoxes = new List<MailBox>();
-            manager.Deserialize("D:\\Users\\Jakub Głatki\\GitHub\\HCI-post-service\\HCI- Post Service\\HCI- Post Service\\initializationData.xml");
+            manager.Deserialize("initializationData.xml");
             TreeViewForMailBox(mailBoxes);
             foreach(Mail mail in mailBoxes[0].inbox.mailList)
             {

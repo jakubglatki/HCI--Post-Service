@@ -94,8 +94,6 @@ namespace HCI__Post_Service
             {
                 messageWindow.senderSelect.Items.Add(header.Header);
             }
-            //messageWindow.senderSelect.Items.Add(mWindow.header1.Header);
-            //messageWindow.senderSelect.Items.Add(mWindow.header2.Header);
             messageWindow.senderSelect.SelectedItem = messageWindow.senderSelect.Items[0];
         }
 

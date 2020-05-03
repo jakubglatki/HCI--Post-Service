@@ -178,5 +178,10 @@ namespace HCI__Post_Service
         {
             mailManager.ExportFile();
         }
+
+        public void TreeViewForMailBox(List<MailBox> mailboxes)
+        {
+            mailManager.TreeViewForMailBox(mailboxes);
+        }
     }
 }

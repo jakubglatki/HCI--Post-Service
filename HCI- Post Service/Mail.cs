@@ -91,7 +91,10 @@ namespace HCI__Post_Service
         private void MailSetCurrentMail(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Manager manager = new Manager();
+            if (manager.GetCurrentFolder().name != "Deleted")
+            {
                 manager.EnableButtons();
+            }
             
             if (manager.GetCurrentFolder().name !="Inbox" && manager.GetCurrentFolder().name != "Sent")
             {

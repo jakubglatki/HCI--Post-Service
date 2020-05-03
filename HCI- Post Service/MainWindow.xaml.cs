@@ -27,7 +27,7 @@ namespace HCI__Post_Service
             currentMailBox = new MailBox();
             mailBoxes = new List<MailBox>();
             manager.Deserialize("initializationData.xml");
-            TreeViewForMailBox(mailBoxes);
+            manager.TreeViewForMailBox(mailBoxes);
             foreach(Mail mail in mailBoxes[0].inbox.mailList)
             {
                 manager.AddMailItem(mail, mailsListXAML);
@@ -37,101 +37,6 @@ namespace HCI__Post_Service
             manager.SetCurrentFolder(mailBoxes[0].inbox);
         }
 
-        private void TreeViewForMailBox(List<MailBox> mailboxes)
-        {
-            treeViewMailBox.Items.Clear();
-            foreach(MailBox mail in mailboxes)
-            {
-                TreeViewItemForMailBox(mail.name);
-            }
-        }
-
-        private void TreeViewItemForMailBox(string name)
-        {
-            TreeViewItem mailbox = new TreeViewItem();
-            mailbox.Header = name;
-            mailbox.FontSize = 15;
-
-
-            CreateSubfolderStackPanelForMailbox("Inbox", "Resources/mailInbox.png", mailbox);
-            CreateSubfolderStackPanelForMailbox("Sent", "Resources/mailSent.png", mailbox);
-            CreateSubfolderStackPanelForMailbox("Starred", "Resources/mailStarred.png", mailbox);
-            CreateSubfolderStackPanelForMailbox("Drafts", "Resources/mailDrafts.png", mailbox);
-            CreateSubfolderStackPanelForMailbox("Deleted", "Resources/mailDeleted.png", mailbox);
-
-            treeViewMailBox.Items.Add(mailbox);
-        }
-
-        private void CreateSubfolderStackPanelForMailbox(string subfolderName, string iconPath, TreeViewItem parentMailbox)
-        {
-           // MailsList mailsList = new MailsList();
-            //mailsList.ListComponents(mailsList);
-            StackPanel stackPanel = new StackPanel() { Orientation = Orientation.Horizontal };
-            stackPanel.MouseLeftButtonUp += FolderSetCurrentFolder;
-            Image img = new Image();
-            img.Source = new BitmapImage(new Uri(iconPath, UriKind.Relative));
-            img.Width = 25;
-            img.Height = 25;
-            TextBlock label = new TextBlock() { Text = subfolderName };
-            label.Margin = new Thickness(10, 10, 0, 0);
-            stackPanel.Children.Add(img);
-            stackPanel.Children.Add(label);
-            // adding ready subfolder stackpanel into mailbox treeviewitem
-            parentMailbox.Items.Add(stackPanel);
-        }
-
-
-        private void FolderSetCurrentFolder(object sender, MouseButtonEventArgs e)
-        {
-             currentMailBox= manager.GetCurrentMailBox(manager.MailboxNameString());
-
-            if (sender is StackPanel)
-            {
-                string folderName = "";
-
-                StackPanel folder = (StackPanel)sender;
-
-              TextBlock text = (TextBlock)folder.Children[1];
-               folderName = text.Text; 
-
-                if (folderName == "Inbox")
-                {
-                    manager.SetCurrentFolder(currentMailBox.inbox);
-                }
-                else if (folderName == "Sent")
-                {
-                    manager.SetCurrentFolder(currentMailBox.sent);
-                }
-
-                else if (folderName == "Starred")
-                {
-                    manager.SetCurrentFolder(currentMailBox.starred);
-                }
-
-                else if (folderName == "Drafts")
-                {
-                    manager.SetCurrentFolder(currentMailBox.drafts);
-                }
-
-                else if (folderName == "Deleted")
-                {
-                    manager.SetCurrentFolder(currentMailBox.deleted);
-                }
-
-            }
-            manager.DisableButtons();
-            LoadMails(manager.GetCurrentFolder().mailList);
-        }
-
-        private void LoadMails(List<Mail> mails)
-        {
-            mailsListXAML.Items.Clear();
-            foreach (Mail mail in manager.GetCurrentMailBox(manager.MailboxNameString()).GetCurrentFolder().mailList)
-            {
-                manager.AddMailItem(mail, mailsListXAML);
-            }
-
-        }
         private void NewMessage(object sender, RoutedEventArgs e)
         {
             SendMessageWindow sendMessage = new SendMessageWindow(this, manager);

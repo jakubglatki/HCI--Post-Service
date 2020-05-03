@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Xml.Serialization;
 
 namespace HCI__Post_Service
@@ -119,6 +120,102 @@ namespace HCI__Post_Service
                 XmlSerializer xml = new XmlSerializer(typeof(List<MailBox>));
                 xml.Serialize(fs, window.mailBoxes);
             }
+        }
+
+
+
+        public void TreeViewForMailBox(List<MailBox> mailboxes)
+        {
+            window.treeViewMailBox.Items.Clear();
+            foreach (MailBox mail in mailboxes)
+            {
+                TreeViewItemForMailBox(mail.name);
+            }
+        }
+
+        private void TreeViewItemForMailBox(string name)
+        {
+            TreeViewItem mailbox = new TreeViewItem();
+            mailbox.Header = name;
+            mailbox.FontSize = 15;
+
+            CreateFolder(mailbox, "Inbox", "Resources/mailInbox.png");
+            CreateFolder(mailbox, "Sent", "Resources/mailSent.png");
+            CreateFolder(mailbox, "Starred", "Resources/mailStarred.png");
+            CreateFolder(mailbox, "Drafts", "Resources/mailDrafts.png");
+            CreateFolder(mailbox, "Deleted", "Resources/mailDeleted.png");
+
+            window.treeViewMailBox.Items.Add(mailbox);
+        }
+
+        private void CreateFolder(TreeViewItem mailbox, string name, string path)
+        {
+            StackPanel stackPanel = new StackPanel() { Orientation = Orientation.Horizontal };
+            stackPanel.MouseLeftButtonUp += FolderSetCurrentFolder;
+            Image image = new Image();
+            image.Source = new BitmapImage(new Uri(path, UriKind.Relative));
+            image.Width = 25;
+            image.Height = 25;
+            TextBlock label = new TextBlock() { Text = name };
+            label.Margin = new Thickness(10, 10, 0, 0);
+            stackPanel.Children.Add(image);
+            stackPanel.Children.Add(label);
+            mailbox.Items.Add(stackPanel);
+        }
+
+
+        private void FolderSetCurrentFolder(object sender, MouseButtonEventArgs e)
+        {
+            Manager manager = new Manager();
+            currentMailBox = manager.GetCurrentMailBox(manager.MailboxNameString());
+
+            if (sender is StackPanel)
+            {
+                string folderName = "";
+
+                StackPanel folder = (StackPanel)sender;
+
+                TextBlock text = (TextBlock)folder.Children[1];
+                folderName = text.Text;
+
+                if (folderName == "Inbox")
+                {
+                    manager.SetCurrentFolder(currentMailBox.inbox);
+                }
+                else if (folderName == "Sent")
+                {
+                    manager.SetCurrentFolder(currentMailBox.sent);
+                }
+
+                else if (folderName == "Starred")
+                {
+                    manager.SetCurrentFolder(currentMailBox.starred);
+                }
+
+                else if (folderName == "Drafts")
+                {
+                    manager.SetCurrentFolder(currentMailBox.drafts);
+                }
+
+                else if (folderName == "Deleted")
+                {
+                    manager.SetCurrentFolder(currentMailBox.deleted);
+                }
+
+            }
+            manager.DisableButtons();
+            LoadMails(manager.GetCurrentFolder().mailList);
+        }
+
+        private void LoadMails(List<Mail> mails)
+        {
+            Manager manager = new Manager();
+            window.mailsListXAML.Items.Clear();
+            foreach (Mail mail in manager.GetCurrentMailBox(manager.MailboxNameString()).GetCurrentFolder().mailList)
+            {
+                manager.AddMailItem(mail, window.mailsListXAML);
+            }
+
         }
     }
 }

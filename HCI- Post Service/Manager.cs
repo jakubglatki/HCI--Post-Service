@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -109,13 +110,13 @@ namespace HCI__Post_Service
             mailManager.MakeNewMailsList(mailsList, mail);
         }
 
-        public void DeletingMail()
+        public void DeletingMail(int index)
         {
-           buttonManager.DeletingMail();
+           buttonManager.DeletingMail( index);
         }
-        public void MoveMailToDeleted()
+        public void MoveMailToDeleted(int index)
         {
-            buttonManager.MoveMailToDeleted();
+            buttonManager.MoveMailToDeleted( index);
         }
         public void DisableButtons()
         {
@@ -179,7 +180,7 @@ namespace HCI__Post_Service
             mailManager.ExportFile();
         }
 
-        public void TreeViewForMailBox(List<MailBox> mailboxes)
+        public void TreeViewForMailBox(ObservableCollection<MailBox> mailboxes)
         {
             mailManager.TreeViewForMailBox(mailboxes);
         }

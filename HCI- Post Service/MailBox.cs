@@ -8,7 +8,7 @@ namespace HCI__Post_Service
 {
     public class MailBox
     {
-        public string name;
+        public String name;
         public MailFolder inbox { get; set; }
         public MailFolder sent { get; set; }
         public MailFolder starred { get; set; }

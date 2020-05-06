@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,7 +29,7 @@ namespace HCI__Post_Service
             messageWindow.buttonAttachment.Visibility = Visibility.Hidden;
             messageWindow.receiverName.Text = mail.Sender;
             messageWindow.subject.Text = mail.Topic;
-            messageWindow.content.Text = mail.Content;
+            messageWindow.content.Text = mail.MsgContent;
             if (mail.AttachmentList != null)
             {
                 foreach (String attachement in mail.AttachmentList)
@@ -81,7 +82,7 @@ namespace HCI__Post_Service
             messageWindow.buttonAttachment.Visibility = Visibility.Hidden;
             messageWindow.receiverName.Text = "Forward to";
             messageWindow.subject.Text = ("Fwd: " + mail.Topic);
-            messageWindow.content.Text = mail.Content;
+            messageWindow.content.Text = mail.MsgContent;
             messageWindow.buttonSend.Content = "Forward";
             AddOneComboBoxElement(manager, mWindow);
         }
@@ -136,8 +137,9 @@ namespace HCI__Post_Service
         {
             if (messageWindow.buttonSend.Content.ToString() == "Send" || messageWindow.buttonSend.Content.ToString() == "Reply" || messageWindow.buttonSend.Content.ToString() == "Reply to all" || messageWindow.buttonSend.Content.ToString() == "Forward")
             {
-
-                Mail mail = new Mail(messageWindow.senderSelect.SelectedItem.ToString(), messageWindow.receiverName.Text, messageWindow.subject.Text, messageWindow.content.Text, messageWindow.boxAttachments.Items.OfType<string>().ToList());
+                List<string> list = messageWindow.boxAttachments.Items.OfType<string>().ToList();
+                ObservableCollection<string> collection = new ObservableCollection<string>(list);
+                Mail mail = new Mail(messageWindow.senderSelect.SelectedItem.ToString(), messageWindow.receiverName.Text, messageWindow.subject.Text, messageWindow.content.Text, collection);
                 manager.GetCurrentMailBox(manager.MailboxNameString()).sent.mailList.Add(mail);
             }
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -27,7 +28,7 @@ namespace HCI__Post_Service
             base.Items.Clear();
 
             //Retrieve the List of ListViewItems you created on Serialization
-            List<ListViewItem> items = (List<ListViewItem>)info.GetValue("ListViewItems", typeof(List<ListViewItem>));
+            ObservableCollection<ListViewItem> items = (ObservableCollection<ListViewItem>)info.GetValue("ListViewItems", typeof(ObservableCollection<ListViewItem>));
 
             //Add each ListViewItem back into the collection
             foreach (ListViewItem item in items)
@@ -39,14 +40,14 @@ namespace HCI__Post_Service
 
         public void ListComponents(MailsList list)
         {
-            //it's the same as Height=auto
-            list.Height = Double.NaN;
-            list.HorizontalAlignment = HorizontalAlignment.Stretch;
-            Grid.SetColumn(list, 1);
-            Grid.SetColumnSpan(list, 2);
-            Grid.SetRow(list, 2);
-            list.Background = Brushes.Ivory;
-            list.Margin = new Thickness(0, 0, 10, 10);
+            ////it's the same as Height=auto
+            //list.Height = Double.NaN;
+            //list.HorizontalAlignment = HorizontalAlignment.Stretch;
+            //Grid.SetColumn(list, 1);
+            //Grid.SetColumnSpan(list, 2);
+            //Grid.SetRow(list, 2);
+            //list.Background = Brushes.Ivory;
+            //list.Margin = new Thickness(0, 0, 10, 10);
         }
         public void SetCurrentMailList(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -30,7 +31,7 @@ namespace HCI__Post_Service
 
         public void AddMailItem(Mail mail, MailsList list)
         {
-            ListViewItem newMailItem = new Mail(mail.Sender, mail.Receiver, mail.Topic, mail.Content, mail.AttachmentList);
+            ListViewItem newMailItem = new Mail(mail.Sender, mail.Receiver, mail.Topic, mail.MsgContent, mail.AttachmentList);
             newMailItem.FontSize = 18;
             newMailItem.Margin = new Thickness(5, 0, 0, 5);
             newMailItem.Content = mail.Topic;
@@ -43,7 +44,7 @@ namespace HCI__Post_Service
             window.senderMail.Text = mail.Sender;
             window.receiverMail.Text = mail.Receiver;
             window.topicMail.Text = mail.Topic;
-            window.contentMail.Text = mail.Content;
+            window.contentMail.Text = mail.MsgContent;
 
             window.displayedMail.Visibility = Visibility.Visible;
             window.bBack.Visibility = Visibility.Visible;
@@ -51,7 +52,7 @@ namespace HCI__Post_Service
 
         public void MakeNewMailsList(MailsList mailsList, params Mail[] mail)
         {
-            foreach(Mail mailParam in mail)
+            foreach (Mail mailParam in mail)
             {
                 AddMailItem(mailParam, mailsList);
             }
@@ -62,7 +63,7 @@ namespace HCI__Post_Service
             Manager manager = new Manager(window);
 
 
-            if (manager.GetCurrentFolder().name== "Inbox" || manager.GetCurrentFolder().name == "Sent")
+            if (manager.GetCurrentFolder().name == "Inbox" || manager.GetCurrentFolder().name == "Sent")
             {
                 manager.GetCurrentMailBox(manager.MailboxNameString()).starred.mailList.Add(manager.GetCurrentMail());
             }
@@ -88,11 +89,11 @@ namespace HCI__Post_Service
 
         public void Deserialize(string filePath)
         {
-            XmlSerializer deserializer = new XmlSerializer(typeof(List<MailBox>));
+            XmlSerializer deserializer = new XmlSerializer(typeof(ObservableCollection<MailBox>));
 
             using (FileStream fs = File.OpenRead(filePath))
             {
-                window.mailBoxes = (List<MailBox>)deserializer.Deserialize(fs);
+                window.mailBoxes = (ObservableCollection<MailBox>)deserializer.Deserialize(fs);
             }
         }
         public void ExportFile()
@@ -117,14 +118,14 @@ namespace HCI__Post_Service
             using (Stream fs = new FileStream(file, FileMode.Create, FileAccess.Write, FileShare.None))
             {
 
-                XmlSerializer xml = new XmlSerializer(typeof(List<MailBox>));
+                XmlSerializer xml = new XmlSerializer(typeof(ObservableCollection<MailBox>));
                 xml.Serialize(fs, window.mailBoxes);
             }
         }
 
 
 
-        public void TreeViewForMailBox(List<MailBox> mailboxes)
+        public void TreeViewForMailBox(ObservableCollection<MailBox> mailboxes)
         {
             window.treeViewMailBox.Items.Clear();
             foreach (MailBox mail in mailboxes)
@@ -203,11 +204,11 @@ namespace HCI__Post_Service
                 }
 
             }
-            manager.DisableButtons();
-            LoadMails(manager.GetCurrentFolder().mailList);
+            //manager.DisableButtons();
+            this.LoadMails(manager.GetCurrentFolder().mailList);
         }
 
-        private void LoadMails(List<Mail> mails)
+        private void LoadMails(ObservableCollection<Mail> mails)
         {
             Manager manager = new Manager();
             window.mailsListXAML.Items.Clear();

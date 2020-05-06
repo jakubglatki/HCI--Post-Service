@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,8 +9,8 @@ namespace HCI__Post_Service
 {
     public class MailFolder
     {
-        public string name { get; set; }
-        public List<Mail> mailList { get; set; }
+        public String name { get; set; }
+        public ObservableCollection<Mail> mailList { get; set; }
 
         public MailFolder() { }
         public MailFolder(string name)
@@ -17,7 +18,7 @@ namespace HCI__Post_Service
             this.name = name;
         }
 
-        public MailFolder(string name, List<Mail> mails)
+        public MailFolder(string name, ObservableCollection<Mail> mails)
         {
             this.name = name;
             this.mailList = mails;

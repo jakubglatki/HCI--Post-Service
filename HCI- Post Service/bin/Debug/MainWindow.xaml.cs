@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -16,8 +17,9 @@ namespace HCI__Post_Service
         string text = Properties.Settings.Default.Text;
         private Manager manager;
         private MailBox currentMailBox;
+        //public ObservableCollection<MailShow> mailsSource = new ObservableCollection<MailShow>();
 
-        public List<MailBox> mailBoxes;
+        public ObservableCollection<MailBox> mailBoxes;
         public MainWindow()
         {
             InitializeComponent();
@@ -25,16 +27,22 @@ namespace HCI__Post_Service
             manager = new Manager(this);
 
             currentMailBox = new MailBox();
-            mailBoxes = new List<MailBox>();
+            mailBoxes = new ObservableCollection<MailBox>();
             manager.Deserialize("initializationData.xml");
             manager.TreeViewForMailBox(mailBoxes);
-            foreach(Mail mail in mailBoxes[0].inbox.mailList)
+            foreach (Mail mail in mailBoxes[0].inbox.mailList)
             {
                 manager.AddMailItem(mail, mailsListXAML);
             }
             mailsListXAML.ListComponents(mailsListXAML);
 
             manager.SetCurrentFolder(mailBoxes[0].inbox);
+            //mailsListXAML.ItemsSource = manager.GetCurrentFolder().mailList;
+            //for (int i = 0; i < manager.GetCurrentFolder().mailList.Count; i++)
+            //{
+            //    mailsSource.Add(new MailShow(manager.GetCurrentFolder().mailList[i]));
+            //}
+            //mailsListXAML.ItemsSource = mailsSource;
         }
 
         private void NewMessage(object sender, RoutedEventArgs e)
@@ -68,15 +76,18 @@ namespace HCI__Post_Service
       
         private void ButtonDeleteClick(object sender, RoutedEventArgs e)
         {
-            if (manager.GetCurrentFolder().name=="Deleted")
+            int index = this.mailsListXAML.SelectedIndex;
+            if (index >= 0)
             {
-                manager.DeletingMail();
+                if (manager.GetCurrentFolder().name == "Deleted")
+                {
+                    manager.DeletingMail(index);
+                }
+                else
+                {
+                    manager.MoveMailToDeleted(index);
+                }
             }
-            else
-            {
-                manager.MoveMailToDeleted();
-            }
-
         }
 
         private void ReplyMessage(object sender, RoutedEventArgs e)

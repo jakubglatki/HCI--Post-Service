@@ -6,6 +6,10 @@
         xmlns:local="clr-namespace:HCI__Post_Service"
         mc:Ignorable="d"
         Title="Post Service" Height="640" Width="1280">
+
+    <Window.DataContext>
+        <local:Mail/>
+    </Window.DataContext>
     <Grid x:Name="gridView1">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="320" />
@@ -161,12 +165,26 @@
                             <TextBlock Margin="10,0,0,0">Exit</TextBlock>
                         </StackPanel>
                     </MenuItem.Header>
-                    </MenuItem>
+                </MenuItem>
             </MenuItem>
         </Menu>
 
-        <local:MailsList x:Name="mailsListXAML" Height="auto" HorizontalAlignment="Stretch"  Grid.Column="1" Margin="0,0,10,10" Grid.Row="2" Grid.ColumnSpan="2" Background="Ivory">
-
+        <local:MailsList x:Name="mailsListXAML" Height="auto" HorizontalAlignment="Stretch"  Grid.Column="1" Margin="0,0,10,10" Grid.Row="2" Grid.ColumnSpan="2" Background="Ivory" >
+            <local:MailsList.ItemTemplate>
+                <DataTemplate DataType="ListViewItem">
+                    <Grid Name="Item">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="{Binding Topic}"/>
+                        <TextBlock Text="{Binding MsgContent}" Grid.Row="1"/>
+                    </Grid>
+                </DataTemplate>
+            </local:MailsList.ItemTemplate>
         </local:MailsList>
 
         <ToolBarTray x:Name="buttonTray" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" HorizontalAlignment="Left"  Margin="10,20,0,0" VerticalAlignment="Top"  Background="Ivory">

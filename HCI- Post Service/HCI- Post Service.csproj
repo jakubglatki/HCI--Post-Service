@@ -57,6 +57,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ButtonManager.cs" />
+    <Compile Include="MailShow.cs" />
     <Compile Include="deleteMessage.xaml.cs">
       <DependentUpon>deleteMessage.xaml</DependentUpon>
     </Compile>

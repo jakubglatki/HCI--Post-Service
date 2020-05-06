@@ -23,15 +23,16 @@ namespace HCI__Post_Service
         }
 
 
-        public void DeletingMail()
+        public void DeletingMail(int index)
         {
-
+            Manager manager = new Manager();
             MessageBoxResult result = MessageBox.Show("Do you really wish to delete the message?", "Delete Message", MessageBoxButton.YesNo);
             switch (result)
             {
                 case MessageBoxResult.Yes:
                     if (GetCurrentFolder().name == "Deleted")
                     {
+                        GetCurrentMailBox(manager.MailboxNameString()).GetCurrentFolder().mailList.RemoveAt(index);
                         currentList.Items.Remove(currentMail);
                         DisableButtons();
                     }
@@ -43,12 +44,13 @@ namespace HCI__Post_Service
 
         }
 
-        public void MoveMailToDeleted()
+        public void MoveMailToDeleted(int index)
         {
             Manager manager = new Manager();
             currentList.Items.Remove(currentMail);
             if (GetCurrentFolder().name!="Deleted" )
             {
+                manager.GetCurrentFolder().mailList.RemoveAt(index);
                 GetCurrentMailBox(manager.MailboxNameString()).deleted.mailList.Add(currentMail);
                 DisableButtons();
                 currentMail = null;

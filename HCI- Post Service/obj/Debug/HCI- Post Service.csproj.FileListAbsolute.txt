@@ -19,3 +19,22 @@ D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Servi
 D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\SendMessageWindow.g.cs
 D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\SendMessageWindow.baml
 D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\HCI- Post Service.csproj.CoreCompileInputs.cache
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\UserControlFolder\TextControl.g.cs
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\UserControlFolder\TextControl.baml
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\bin\Debug\Xceed.Wpf.AvalonDock.dll
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\bin\Debug\Xceed.Wpf.Toolkit.dll
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\bin\Debug\cs-CZ\Xceed.Wpf.AvalonDock.resources.dll
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\bin\Debug\de\Xceed.Wpf.AvalonDock.resources.dll
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\bin\Debug\es\Xceed.Wpf.AvalonDock.resources.dll
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\bin\Debug\fr\Xceed.Wpf.AvalonDock.resources.dll
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\bin\Debug\hu\Xceed.Wpf.AvalonDock.resources.dll
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\bin\Debug\it\Xceed.Wpf.AvalonDock.resources.dll
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\bin\Debug\pt-BR\Xceed.Wpf.AvalonDock.resources.dll
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\bin\Debug\ro\Xceed.Wpf.AvalonDock.resources.dll
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\HCI- Post Service.csproj.CopyComplete

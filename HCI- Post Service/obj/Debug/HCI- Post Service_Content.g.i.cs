@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("export.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("usercontrolfolder/underline.png")]
 
 

@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:HCI__Post_Service"
+        xmlns:local="clr-namespace:HCI__Post_Service" xmlns:local1="clr-namespace:HCI__Post_Service.UserControlFolder"
         mc:Ignorable="d"
         Title="Send Message" Height="640" Width="1280">
     <Grid x:Name="gridViewSendMessage">
@@ -37,7 +37,7 @@
 
         <TextBox x:Name="subject" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="3" Grid.ColumnSpan="2" TextWrapping="Wrap" Text="Subject" VerticalAlignment="Center" GotFocus="TextGotFocus"/>
 
-        <TextBox x:Name="content" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="4" TextWrapping="Wrap" Text="Mail content" VerticalAlignment="Stretch"  Grid.ColumnSpan="2" GotFocus="TextGotFocus"/>
+        <local1:TextControl x:Name="content" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="4" VerticalAlignment="Stretch"  Grid.ColumnSpan="2" />
 
         <Button x:Name="buttonAttachment" Content="Add Attachment" Grid.Column="2" HorizontalAlignment="Left" Margin="50,10,0,0" Grid.Row="5" VerticalAlignment="Top" Width="140" Height="30" Background="Ivory" FontSize="13" Click="AddAttachment"/>
 

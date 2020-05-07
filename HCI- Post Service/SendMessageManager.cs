@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 
 namespace HCI__Post_Service
 {
@@ -23,13 +24,13 @@ namespace HCI__Post_Service
             messageWindow.Title = "View message";
             messageWindow.subject.IsReadOnly = true;
             messageWindow.receiverName.IsReadOnly = true;
-            messageWindow.content.IsReadOnly = true;
+            messageWindow.content.richTextBox.IsReadOnly = true;
 
             messageWindow.senderSelect.Visibility = Visibility.Hidden;
             messageWindow.buttonAttachment.Visibility = Visibility.Hidden;
             messageWindow.receiverName.Text = mail.Sender;
             messageWindow.subject.Text = mail.Topic;
-            messageWindow.content.Text = mail.MsgContent;
+            messageWindow.content.richTextBox.Document.Blocks.Add(new Paragraph(new Run(mail.MsgContent))); 
             if (mail.AttachmentList != null)
             {
                 foreach (String attachement in mail.AttachmentList)
@@ -46,7 +47,7 @@ namespace HCI__Post_Service
             messageWindow.Title = "Send reply";
             messageWindow.subject.IsReadOnly = false;
             messageWindow.receiverName.IsReadOnly = true;
-            messageWindow.content.IsReadOnly = false;
+            messageWindow.content.richTextBox.IsReadOnly = false;
 
             //if there are more than one receivers respond just to first one
             string sender = mail.Sender;
@@ -65,7 +66,7 @@ namespace HCI__Post_Service
             messageWindow.Title = "Send reply to all";
             messageWindow.subject.IsReadOnly = false;
             messageWindow.receiverName.IsReadOnly = true;
-            messageWindow.content.IsReadOnly = false;
+            messageWindow.content.richTextBox.IsReadOnly = false;
 
             messageWindow.receiverName.Text = mail.Sender;
             messageWindow.subject.Text = ("Re: " + mail.Topic);
@@ -77,12 +78,12 @@ namespace HCI__Post_Service
             messageWindow.Title = "Send message forward";
             messageWindow.subject.IsReadOnly = true;
             messageWindow.receiverName.IsReadOnly = false;
-            messageWindow.content.IsReadOnly = true;
+            messageWindow.content.richTextBox.IsReadOnly = true;
 
             messageWindow.buttonAttachment.Visibility = Visibility.Hidden;
             messageWindow.receiverName.Text = "Forward to";
             messageWindow.subject.Text = ("Fwd: " + mail.Topic);
-            messageWindow.content.Text = mail.MsgContent;
+            messageWindow.content.richTextBox.Document.Blocks.Add(new Paragraph(new Run(mail.MsgContent)));
             messageWindow.buttonSend.Content = "Forward";
             AddOneComboBoxElement(manager, mWindow);
         }
@@ -139,7 +140,8 @@ namespace HCI__Post_Service
             {
                 List<string> list = messageWindow.boxAttachments.Items.OfType<string>().ToList();
                 ObservableCollection<string> collection = new ObservableCollection<string>(list);
-                Mail mail = new Mail(messageWindow.senderSelect.SelectedItem.ToString(), messageWindow.receiverName.Text, messageWindow.subject.Text, messageWindow.content.Text, collection);
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////change content
+                Mail mail = new Mail(messageWindow.senderSelect.SelectedItem.ToString(), messageWindow.receiverName.Text, messageWindow.subject.Text, "content", collection);
                 manager.GetCurrentMailBox(manager.MailboxNameString()).sent.mailList.Add(mail);
             }
         }

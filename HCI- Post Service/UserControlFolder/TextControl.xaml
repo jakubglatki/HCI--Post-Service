@@ -15,18 +15,18 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Expander x:Name="buttonExpander" Background="Ivory" Grid.Row="0" IsExpanded="True" HorizontalAlignment="Stretch">
+        <Expander x:Name="expander" Background="Ivory" Grid.Row="0" IsExpanded="True" HorizontalAlignment="Stretch">
             <DockPanel x:Name="panelButtonsExpander"  HorizontalAlignment="Stretch">
                 
-                <Button  Margin="50,0,0,10"  BorderBrush="Ivory" x:Name="bBold" Background="Ivory" Click="BoldButton">
+                <ToggleButton  Margin="50,0,0,10"  BorderBrush="Ivory" x:Name="bBold" Background="Ivory" Click="BoldButton">
                     <Image Width="25" Height="25" Source="bold.png" />
-                </Button>
-                <Button  Margin="20,0,0,10"  BorderBrush="Ivory" x:Name="bItalic" Background="Ivory" Click="ItalicButton">
+                </ToggleButton>
+                <ToggleButton  Margin="20,0,0,10"  BorderBrush="Ivory" x:Name="bItalic" Background="Ivory" Click="ItalicButton">
                     <Image Width="25" Height="25" Source="italic.png" />
-                </Button>
-                <Button  Margin="20,0,0,10"  BorderBrush="Ivory" x:Name="bUnderline" Background="Ivory" Click="UnderlineButton">
+                </ToggleButton>
+                <ToggleButton  Margin="20,0,0,10"  BorderBrush="Ivory" x:Name="bUnderline" Background="Ivory" Click="UnderlineButton">
                     <Image Width="25" Height="25" Source="underline.png" />
-                </Button>
+                </ToggleButton>
 
 
                 <ComboBox x:Name="cbSize" Margin="30,0,0,10" Width="40" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontWeight="Medium" SelectionChanged="FontSizeChanged"/>

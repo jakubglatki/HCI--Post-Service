@@ -39,6 +39,11 @@ namespace HCI__Post_Service
                 }
             }
             messageWindow.buttonSend.Content = "Close";
+
+            //Might need to change it so the text won't always be on font Arial 11
+            messageWindow.content.expander.IsEnabled = false;
+            messageWindow.content.expander.IsExpanded = false;
+
         }
 
         public void ReplyMessage(Mail mail, Manager manager, MainWindow mWindow)
@@ -86,6 +91,8 @@ namespace HCI__Post_Service
             messageWindow.content.richTextBox.Document.Blocks.Add(new Paragraph(new Run(mail.MsgContent)));
             messageWindow.buttonSend.Content = "Forward";
             AddOneComboBoxElement(manager, mWindow);
+            messageWindow.content.expander.IsEnabled = false;
+            messageWindow.content.expander.IsExpanded = false;
         }
 
 
@@ -141,7 +148,9 @@ namespace HCI__Post_Service
                 List<string> list = messageWindow.boxAttachments.Items.OfType<string>().ToList();
                 ObservableCollection<string> collection = new ObservableCollection<string>(list);
                 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////change content
-                Mail mail = new Mail(messageWindow.senderSelect.SelectedItem.ToString(), messageWindow.receiverName.Text, messageWindow.subject.Text, "content", collection);
+                string content = new TextRange(messageWindow.content.richTextBox.Document.ContentStart, messageWindow.content.richTextBox.Document.ContentEnd).Text;
+
+                Mail mail = new Mail(messageWindow.senderSelect.SelectedItem.ToString(), messageWindow.receiverName.Text, messageWindow.subject.Text, content, collection);
                 manager.GetCurrentMailBox(manager.MailboxNameString()).sent.mailList.Add(mail);
             }
         }

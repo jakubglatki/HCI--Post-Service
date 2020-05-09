@@ -94,9 +94,15 @@ namespace HCI__Post_Service.UserControlFolder
 
         private void FontFamilyChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (cbFontFamily.SelectedItem != null)
-                richTextBox.Selection.ApplyPropertyValue(Inline.FontFamilyProperty, cbFontFamily.SelectedItem);
-
+            foreach (var item in cbFontFamily.Items)
+            {
+                System.Windows.Media.FontFamily font = new System.Windows.Media.FontFamily(item.ToString());
+                if (font.ToString()==cbFontFamily.SelectedItem.ToString())
+                {
+                    richTextBox.Selection.ApplyPropertyValue(RichTextBox.FontFamilyProperty, font);
+                    break;
+                }
+            }
         }
 
         private void SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<System.Windows.Media.Color?> e)
@@ -117,5 +123,7 @@ namespace HCI__Post_Service.UserControlFolder
         {
             richTextBox.Selection.ClearAllProperties();
         }
+
+
     }
 }

@@ -1,19 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace HCI__Post_Service.UserControlFolder
 {
@@ -58,12 +49,12 @@ namespace HCI__Post_Service.UserControlFolder
         private void BoldButton(object sender, RoutedEventArgs e)
         {
 
-            var fontWeight = richTextBox.Selection.GetPropertyValue(RichTextBox.FontWeightProperty);
-            if (fontWeight.Equals(FontWeights.Bold)) 
+            if (richTextBox.Selection.GetPropertyValue(RichTextBox.FontWeightProperty).Equals(FontWeights.Bold)) 
             {
                 richTextBox.Selection.ApplyPropertyValue(RichTextBox.FontWeightProperty, FontWeights.Normal);
+
             }
-            else // bold text
+            else
             {
                 richTextBox.Selection.ApplyPropertyValue(RichTextBox.FontWeightProperty, FontWeights.Bold);
             }
@@ -72,12 +63,11 @@ namespace HCI__Post_Service.UserControlFolder
 
         private void ItalicButton(object sender, RoutedEventArgs e)
         {
-            var fontStyle = richTextBox.Selection.GetPropertyValue(RichTextBox.FontStyleProperty);
-            if (fontStyle.Equals(FontStyles.Italic)) 
+            if (richTextBox.Selection.GetPropertyValue(RichTextBox.FontStyleProperty).Equals(FontStyles.Italic)) 
             {
                 richTextBox.Selection.ApplyPropertyValue(RichTextBox.FontStyleProperty, FontStyles.Normal);
             }
-            else // bold text
+            else
             {
                 richTextBox.Selection.ApplyPropertyValue(RichTextBox.FontStyleProperty, FontStyles.Italic);
             }
@@ -85,12 +75,11 @@ namespace HCI__Post_Service.UserControlFolder
 
         private void UnderlineButton(object sender, RoutedEventArgs e)
         {
-            var fontUnderlined = richTextBox.Selection.GetPropertyValue(Run.TextDecorationsProperty);
-            if (fontUnderlined.Equals(TextDecorations.Underline)) 
+            if (richTextBox.Selection.GetPropertyValue(Run.TextDecorationsProperty).Equals(TextDecorations.Underline)) 
             {
                 richTextBox.Selection.ApplyPropertyValue(Run.TextDecorationsProperty, null);
             }
-            else // bold text
+            else 
             {
                 richTextBox.Selection.ApplyPropertyValue(Run.TextDecorationsProperty, TextDecorations.Underline);
             }
@@ -101,7 +90,32 @@ namespace HCI__Post_Service.UserControlFolder
             String sSize = cbSize.SelectedItem.ToString();
             double size = (double)Int32.Parse(sSize);
             richTextBox.Selection.ApplyPropertyValue(RichTextBox.FontSizeProperty, size);
-            
+        }
+
+        private void FontFamilyChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbFontFamily.SelectedItem != null)
+                richTextBox.Selection.ApplyPropertyValue(Inline.FontFamilyProperty, cbFontFamily.SelectedItem);
+
+        }
+
+        private void SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs<System.Windows.Media.Color?> e)
+        {
+            if (richTextBox != null)
+            {
+                if (colorPicker.SelectedColor.HasValue)
+                {
+                    BrushConverter brushConverter = new BrushConverter();
+                    string color = colorPicker.SelectedColor.ToString();
+
+                    richTextBox.Selection.ApplyPropertyValue(RichTextBox.ForegroundProperty, brushConverter.ConvertFrom(color));
+                }
+            }
+        }
+
+        private void ClearAllFormating(object sender, RoutedEventArgs e)
+        {
+            richTextBox.Selection.ClearAllProperties();
         }
     }
 }

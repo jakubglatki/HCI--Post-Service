@@ -31,11 +31,11 @@
 
                 <ComboBox x:Name="cbSize" Margin="30,0,0,10" Width="40" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontWeight="Medium" SelectionChanged="FontSizeChanged"/>
 
-                <xctk:ColorPicker Name="colorPicker" Margin="30,0,0,10" Width="50" />
+                <xctk:ColorPicker Name="colorPicker" Margin="30,0,0,10" Width="50" SelectedColor="Black" SelectedColorChanged="SelectedColorChanged"/>
 
-                <ComboBox x:Name="cbFontFamily" Margin="30,0,0,10" Height="20" Width="130"/>
+                <ComboBox x:Name="cbFontFamily" Margin="30,0,0,10" Height="20" Width="130" SelectionChanged="FontFamilyChanged" />
 
-                <Button  Margin="50,0,50,10" FontSize="13" BorderBrush="Black" HorizontalAlignment="Right" x:Name="bClearFormatting" Content="Clear all formating"  />
+                <Button  Margin="50,0,50,10" FontSize="13" BorderBrush="Black" HorizontalAlignment="Right" x:Name="bClearFormatting" Content="Clear all formating" Click="ClearAllFormating" />
 
             </DockPanel>
             

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -41,13 +42,28 @@ namespace HCI__Post_Service
 
         public void ShowMessage(Mail mail)
         {
-            window.senderMail.Text = mail.Sender;
-            window.receiverMail.Text = mail.Receiver;
-            window.topicMail.Text = mail.Topic;
-            window.contentMail.Text = mail.MsgContent;
+            window.displayedMail.senderMail.Text = mail.Sender;
+            window.displayedMail.receiverMail.Text = mail.Receiver;
+            window.displayedMail.topicMail.Text = mail.Topic;
+            ConvertMailContent(mail);
 
             window.displayedMail.Visibility = Visibility.Visible;
             window.bBack.Visibility = Visibility.Visible;
+        }
+
+        private void ConvertMailContent(Mail mail)
+        {
+            string strEncoding = mail.MsgContent;
+            if (strEncoding.Contains("</Section>"))
+            {
+                byte[] byteArray = Encoding.ASCII.GetBytes(strEncoding);
+                using (MemoryStream ms = new MemoryStream(byteArray))
+                {
+                    TextRange tr = new TextRange(window.displayedMail.contentMail.Document.ContentStart,
+                        window.displayedMail.contentMail.Document.ContentEnd);
+                    tr.Load(ms, DataFormats.Xaml);
+                }
+            }
         }
 
         public void MakeNewMailsList(MailsList mailsList, params Mail[] mail)
@@ -205,6 +221,7 @@ namespace HCI__Post_Service
 
             }
             //manager.DisableButtons();
+            window.displayedMail.Visibility = Visibility.Hidden;
             this.LoadMails(manager.GetCurrentFolder().mailList);
         }
 

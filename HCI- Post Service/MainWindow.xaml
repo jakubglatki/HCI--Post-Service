@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:HCI__Post_Service"
+        xmlns:local="clr-namespace:HCI__Post_Service" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" xmlns:local1="clr-namespace:HCI__Post_Service.UserControlFolder"
         mc:Ignorable="d"
         Title="Post Service" Height="640" Width="1280">
 
@@ -26,7 +26,7 @@
         <Rectangle Fill="LightCoral" IsHitTestVisible="False" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1"/>
 
 
-        <TextBox Grid.Column="0" Grid.ColumnSpan="3" Name="searchBox" HorizontalAlignment="Center" Width="400"  VerticalAlignment="Center" Margin="10,10,10,10" Text="Search" FontSize="18" GotFocus="SearchGotFocus"/>
+        <xctk:WatermarkTextBox Grid.Column="0" Grid.ColumnSpan="3" Name="searchBox" HorizontalAlignment="Center" Width="400"  VerticalAlignment="Center" Margin="10,10,10,10" Watermark="Search" FontSize="18"/>
 
 
         <StackPanel x:Name="mailsBoxPanel" HorizontalAlignment="Stretch" Margin="10,0,10,-10" Grid.Row="2"  Width="300" Height="Auto">
@@ -237,12 +237,8 @@
             </ToolBar>
             </ToolBarTray>
 
-        <StackPanel x:Name="displayedMail" Visibility="Hidden" Height="auto" HorizontalAlignment="Stretch"  Grid.Column="1" Margin="0,0,10,10" Grid.Row="2" Grid.ColumnSpan="2" Background="Ivory">
-            <TextBox x:Name="senderMail" Height="25" IsReadOnly="True" BorderThickness="0"/>
-            <TextBox x:Name="receiverMail" Height="25" IsReadOnly="True" BorderThickness="0"/>
-            <TextBox x:Name="topicMail" Height="40" FontWeight="Bold" IsReadOnly="True" BorderThickness="0"/>
-            <TextBox x:Name="contentMail" Height="auto" IsReadOnly="True" Background="Ivory" BorderThickness="0"/>
-        </StackPanel>
+        <local1:ShowEmailMainWindowControl x:Name="displayedMail" Visibility="Hidden" Height="auto" HorizontalAlignment="Stretch"  Grid.Column="1" Margin="0,0,10,10" Grid.Row="2" Grid.ColumnSpan="2" Background="Ivory"/>
+
 
     </Grid>
 </Window>

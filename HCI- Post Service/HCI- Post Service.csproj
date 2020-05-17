@@ -74,9 +74,6 @@
     </ApplicationDefinition>
     <Compile Include="ButtonManager.cs" />
     <Compile Include="MailShow.cs" />
-    <Compile Include="deleteMessage.xaml.cs">
-      <DependentUpon>deleteMessage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MailBox.cs" />
     <Compile Include="MailFolder.cs" />
     <Compile Include="MailManager.cs" />
@@ -88,13 +85,12 @@
       <DependentUpon>SendMessageWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
+    <Compile Include="UserControlFolder\ShowEmailMainWindowControl.xaml.cs">
+      <DependentUpon>ShowEmailMainWindowControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControlFolder\TextControl.xaml.cs">
       <DependentUpon>TextControl.xaml</DependentUpon>
     </Compile>
-    <Page Include="deleteMessage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -110,6 +106,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Page Include="SendMessageWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControlFolder\ShowEmailMainWindowControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -191,13 +191,13 @@
     <Resource Include="Resources\export.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="UserControlFolder\bold.png" />
+    <Resource Include="Resources\bold.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="UserControlFolder\italic.png" />
+    <Resource Include="Resources\italic.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="UserControlFolder\underline.png" />
+    <Resource Include="Resources\underline.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

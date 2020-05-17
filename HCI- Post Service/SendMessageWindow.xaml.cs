@@ -92,16 +92,6 @@ namespace HCI__Post_Service
             }
         }
 
-        private void TextGotFocus(object sender, RoutedEventArgs e)
-        {
-            
-            TextBox textBox = (TextBox)sender;
-            if (!textBox.IsReadOnly)
-            {
-                textBox.Text = string.Empty;
-                textBox.GotFocus -= TextGotFocus;
-            }
-        }
 
         private void AddAttachment(object sender, RoutedEventArgs e)
         {

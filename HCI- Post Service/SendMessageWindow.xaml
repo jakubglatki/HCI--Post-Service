@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:HCI__Post_Service" xmlns:local1="clr-namespace:HCI__Post_Service.UserControlFolder"
+        xmlns:local="clr-namespace:HCI__Post_Service" xmlns:local1="clr-namespace:HCI__Post_Service.UserControlFolder" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="Send Message" Height="640" Width="1280">
     <Grid x:Name="gridViewSendMessage">
@@ -32,10 +32,12 @@
 
         <ComboBox x:Name="senderSelect" Grid.Column="1" HorizontalAlignment="Left"  Grid.Row="1" VerticalAlignment="Center" Width="300"/>
 
+        <xctk:WatermarkTextBox Grid.Column="1" x:Name="receiverName" Watermark="Receiver" HorizontalAlignment="Stretch"  Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Center"/>
 
-        <TextBox x:Name="receiverName" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="2" Grid.ColumnSpan="2" TextWrapping="Wrap" Text="Receiver" VerticalAlignment="Center" GotFocus="TextGotFocus"/>
 
-        <TextBox x:Name="subject" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="3" Grid.ColumnSpan="2" TextWrapping="Wrap" Text="Subject" VerticalAlignment="Center" GotFocus="TextGotFocus"/>
+        <xctk:WatermarkTextBox x:Name="subject" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Center" FontWeight="Bold" Watermark="Subject"/>
+
+
 
         <local1:TextControl x:Name="content" Grid.Column="1" HorizontalAlignment="Stretch"  Grid.Row="4" VerticalAlignment="Stretch"  Grid.ColumnSpan="2" />
 

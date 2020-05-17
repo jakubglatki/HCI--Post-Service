@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\App.xaml
-4969040675
+4-2029278865
 
-20-2027521433
+20-662076327
 19-1542999400
-deleteMessage.xaml;MainWindow.xaml;SendMessageWindow.xaml;UserControlFolder\TextControl.xaml;
+MainWindow.xaml;SendMessageWindow.xaml;UserControlFolder\ShowEmailMainWindowControl.xaml;UserControlFolder\TextControl.xaml;
 
 True
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,6 +44,7 @@ namespace HCI__Post_Service
             //Might need to change it so the text won't always be on font Arial 11
             messageWindow.content.expander.IsEnabled = false;
             messageWindow.content.expander.IsExpanded = false;
+            ConvertMailsContent(mail);
 
         }
 
@@ -64,6 +66,7 @@ namespace HCI__Post_Service
             messageWindow.buttonSend.Content = "Reply";
             AddOneComboBoxElement(manager, mWindow);
             mail.Sender = sender;
+            ConvertMailsContent(mail);
         }
         public void ReplyToAllMessage(Mail mail, Manager manager, MainWindow mWindow)
         {
@@ -77,6 +80,7 @@ namespace HCI__Post_Service
             messageWindow.subject.Text = ("Re: " + mail.Topic);
             messageWindow.buttonSend.Content = "Reply";
             AddOneComboBoxElement(manager, mWindow);
+            ConvertMailsContent(mail);
         }
         public void ForwardMessage(Mail mail, MainWindow mWindow, Manager manager)
         {
@@ -93,6 +97,8 @@ namespace HCI__Post_Service
             AddOneComboBoxElement(manager, mWindow);
             messageWindow.content.expander.IsEnabled = false;
             messageWindow.content.expander.IsExpanded = false;
+            ConvertMailsContent(mail);
+
         }
 
 
@@ -147,8 +153,15 @@ namespace HCI__Post_Service
             {
                 List<string> list = messageWindow.boxAttachments.Items.OfType<string>().ToList();
                 ObservableCollection<string> collection = new ObservableCollection<string>(list);
-                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////change content
-                string content = new TextRange(messageWindow.content.richTextBox.Document.ContentStart, messageWindow.content.richTextBox.Document.ContentEnd).Text;
+
+                TextRange textRange = new TextRange(messageWindow.content.richTextBox.Document.ContentStart, messageWindow.content.richTextBox.Document.ContentEnd);
+
+                String content;
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    textRange.Save(ms, DataFormats.Xaml);
+                    content = Encoding.ASCII.GetString(ms.ToArray());
+                }
 
                 Mail mail = new Mail(messageWindow.senderSelect.SelectedItem.ToString(), messageWindow.receiverName.Text, messageWindow.subject.Text, content, collection);
                 manager.GetCurrentMailBox(manager.MailboxNameString()).sent.mailList.Add(mail);
@@ -176,6 +189,23 @@ namespace HCI__Post_Service
                     }
                 }
             
+        }
+
+
+        private void ConvertMailsContent(Mail mail)
+        {
+            string strEncoding = mail.MsgContent;
+            if (strEncoding.Contains("</Section>"))
+            {
+                byte[] byteArray = Encoding.ASCII.GetBytes(strEncoding);
+                using (MemoryStream ms = new MemoryStream(byteArray))
+                {
+                    TextRange tr = new TextRange(messageWindow.content.richTextBox.Document.ContentStart,
+                        messageWindow.content.richTextBox.Document.ContentEnd);
+                    tr.Load(ms, DataFormats.Xaml);
+                }
+            }
+
         }
     }
 }

@@ -13,8 +13,6 @@ D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Servi
 D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\HCI- Post Service.exe
 D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\HCI- Post Service.pdb
 D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\bin\Debug\MainWindow.xaml.cs
-D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\deleteMessage.g.cs
-D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\deleteMessage.baml
 D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\SendMessageWindow.g.cs
 D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\SendMessageWindow.baml
@@ -38,3 +36,5 @@ D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Servi
 D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
 D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\HCI- Post Service.csproj.CopyComplete
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\UserControlFolder\ShowEmailMainWindowControl.g.cs
+D:\Users\Jakub Głatki\GitHub\HCI-post-service\HCI- Post Service\HCI- Post Service\obj\Debug\UserControlFolder\ShowEmailMainWindowControl.baml

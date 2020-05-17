@@ -18,15 +18,15 @@
         <Expander x:Name="expander" Background="Ivory" Grid.Row="0" IsExpanded="True" HorizontalAlignment="Stretch">
             <DockPanel x:Name="panelButtonsExpander"  HorizontalAlignment="Stretch">
                 
-                <ToggleButton  Margin="50,0,0,10"  BorderBrush="Ivory" x:Name="bBold" Background="Ivory" Click="BoldButton">
-                    <Image Width="25" Height="25" Source="bold.png" />
-                </ToggleButton>
-                <ToggleButton  Margin="20,0,0,10"  BorderBrush="Ivory" x:Name="bItalic" Background="Ivory" Click="ItalicButton">
-                    <Image Width="25" Height="25" Source="italic.png" />
-                </ToggleButton>
-                <ToggleButton  Margin="20,0,0,10"  BorderBrush="Ivory" x:Name="bUnderline" Background="Ivory" Click="UnderlineButton">
-                    <Image Width="25" Height="25" Source="underline.png" />
-                </ToggleButton>
+                <Button  Margin="50,0,0,10"  BorderBrush="Ivory" x:Name="bBold" Background="Ivory" Click="BoldButton">
+                    <Image Width="25" Height="25" Source="..\Resources\bold.png" />
+                </Button>
+                <Button  Margin="20,0,0,10"  BorderBrush="Ivory" x:Name="bItalic" Background="Ivory" Click="ItalicButton">
+                    <Image Width="25" Height="25" Source="..\Resources\italic.png" />
+                </Button>
+                <Button  Margin="20,0,0,10"  BorderBrush="Ivory" x:Name="bUnderline" Background="Ivory" Click="UnderlineButton">
+                    <Image Width="25" Height="25" Source="..\Resources\underline.png" />
+                </Button>
 
 
                 <ComboBox x:Name="cbSize" Margin="30,0,0,10" Width="40" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" FontWeight="Medium" SelectionChanged="FontSizeChanged"/>
@@ -42,6 +42,11 @@
 
         </Expander>
 
-        <RichTextBox x:Name="richTextBox" Grid.Row="1" Padding="5,5,5,5" FontSize="11"/>
+        <RichTextBox x:Name="richTextBox" Grid.Row="1" Padding="5,5,5,5" FontSize="11">
+            <RichTextBox.Resources>
+                <Style TargetType="{x:Type Paragraph}"/>
+
+            </RichTextBox.Resources>
+        </RichTextBox>
     </Grid>
 </UserControl>
